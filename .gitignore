@@ -1,0 +1,23 @@
+###########################
+# Visual Studio / ASP.NET #
+###########################
+
+# Project build output
+[Bb]in/
+[Oo]bj/
+*.pdb
+*.suo
+*.user
+*.bak
+*.ncb
+*.scc
+*.vspscc
+
+# Visual Studio 2017+ cache/settings folder (THIS IS THE CRITICAL FIX)
+.vs/
+
+# Packages folder
+packages/
+
+# Test results
+TestResults/
