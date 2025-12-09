@@ -14,6 +14,7 @@
                 runat="server"
                 placeholder="Username"></asp:textbox>
             <asp:TextBox runat="server"
+                type="password"
                 placeholder="Password"></asp:TextBox>
             <asp:Button ID="btnLogin" 
                 Text="Invio"
