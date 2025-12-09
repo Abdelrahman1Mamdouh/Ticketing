@@ -1,7 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Zoola\\Desktop\\Work\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\fabio\\source\\repos\\Ticketing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD7F609-DC23-40E5-B1A5-FA48FA982F32}|Ticketing\\Ticketing.csproj|c:\\users\\fabio\\source\\repos\\ticketing\\ticketing\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0BD7F609-DC23-40E5-B1A5-FA48FA982F32}|Ticketing\\Ticketing.csproj|solutionrelative:ticketing\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BD7F609-DC23-40E5-B1A5-FA48FA982F32}|Ticketing\\Ticketing.csproj|C:\\Users\\fabio\\source\\repos\\Ticketing\\Ticketing\\Site.Master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{0BD7F609-DC23-40E5-B1A5-FA48FA982F32}|Ticketing\\Ticketing.csproj|solutionrelative:Ticketing\\Site.Master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +18,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\fabio\\source\\repos\\Ticketing\\Ticketing\\Web.config",
+              "RelativeDocumentMoniker": "Ticketing\\Web.config",
+              "ToolTip": "C:\\Users\\fabio\\source\\repos\\Ticketing\\Ticketing\\Web.config",
+              "RelativeToolTip": "Ticketing\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-12-09T10:58:19.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Site.Master",
+              "DocumentMoniker": "C:\\Users\\fabio\\source\\repos\\Ticketing\\Ticketing\\Site.Master",
+              "RelativeDocumentMoniker": "Ticketing\\Site.Master",
+              "ToolTip": "C:\\Users\\fabio\\source\\repos\\Ticketing\\Ticketing\\Site.Master",
+              "RelativeToolTip": "Ticketing\\Site.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-12-09T10:58:19.54Z"
             }
           ]
         }

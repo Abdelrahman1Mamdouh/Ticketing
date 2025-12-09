@@ -17,6 +17,7 @@
 
 </head>
 <body>
+    
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -46,9 +47,10 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket">Ticket</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtente">Utente</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Società</a></li>
                     </ul>
                 </div>
             </div>

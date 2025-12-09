@@ -2,20 +2,22 @@
 # Visual Studio / ASP.NET #
 ###########################
 
-# Visual Studio Cache/User Settings (THIS IS THE CRITICAL FIX)
-.vs/
-*.suo
-*.user
-
-# Build and Compilation Output
+# Project build output
 [Bb]in/
 [Oo]bj/
 *.pdb
-*.dll
-*.exe
+*.suo
+*.user
+*.bak
+*.ncb
+*.scc
+*.vspscc
 
-# NuGet Packages (These should be restored, not tracked)
+# Visual Studio 2017+ cache/settings folder (THIS IS THE CRITICAL FIX)
+.vs/
+
+# Packages folder
 packages/
 
-# Test Results
+# Test results
 TestResults/
