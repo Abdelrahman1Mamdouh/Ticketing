@@ -15,255 +15,246 @@ namespace Ticketing
     {
 
         /// <summary>
-        /// Controllo form1.
+        /// Controllo Label1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Controllo LabelId.
+        /// Controllo TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelId;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// Controllo TextBoxId.
+        /// Controllo Label2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxId;
+        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Controllo LabelCliente.
+        /// Controllo TextBox2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCliente;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// Controllo TextBoxCliente.
+        /// Controllo Label3.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCliente;
+        protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Controllo LabelTecnico.
+        /// Controllo TextBox3.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelTecnico;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
-        /// Controllo TextBoxTecnico.
+        /// Controllo Label4.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxTecnico;
+        protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Controllo LabelLivello.
+        /// Controllo TextBox4.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelLivello;
+        protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// Controllo TextBoxLivello.
+        /// Controllo Label5.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxLivello;
+        protected global::System.Web.UI.WebControls.Label Label5;
 
         /// <summary>
-        /// Controllo LabelStato.
+        /// Controllo DropDownList1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelStato;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// Controllo ListaStato.
+        /// Controllo Label6.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListaStato;
+        protected global::System.Web.UI.WebControls.Label Label6;
 
         /// <summary>
-        /// Controllo LabelProdotto.
+        /// Controllo DropDownList2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelProdotto;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
 
         /// <summary>
-        /// Controllo DropDownListProdotto.
+        /// Controllo Label7.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListProdotto;
+        protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
-        /// Controllo LabelCategoria.
+        /// Controllo DropDownList3.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCategoria;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
 
         /// <summary>
-        /// Controllo DropDownListCategoria.
+        /// Controllo Label8.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListCategoria;
+        protected global::System.Web.UI.WebControls.Label Label8;
 
         /// <summary>
-        /// Controllo LabelOggetto.
+        /// Controllo TextBox5.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelOggetto;
+        protected global::System.Web.UI.WebControls.TextBox TextBox5;
 
         /// <summary>
-        /// Controllo TextBoxOggetto.
+        /// Controllo Label9.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxOggetto;
+        protected global::System.Web.UI.WebControls.Label Label9;
 
         /// <summary>
-        /// Controllo LabelMessaggio.
+        /// Controllo TextBox6.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelMessaggio;
+        protected global::System.Web.UI.WebControls.TextBox TextBox6;
 
         /// <summary>
-        /// Controllo TextBoxMessaggio.
+        /// Controllo Button1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMessaggio;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Controllo CreaMesaggio.
+        /// Controllo Button2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreaMesaggio;
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
-        /// Controllo ModificaMessaggio.
+        /// Controllo Button3.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ModificaMessaggio;
+        protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
-        /// Controllo EliminaMessaggio.
+        /// Controllo Label10.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EliminaMessaggio;
+        protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// Controllo LabelPriorita.
+        /// Controllo DropDownList4.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPriorita;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
 
         /// <summary>
-        /// Controllo DropDownListPriorit.
+        /// Controllo Label11.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListPriorit;
+        protected global::System.Web.UI.WebControls.Label Label11;
 
         /// <summary>
-        /// Controllo LabelComunicazione.
+        /// Controllo TextBox7.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelComunicazione;
+        protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
-        /// Controllo TextBoxComunicazione.
+        /// Controllo Button4.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxComunicazione;
+        protected global::System.Web.UI.WebControls.Button Button4;
 
         /// <summary>
-        /// Controllo ButtonStorico.
+        /// Controllo Button5.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonStorico;
-
-        /// <summary>
-        /// Controllo ButtonInviaRisposta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonInviaRisposta;
+        protected global::System.Web.UI.WebControls.Button Button5;
     }
 }

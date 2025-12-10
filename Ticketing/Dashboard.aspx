@@ -1,17 +1,41 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ticketing.Dashboard" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ticketing.Dashboard" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
+    Runat="Server">
+<div>
+         <div>
+     <asp:Table ID="Tickets"
+         runat="server"
+         CellPadding="10"
+         GridLines="Both"
+         HorizontalAlign="Center">
+         <asp:TableRow>
+             <asp:TableCell>
+                Id
+             </asp:TableCell>
+             <asp:TableCell>
+                 Cliente
+            </asp:TableCell>
+              <asp:TableCell>
+                  Operatore
+              </asp:TableCell>
+              <asp:TableCell>
+                   Priorita
+             </asp:TableCell>
+         </asp:TableRow>
+     </asp:Table>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Home</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+</div>
+ <div>
+      <asp:Button id="Crea"
+        Text="Crea"
+        
+        runat="server"/>
 
-        </div>
-    </form>
-</body>
-</html>
+       <asp:Button id="Storico"
+         Text="Storico"
+         
+         runat="server"/>
+ </div>
+</div>
+    </asp:Content>
