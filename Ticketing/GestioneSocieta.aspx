@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     Runat="Server">
-    <div style="display: flex; flex-direction: column;">
+    <div class="grid">
+    <div class="col-50">
         <asp:Label ID="LId"
     Text="Id"
     runat="server"/>
@@ -59,6 +60,23 @@
     runat="server"
     placeholder="P. Iva">
 </asp:TextBox>
+</div>
+
+
+<div class="col-50">
+ <asp:Label ID="Label11"
+    Text="Comunicazione"
+    runat="server"/>
+<asp:TextBox ID="TComunicazione"
+    runat="server"
+    placeholder="Comunicazione"
+    ClientIDMode="Static"
+    TextMode="MultiLine">
+</asp:TextBox>
+
+</div>
+
+<div  class="grid-button">
 <asp:Button ID="BModifica" 
     Text="Modifica"
     runat="server"/>
@@ -68,14 +86,9 @@
 <asp:Button ID="BElimina" 
     Text="Elimina"
     runat="server"/>
+</div>
 
- <asp:Label ID="Label11"
-    Text="Comunicazione"
-    runat="server"/>
-<asp:TextBox ID="TextBox7"
-    runat="server"
-    placeholder="Comunicazione">
-</asp:TextBox>
+
 
 </div>
 </asp:Content>

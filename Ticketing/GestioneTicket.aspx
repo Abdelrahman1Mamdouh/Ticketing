@@ -2,8 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     Runat="Server">
-    <div style="display: flex; flex-direction: column;">
-        <asp:Label ID="LId"
+    <div>
+    <div class="grid">
+    <div class="col-50">
+  <asp:Label ID="LId"
     Text="Id"
     runat="server"/>
   <asp:TextBox ID="Tid"
@@ -58,6 +60,17 @@
         <asp:ListItem>Categoria2</asp:ListItem>
         <asp:ListItem>Categoria3</asp:ListItem>
 </asp:DropDownList>
+<asp:Label ID="LPriorita"
+    Text="Priorita"
+    runat="server"/>
+<asp:DropDownList ID="DPriorita"
+    runat="server">
+        <asp:ListItem>Priorita1</asp:ListItem>
+        <asp:ListItem>Priorita2</asp:ListItem>
+        <asp:ListItem>Priorita3</asp:ListItem>
+</asp:DropDownList>
+        </div>
+        <div class="col-50">
 <asp:Label ID="LOggetto"
     Text="Oggetto"
     runat="server"/>
@@ -70,8 +83,14 @@
     runat="server"/>
 <asp:TextBox ID="TMessaggio"
     runat="server"
-    placeholder="Messaggio">
+    placeholder="Messaggio"
+     ClientIDMode="Static"
+    TextMode="MultiLine">
 </asp:TextBox>
+
+</div>
+
+<div class="grid-button">
 <asp:Button ID="BCrea" 
     Text="Crea"
     runat="server"/>
@@ -81,27 +100,29 @@
 <asp:Button ID="BElimina" 
     Text="Elimina"
     runat="server"/>
- <asp:Label ID="LPriorita"
-    Text="Priorita"
-    runat="server"/>
-<asp:DropDownList ID="DPriorita"
-    runat="server">
-        <asp:ListItem>Priorita1</asp:ListItem>
-        <asp:ListItem>Priorita2</asp:ListItem>
-        <asp:ListItem>Priorita3</asp:ListItem>
-</asp:DropDownList>
+</div>
+
+<div class="col-100">
+
  <asp:Label ID="LComunicazione"
     Text="Comunicazione"
     runat="server"/>
 <asp:TextBox ID="TComunicazione"
     runat="server"
-    placeholder="Comunicazione">
+    placeholder="Comunicazione"
+    ClientIDMode="Static"
+    TextMode="MultiLine">
 </asp:TextBox>
+</div>
+
+<div class="btn-comunicazione">
 <asp:Button ID="BStorico" 
     Text="Storico"
     runat="server"/>
 <asp:Button ID="BRisposta" 
     Text="Invia Risposta"
     runat="server"/>
+</div>
+</div>
 </div>
 </asp:Content>

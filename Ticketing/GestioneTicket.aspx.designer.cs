@@ -141,6 +141,24 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.DropDownList DCategoria;
 
         /// <summary>
+        /// Controllo LPriorita.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LPriorita;
+
+        /// <summary>
+        /// Controllo DPriorita.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DPriorita;
+
+        /// <summary>
         /// Controllo LOggetto.
         /// </summary>
         /// <remarks>
@@ -202,24 +220,6 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BElimina;
-
-        /// <summary>
-        /// Controllo LPriorita.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LPriorita;
-
-        /// <summary>
-        /// Controllo DPriorita.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DPriorita;
 
         /// <summary>
         /// Controllo LComunicazione.

@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     Runat="Server">
-<div>
-         <div>
+<div class="grid">
+        <div class="col-100">
      <asp:Table ID="Tickets"
          runat="server"
          CellPadding="10"
@@ -26,7 +26,12 @@
      </asp:Table>
 
 </div>
- <div>
+ <div class="grid-button">
+
+
+     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+         aria-expanded="false" aria-label="Toggle navigation">
+
       <asp:Button id="Crea"
         Text="Crea"
         
