@@ -28,13 +28,7 @@
 </div>
  <div class="grid-button">
 
-     <!--
-     <asp:Button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-         aria-expanded="false" aria-label="Toggle navigation" runat="server" >
-             <span class="navbar-toggler-icon"></span>
-</button>
-
-         -->
+   
 
       <asp:Button id="BCrea"
         Text="Crea"

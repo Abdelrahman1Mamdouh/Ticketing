@@ -44,9 +44,9 @@
              <div id="LogoDgs">
                  <asp:Image ID="Image1"
                      runat="server"
-                     ImageUrl="~/Asset/Logo1.png"
-                     Height="40"
-                     Width="40"
+                     ImageUrl="~/Asset/DgsLogo.png"
+                     Height="150"
+                     Width="220"
                      ImageAlign="Left"/>
              </div>
 
