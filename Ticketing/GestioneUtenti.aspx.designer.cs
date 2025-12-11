@@ -141,22 +141,22 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.DropDownList DDipartimento;
 
         /// <summary>
-        /// Controllo LTelefono.
+        /// Controllo LPassword.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LTelefono;
+        protected global::System.Web.UI.WebControls.Label LPassword;
 
         /// <summary>
-        /// Controllo TTelefono.
+        /// Controllo TPassword.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TTelefono;
+        protected global::System.Web.UI.WebControls.TextBox TPassword;
 
         /// <summary>
         /// Controllo LeMail.
@@ -175,6 +175,24 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TeMail;
+
+        /// <summary>
+        /// Controllo LTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LTelefono;
+
+        /// <summary>
+        /// Controllo TTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TTelefono;
 
         /// <summary>
         /// Controllo LComunicazione.

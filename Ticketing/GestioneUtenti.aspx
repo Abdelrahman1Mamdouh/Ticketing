@@ -66,6 +66,20 @@
 </div>
 
 <div class="col-50">
+    <asp:Label ID="LPassword"
+    Text="Password"
+    runat="server"/>
+<asp:TextBox ID="TPassword"
+    runat="server"
+    placeholder="Password">
+</asp:TextBox>
+    <asp:Label ID="LeMail"
+    Text="eMail"
+    runat="server"/>
+<asp:TextBox ID="TeMail"
+    runat="server"
+    placeholder="eMail">
+</asp:TextBox>
 <asp:Label ID="LTelefono"
     Text="Telefono"
     runat="server"/>
@@ -73,13 +87,7 @@
     runat="server"
     placeholder="Telefono">
 </asp:TextBox>
-<asp:Label ID="LeMail"
-    Text="eMail"
-    runat="server"/>
-<asp:TextBox ID="TeMail"
-    runat="server"
-    placeholder="eMail">
-</asp:TextBox>
+
  <asp:Label ID="LComunicazione"
     Text="Comunicazione"
     runat="server"/>
