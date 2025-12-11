@@ -85,6 +85,7 @@
     runat="server"/>
 <asp:Button ID="BElimina" 
     Text="Elimina"
+    OnClick="clickElimina"
     runat="server"/>
 </div>
 
