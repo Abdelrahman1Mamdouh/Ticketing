@@ -1,17 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Ticketing
 {
     public partial class Login : System.Web.UI.Page
     {
+        string userName;
+        string password;
         protected void Page_Load(object sender, EventArgs e)
+        { 
+        }
+        protected void BtnLogin_Click(object sender, EventArgs e)
         {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            userName = TUser.Text.Trim();
+            password = TPass.Text.Trim();
 
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
+                con.Open();
+                string query = "SELECT COUNT(1) FROM Utente WHERE Email=@Email AND Pass=@Pass";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Email", userName);
+                cmd.Parameters.AddWithValue("@Pass", password);
+               
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if(count == 1)
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+                else
+                {
+                    Response.Write("Username o password sono invalidi");
+                }
+            }
+
+        }
+        protected void BtnAnnulla_Click(object sender, EventArgs e)
+        {
+            userName = TUser.Text = "";
+            password = TPass.Text = "";
         }
     }
 }

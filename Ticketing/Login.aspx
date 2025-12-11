@@ -18,11 +18,14 @@
             </div>
 
             <div class="grid-button">
-            <asp:Button ID="BLogin" 
+            <asp:Button ID="BLogin"
                 Text="Invio"
-                runat="server"/>
+                OnClick="BtnLogin_Click"
+                runat="server" />
+
             <asp:Button ID="BAnnulla" 
                 Text="Annulla"
+                OnClick="BtnAnnulla_Click"
                 runat="server"/>
             <asp:Button ID="BRP" 
                 Text="Recupera Password"
