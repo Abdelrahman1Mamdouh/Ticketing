@@ -5,23 +5,29 @@
     <div>
     <div class="grid">
     <div class="col-50">
+
   <asp:Label ID="LId"
     Text="Id"
     runat="server"/>
+
   <asp:TextBox ID="Tid"
       runat="server"
       placeholder="Id">
   </asp:TextBox>
+
 <asp:Label ID="LCliente"
     Text="Cliente"
     runat="server"/>
+
 <asp:TextBox ID="TCliente"
     runat="server"
     placeholder="Cliente">
 </asp:TextBox>
+
 <asp:Label ID="LTecnico"
     Text="Tecnico"
     runat="server"/>
+
 <asp:TextBox ID="TTecnico"
     runat="server"
     placeholder="Tecnico">

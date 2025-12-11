@@ -22,9 +22,10 @@ namespace Ticketing
                 con.Open();
                 string query = "SELECT COUNT(1) FROM Utente WHERE Email=@Email AND Pass=@Pass";
                 MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Email", userName);
-                cmd.Parameters.AddWithValue("@Pass", password);
-               
+                cmd.Parameters.Add("@Email",MySqlDbType.VarChar).Value= userName;
+                cmd.Parameters.Add("@Pass", MySqlDbType.VarChar).Value = password;
+                    
+
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                 if(count == 1)
                 {
@@ -35,7 +36,6 @@ namespace Ticketing
                     Response.Write("Username o password sono invalidi");
                 }
             }
-
         }
         protected void BtnAnnulla_Click(object sender, EventArgs e)
         {

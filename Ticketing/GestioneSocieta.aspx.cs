@@ -1,34 +1,21 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Diagnostics.Contracts;
-using System.Drawing;
-using System.Linq;
-using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using System.Web.Management;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Ticketing
 {
     public partial class GestioneSocieta : System.Web.UI.Page
     {
-        private int id;
-        private String nome;
-        private String indirizzo;
-        private String citta;
-        private String cap;
-        private String telefono;
-        private String email;
-        private String piva;
-        private String comunicazione;
+
+        string nome;
+        string indirizzo;
+        string citta;
+        string cap;
+        string telefono;
+        string email;
+        string piva;
+        string note;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,76 +24,87 @@ namespace Ticketing
 
         public void clickCrea(object sender, EventArgs e)
         {
-            String cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
             nome = TNome.Text;
             indirizzo = TIndirizzo.Text;
             citta = TCitta.Text;
-            cap = TCap.Text;
-            telefono = TTelefono.Text;
-            email = TeMail.Text;
-            piva = TPIva.Text;
-            comunicazione = TComunicazione.Text;
+            cap = TCap.Text.Trim();
+            telefono = TTelefono.Text.Trim();
+            email = TeMail.Text.Trim();
+            piva = TPIva.Text.Trim();
+            note = TNote.Text;
 
-            using (MySqlComand con=new MySqlComand(cs))
+
+            using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
-                String newSocieta = "INSERT INTO societa (Nome, Indirizzo, Citta, Cap, Telefono, Email) VALUES (@nome, @indirizzo, @citta, @cap, @telefono, @email)";
-                
-                MySqlComand cmd = new MySqlComand(newSocieta, con);
+                string newSocieta = "INSERT INTO societa (Nome, Indirizzo, Citta, Cap, Telefono, Email,PIva,Note) VALUES (@nome, @indirizzo, @citta, @cap, @telefono, @email,@piva,@note)";
 
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@indirizzo", indirizzo);
-                cmd.Parameters.AddWithValue("@citta", citta);
-                cmd.Parameters.AddWithValue("@cap", cap);
-                cmd.Parameters.AddWithValue("@livelloo", livello);
-                cmd.Parameters.AddWithValue("@telefono", telefono);
-                cmd.Parameters.AddWithValue("@email", email);
+                MySqlCommand cmd = new MySqlCommand(newSocieta, con);
+
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome; //More secure, advised (To be researched)
+
+                cmd.Parameters.Add("@indirizzo", MySqlDbType.VarChar).Value = indirizzo;
+                cmd.Parameters.Add("@citta", MySqlDbType.VarChar).Value = citta;
+                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap ;
+                cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+                cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
+                cmd.Parameters.Add("@note", MySqlDbType.VarChar).Value = note;
+
+                cmd.ExecuteNonQuery();
             }
-             
+
         }
-        
+
         public void clickModifica(object sender, EventArgs e)
         {
-            String cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
-            ID=TId.Text;
+
             nome = TNome.Text;
             indirizzo = TIndirizzo.Text;
             citta = TCitta.Text;
-            cap = TCap.Text;
-            telefono = TTelefono.Text;
-            email = TeMail.Text;
-            piva = TPIva.Text;
-            comunicazione = TComunicazione.Text;
+            cap = TCap.Text.Trim();
+            telefono = TTelefono.Text.Trim();
+            email = TeMail.Text.Trim();
+            piva = TPIva.Text.Trim();
+            note = TNote.Text;
 
-            using (MySqlComand con = new MySqlComand(cs))
+
+            using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
-                public String ModificaSocieta =
-                "UPDATE societa SET Nome= @nome, Indirizzo= @indirizzo, Citta= @citta, Cap= @cap, Telefono= @telefono, Email= @email WHERE (ID => @ID)";
-                MySqlComand cmd = new MySqlComand(ModificaSocieta, con);
+                string modificaSocieta =
+                "UPDATE societa SET Nome= @nome, Indirizzo= @indirizzo, Citta= @citta, Cap= @cap, Telefono= @telefono, Email= @email, PIva=@piva WHERE (PIva == @piva)"; //change textbox to piva
+                MySqlCommand cmd = new MySqlCommand(modificaSocieta, con);
 
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@indirizzo", indirizzo);
-                cmd.Parameters.AddWithValue("@citta", citta);
-                cmd.Parameters.AddWithValue("@cap", cap);
-                cmd.Parameters.AddWithValue("@livelloo", livello);
-                cmd.Parameters.AddWithValue("@telefono", telefono);
-                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
+                cmd.Parameters.Add("@indirizzo", MySqlDbType.VarChar).Value = indirizzo;
+                cmd.Parameters.Add("@citta", MySqlDbType.VarChar).Value = citta;
+                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap;
+                cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+                cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
+                cmd.Parameters.Add("@note", MySqlDbType.VarChar).Value = note;
+                cmd.ExecuteNonQuery();
             }
-        
+
+        }
         public void clickElimina(object sender, EventArgs e)
         {
-             ID = TId.Text;
-             using (MySqlComand con = new MySqlComand(cs))
-             {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            piva = TPIva.Text.Trim(); //change textbox to PIva
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
                 con.Open();
-                public String deleteSocieta = "DELETE FROM `societa` [WHERE id== @ID]"
-                MySqlComand cmd = new MySqlComand(deleteSocieta, con);
+                string deleteSocieta = "DELETE FROM `societa` [WHERE PIva== @piva]";
+                MySqlCommand cmd = new MySqlCommand(deleteSocieta, con);
 
-                cmd.Parameters.AddWithValue("@ID", ID);
-             }
+                cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
+                cmd.ExecuteNonQuery();
+            }
         }
-       
     }
+}
