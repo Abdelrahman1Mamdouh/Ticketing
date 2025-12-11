@@ -278,7 +278,16 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Utente.cs" />
+    <Compile Include="Models\categoria.cs" />
+    <Compile Include="Models\societa.cs" />
+    <Compile Include="Models\stato.cs" />
+    <Compile Include="Models\ruolo.cs" />
+    <Compile Include="Models\dipartimento.cs" />
+    <Compile Include="Models\priorita.cs" />
+    <Compile Include="Models\prodotto.cs" />
+    <Compile Include="Models\livello.cs" />
+    <Compile Include="Models\ticket.cs" />
+    <Compile Include="Models\utente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
