@@ -1,0 +1,209 @@
+﻿
+.navbar {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+
+.grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1250px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+}
+
+.col-50 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col-100 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.grid-button {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+input[type*="text"] {
+    width: 80%;
+    height: 30px;
+}
+
+    input[type*="text"]:focus {
+        border-color: none;
+        box-shadow: 0 0 5px #590094;
+        outline: none;
+    }
+
+#TMessaggio {
+    width: 100%;
+    height: 300px;
+    resize: none;
+    vertical-align: top;
+}
+
+    #TMessaggio:focus {
+        border-color: none;
+        box-shadow: 0 0 5px #590094;
+        outline: none;
+    }
+
+#TComunicazione {
+    width: 100%;
+    height: 300px;
+    vertical-align: top;
+    resize: none;
+}
+
+    #TComunicazione:focus {
+        border-color: none;
+        box-shadow: 0 0 5px #590094;
+        outline: none;
+    }
+
+
+
+.btn-comunicazione {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+/*Liste*/
+[id*="D"] {
+    width: 80%;
+    height: 30px;
+}
+
+    [id*="D"]:focus {
+        border-color: none;
+        box-shadow: 0 0 5px #590094;
+        outline: none;
+    }
+/* BOTTONI */
+[id*="B"] {
+    width: 120px;
+    height: 30px;
+    background-color: #590094;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    /*        gap:10px;*/
+}
+
+    [id*="B"]:hover {
+        border-color: #590094;
+        background-color: white;
+        color: #590094;
+        box-shadow: 0 0 6px #D9A1FF;
+    }
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .col-50 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+    .grid-button {
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: 800px) {
+    input[type="text"] {
+        width: 100%;
+    }
+}
+
+
+/*.container-nav {
+    background-color: #590094;
+    display:flex;
+    margin:0 auto;
+}*/
+
+.menu {
+    display: flex;
+    background-color: #590094;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navigazione li {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+a:hover {
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 5px #D9A1FF;
+    border-radius: 50px;
+    padding: 5px 20px;
+}
+
+.Logo {
+    height: 100px;
+    width: 150px;
+    filter: brightness(0) invert(1);
+}
+
+
+#LogoNotifica {
+    height: 20px;
+    width: 20px;
+}
+
+.footer {
+    background-color: #590094;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 15px;
+    color: white;
+}
+/* RESET */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style-type: none;
+}
+
+body, html {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
