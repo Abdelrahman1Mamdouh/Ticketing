@@ -47,7 +47,7 @@ namespace Ticketing
 
                 cmd.Parameters.Add("@indirizzo", MySqlDbType.VarChar).Value = indirizzo;
                 cmd.Parameters.Add("@citta", MySqlDbType.VarChar).Value = citta;
-                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap ;
+                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
                 cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;

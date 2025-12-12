@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Configuration;
-using MySql.Data.MySqlClient;
 
 namespace Ticketing
 {
@@ -9,7 +9,7 @@ namespace Ticketing
         string userName;
         string password;
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
         }
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
@@ -22,12 +22,12 @@ namespace Ticketing
                 con.Open();
                 string query = "SELECT COUNT(1) FROM Utente WHERE Email=@Email AND Pass=@Pass";
                 MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.Add("@Email",MySqlDbType.VarChar).Value= userName;
+                cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = userName;
                 cmd.Parameters.Add("@Pass", MySqlDbType.VarChar).Value = password;
-                    
+
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if(count == 1)
+                if (count == 1)
                 {
                     Response.Redirect("Dashboard.aspx");
                 }
