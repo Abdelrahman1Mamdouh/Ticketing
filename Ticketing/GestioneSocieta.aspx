@@ -4,17 +4,11 @@
     Runat="Server">
     <div class="grid">
     <div class="col-50">
-        <asp:Label ID="LId"
-    Text="Id"
-    runat="server"/>
-  <asp:TextBox ID="TId"
-      runat="server"
-      placeholder="Id">
-  </asp:TextBox>
-<asp:Label ID="LNomeSocieta"
+       
+<asp:Label ID="LNome"
     Text="Nome Societa"
     runat="server"/>
-<asp:TextBox ID="TNomeSocieta"
+<asp:TextBox ID="TNome"
     runat="server"
     placeholder="Nome Societa">
     </asp:TextBox>
@@ -64,12 +58,12 @@
 
 
 <div class="col-50">
- <asp:Label ID="Label11"
-    Text="Comunicazione"
+ <asp:Label ID="LNote"
+    Text="Note"
     runat="server"/>
-<asp:TextBox ID="TComunicazione"
+<asp:TextBox ID="TNote"
     runat="server"
-    placeholder="Comunicazione"
+    placeholder="Note"
     ClientIDMode="Static"
     TextMode="MultiLine">
 </asp:TextBox>
@@ -77,13 +71,15 @@
 </div>
 
 <div  class="grid-button">
-<asp:Button ID="BModifica" 
+<asp:Button ID="BModifica"
     Text="Modifica"
+    OnClick="clickModifica"
     runat="server"/>
-<asp:Button ID="BCrea" 
+<asp:Button ID="BCrea"
     Text="Crea"
+    OnClick="clickCrea"
     runat="server"/>
-<asp:Button ID="BElimina" 
+<asp:Button ID="BElimina"
     Text="Elimina"
     OnClick="clickElimina"
     runat="server"/>
@@ -93,6 +89,3 @@
 
 </div>
 </asp:Content>
-
-
-

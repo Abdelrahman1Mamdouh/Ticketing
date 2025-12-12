@@ -7,14 +7,7 @@
     <div class="grid">
 
     <div class="col-50">
-  
-        <asp:Label ID="LId"
-    Text="Id"
-    runat="server"/>
-  <asp:TextBox ID="TId"
-      runat="server"
-      placeholder="Id">
-  </asp:TextBox>
+
 <asp:Label ID="LNome"
     Text="Nome"
     runat="server"/>
@@ -73,12 +66,12 @@
     runat="server"
     placeholder="Password">
 </asp:TextBox>
-    <asp:Label ID="LeMail"
-    Text="eMail"
+    <asp:Label ID="LEmail"
+    Text="Email"
     runat="server"/>
-<asp:TextBox ID="TeMail"
+<asp:TextBox ID="TEmail"
     runat="server"
-    placeholder="eMail">
+    placeholder="Email">
 </asp:TextBox>
 <asp:Label ID="LTelefono"
     Text="Telefono"
@@ -88,12 +81,12 @@
     placeholder="Telefono">
 </asp:TextBox>
 
- <asp:Label ID="LComunicazione"
-    Text="Comunicazione"
+ <asp:Label ID="LNote"
+    Text="Note"
     runat="server"/>
-<asp:TextBox ID="TComunicazione"
+<asp:TextBox ID="TNote"
     runat="server"
-    placeholder="Comunicazione"
+    placeholder="Note"
     ClientIDMode="Static"
     TextMode="MultiLine">
 </asp:TextBox>

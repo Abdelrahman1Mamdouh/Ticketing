@@ -147,6 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\dgs-logo.png" />
     <Content Include="Asset\DgsLogo.png" />
     <Content Include="Asset\Logo1.png" />
     <Content Include="Asset\logo2.png" />
@@ -167,6 +168,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CssProgetto.css" />
     <Content Include="Content\GestioneTicket.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
