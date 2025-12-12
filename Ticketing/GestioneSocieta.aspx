@@ -73,9 +73,11 @@
 <div  class="grid-button">
 <asp:Button ID="BModifica"
     Text="Modifica"
+    OnClick="clickModifica"
     runat="server"/>
 <asp:Button ID="BCrea"
     Text="Crea"
+    OnClick="clickCrea"
     runat="server"/>
 <asp:Button ID="BElimina"
     Text="Elimina"

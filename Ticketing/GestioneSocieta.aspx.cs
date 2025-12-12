@@ -8,14 +8,14 @@ namespace Ticketing
     public partial class GestioneSocieta : System.Web.UI.Page
     {
 
-        string nome;
-        string indirizzo;
-        string citta;
-        string cap;
-        string telefono;
-        string email;
-        string piva;
-        string note;
+        private string nome;
+        private string indirizzo;
+        private string citta;
+        private string cap;
+        private string telefono;
+        private string email;
+        private string piva;
+        private string note;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -77,7 +77,7 @@ namespace Ticketing
             {
                 con.Open();
                 string modificaSocieta =
-                "UPDATE societa SET Nome= @nome, Indirizzo= @indirizzo, Citta= @citta, Cap= @cap, Telefono= @telefono, Email= @email, PIva=@piva WHERE (PIva == @piva)"; //change textbox to piva
+                "UPDATE societa SET Nome= @nome, Indirizzo= @indirizzo, Citta= @citta, Cap= @cap, Telefono= @telefono, Email= @email, PIva=@piva WHERE PIva = @piva"; //change textbox to piva
                 MySqlCommand cmd = new MySqlCommand(modificaSocieta, con);
 
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
@@ -95,11 +95,11 @@ namespace Ticketing
         public void clickElimina(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-            piva = TPIva.Text.Trim(); //change textbox to PIva
+            piva = TPIva.Text.Trim();
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
-                string deleteSocieta = "DELETE FROM `societa` [WHERE PIva== @piva]";
+                string deleteSocieta = "DELETE FROM `societa` WHERE PIva= @piva";
                 MySqlCommand cmd = new MySqlCommand(deleteSocieta, con);
 
                 cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;

@@ -15,7 +15,7 @@ namespace Ticketing
         private String dipartimento;
         private String telefono;
         private String email;
-        private String comunicazione;
+        private String note;
         private String pass;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -36,13 +36,13 @@ namespace Ticketing
             dipartimento = DDipartimento.Text;
             pass = TPassword.Text;
             telefono = TTelefono.Text;
-            email = TeMail.Text;
-            comunicazione = TComunicazione.Text;
+            email = TEmail.Text;
+            note = TNote.Text;
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
-                String newUtenti = "INSERT INTO societa (Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Password, Telefono, Email, Comunicazione) VALUES (@nome, @cognome, @ruolo, @societa, @livello, @dipartimento, @password, @telefono, @email, @comunicazione)";
+                String newUtenti = "INSERT INTO societa (Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Password, Telefono, Email, Note) VALUES (@nome, @cognome, @ruolo, @societa, @livello, @dipartimento, @password, @telefono, @email, @note)";
 
                 MySqlCommand cmd = new MySqlCommand(newUtenti, con);
 
@@ -55,7 +55,7 @@ namespace Ticketing
                 cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = pass;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
-                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = comunicazione;
+                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = note;
                 cmd.ExecuteNonQuery();
             }
 
@@ -72,15 +72,15 @@ namespace Ticketing
             livello = DLivello.Text.Trim();
             dipartimento = DDipartimento.Text.Trim();
             pass = TPassword.Text.Trim();
-            telefono = TTelefono.Text.Trim();
-            email = TeMail.Text.Trim();
-            comunicazione = TComunicazione.Text.Trim();
+            telefono = TTelefono.Text;
+            email = TEmail.Text;
+            note = TNote.Text.Trim();
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
                 string ModificaUtenti =
-                $"UPDATE utenti SET Nome= @nome, Cognome= @cognome, Ruolo= @ruolo, Societa= @societa, Livello= @livello, Dipartimento= @dipartimento, Telefono= @telefono, Email= @email, Comunicazione= @comunicazione WHERE (Email=> @email)";
+                $"UPDATE utenti SET Nome= @nome, Cognome= @cognome, Ruolo= @ruolo, Societa= @societa, Livello= @livello, Dipartimento= @dipartimento, Telefono= @telefono, Email= @email, Note= @note WHERE (Email=> @email)";
                 MySqlCommand cmd = new MySqlCommand(ModificaUtenti, con);
 
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
@@ -92,7 +92,7 @@ namespace Ticketing
                 cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = pass;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
-                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = comunicazione;
+                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = note;
                 cmd.ExecuteNonQuery();
             }
         }

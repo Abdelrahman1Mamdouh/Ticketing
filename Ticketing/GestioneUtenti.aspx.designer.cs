@@ -15,24 +15,6 @@ namespace Ticketing
     {
 
         /// <summary>
-        /// LId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LId;
-
-        /// <summary>
-        /// TId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TId;
-
-        /// <summary>
         /// LNome control.
         /// </summary>
         /// <remarks>
@@ -159,22 +141,22 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TPassword;
 
         /// <summary>
-        /// LeMail control.
+        /// LEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LeMail;
+        protected global::System.Web.UI.WebControls.Label LEmail;
 
         /// <summary>
-        /// TeMail control.
+        /// TEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TeMail;
+        protected global::System.Web.UI.WebControls.TextBox TEmail;
 
         /// <summary>
         /// LTelefono control.
@@ -195,22 +177,22 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TTelefono;
 
         /// <summary>
-        /// LComunicazione control.
+        /// LNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LComunicazione;
+        protected global::System.Web.UI.WebControls.Label LNote;
 
         /// <summary>
-        /// TComunicazione control.
+        /// TNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TComunicazione;
+        protected global::System.Web.UI.WebControls.TextBox TNote;
 
         /// <summary>
         /// BModifica control.
