@@ -12,7 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/GestioneTicket.css" />
+    <webopt:BundleReference runat="server" Path="~/Content/CssProgetto.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -38,50 +38,37 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+       
+        <nav class="navbar">
             <div class="container">
 
-             <div id="LogoDgs">
-                 <asp:Image ID="Image1"
-                     runat="server"
-                     ImageUrl="~/Asset/DgsLogo.png"
-                     Height="150"
-                     Width="220"
-                     ImageAlign="Left"/>
-             </div>
-
-                <a class="navbar-brand" runat="server" href="~/">Ticketing App</a>
-                
-                    
-                    
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="menu">
+                    <asp:Image class="Logo"
+                        runat="server"
+                        ImageUrl="~/Asset/dgs-logo.png" />
+                    <ul class="navigazione">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket">Ticket</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti">Utenti</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Società</a></li>
                     </ul>
+                    <asp:Image ID="LogoNotifica"
+                        runat="server"
+                        ImageUrl="~/Asset/Logo1.png" />
                 </div>
             </div>
-           
-            <div id="NotificaLogo">
-                 <asp:Image ID="LogoNotifica"
-                     runat="server"
-                     ImageUrl="~/Asset/Logo1.png"
-                     Height="40"
-                     Width="40"
-                     ImageAlign="Left"/>
-             </div>
-             
         </nav>
+           
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
-            </footer>
-        </div>
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <footer class="footer">
+        <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
+        <asp:Image class="Logo"
+            runat="server"
+            ImageUrl="~/Asset/dgs-logo.png" />
+    </footer>
+</div>
         
     </form>
     <asp:PlaceHolder runat="server">
