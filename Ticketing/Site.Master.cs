@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using Ticketing.Models;
 
 namespace Ticketing
 {
@@ -7,7 +8,21 @@ namespace Ticketing
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool login = Session["CR"] != null;
+            phUserArea.Visible = login;
+            LogoNotifica.Visible = login;
 
+            if (login)
+            {
+                utente user = Session["CR"] as utente;
+                lblWelcome.Text = "Welcome, " + user.Nome+" "+user.Cognome;
+            }
+        }
+        protected void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }
