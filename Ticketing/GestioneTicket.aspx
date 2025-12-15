@@ -6,7 +6,7 @@
     <div class="grid">
     <div class="col-50">
 
-  <asp:Label ID="LId"
+  <!--<asp:Label ID="LId"
     Text="Id"
     runat="server"/>
 
@@ -47,34 +47,45 @@
         <asp:ListItem>Item1</asp:ListItem>
         <asp:ListItem>Item2</asp:ListItem>
         <asp:ListItem>Item3</asp:ListItem>
-</asp:DropDownList>
+</asp:DropDownList> -->
+
+
+
+
 <asp:Label ID="LProdotto"
     Text="Prodotto"
-    runat="server"/>
+    runat="server"/> 
 <asp:DropDownList ID="DProdotto"
-    runat="server">
-        <asp:ListItem>Prodotto1</asp:ListItem>
-        <asp:ListItem>Prodotto2</asp:ListItem>
-        <asp:ListItem>Prodotto3</asp:ListItem>
+    runat="server"
+    AutoPostBack="false"
+    DataTextField="Prodotto"
+    DataValueField="ID">
 </asp:DropDownList>
 <asp:Label ID="LCategoria"
     Text="Categoria"
     runat="server"/>
 <asp:DropDownList ID="DCategoria"
-    runat="server">
-        <asp:ListItem>Categoria1</asp:ListItem>
-        <asp:ListItem>Categoria2</asp:ListItem>
-        <asp:ListItem>Categoria3</asp:ListItem>
+    runat="server"
+    AutoPostBack="false"
+DataTextField="Categoria"
+DataValueField="ID">       
 </asp:DropDownList>
-<asp:Label ID="LPriorita"
+
+
+
+
+<!-- <asp:Label ID="LPriorita"
     Text="Priorita"
     runat="server"/>
-<asp:DropDownList ID="DPriorita"
+ <asp:DropDownList ID="DPriorita"
     runat="server">
         <asp:ListItem>Priorita1</asp:ListItem>
         <asp:ListItem>Priorita2</asp:ListItem>
         <asp:ListItem>Priorita3</asp:ListItem>
-</asp:DropDownList>
+</asp:DropDownList> -->
+
+
+
         </div>
         <div class="col-50">
 <asp:Label ID="LOggetto"
@@ -99,6 +110,7 @@
 <div class="grid-button">
 <asp:Button ID="BCrea" 
     Text="Crea"
+    OnClick="clickCrea"
     runat="server"/>
 <asp:Button ID="BModifica" 
     Text="Modifica"
