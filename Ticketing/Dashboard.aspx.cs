@@ -1,7 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Data;
+using Ticketing.Models;
 
 namespace Ticketing
 {
@@ -11,6 +12,22 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
+        
+          if (Session["CR"] != null)
+            {
+                utente user = Session["CR"] as utente;
+                if (user != null)
+                {
+                    string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
+            
+            
             if (!IsPostBack)
             {
                 BindTickets();
@@ -31,7 +48,7 @@ namespace Ticketing
 
                 Tickets.DataSource = table;
                 Tickets.DataBind();
-            }
+          
         }
     }
 }
