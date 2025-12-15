@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
+using Ticketing.Models;
 
 
 namespace Ticketing
@@ -19,7 +20,18 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["CR"] != null)
+            {
+                utente user = Session["CR"] as utente;
+                if (user != null)
+                {
+                    string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         public void clickCrea(object sender, EventArgs e)
@@ -47,7 +59,7 @@ namespace Ticketing
 
                 cmd.Parameters.Add("@indirizzo", MySqlDbType.VarChar).Value = indirizzo;
                 cmd.Parameters.Add("@citta", MySqlDbType.VarChar).Value = citta;
-                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap ;
+                cmd.Parameters.Add("@cap", MySqlDbType.VarChar).Value = cap;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value = telefono;
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
                 cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
