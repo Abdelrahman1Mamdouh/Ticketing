@@ -11,7 +11,7 @@ namespace Ticketing
 {
 
 
-    public partial class GestioneUtenti
+    public partial class GestioneTicket
     {
 
         /// <summary>
@@ -51,24 +51,6 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TCognome;
 
         /// <summary>
-        /// Controllo LSocieta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LSocieta;
-
-        /// <summary>
-        /// Controllo TSocieta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TSocieta;
-
-        /// <summary>
         /// Controllo LTelefono.
         /// </summary>
         /// <remarks>
@@ -85,24 +67,6 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TTelefono;
-
-        /// <summary>
-        /// Controllo BModifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BModifica;
-
-        /// <summary>
-        /// Controllo BSalva.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BSalva;
 
         /// <summary>
         /// Controllo LEmail.
@@ -141,21 +105,12 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TPassword;
 
         /// <summary>
-        /// Controllo Button1.
+        /// Controllo BSalvaModifiche.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// Controllo Button2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button BSalvaModifiche;
     }
 }
