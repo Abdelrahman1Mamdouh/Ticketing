@@ -62,9 +62,14 @@
                        NavigateUrl="~/InfoModificaUtenti.aspx"/>
                         
                   <asp:Image ID="LogoNotifica"
-                         runat="server"
-                         ImageUrl="~/Asset/Logo1.png"/>
+                          runat="server"
+                          ImageUrl="~/Asset/Logo1.png"
+                          Visible="false"/>
 
+                    <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false" >
+                    <asp:Label ID="lblWelcome" runat="server" />
+                    <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
+                    </asp:PlaceHolder>
                 </div>
             </div>
         </nav>
