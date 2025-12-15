@@ -11,7 +11,7 @@ namespace Ticketing
 {
 
 
-    public partial class GestioneTicket
+    public partial class InfoModificaUtenti
     {
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace Ticketing
             cognome = TCognome.Text;
             telefono = TTelefono.Text;
             email = TEmail.Text;
-            password = TPassword;
+            password = TPassword.Text;
 
             using (MySqlConnection con = new MySqlConnection(cs)) 
             { 
