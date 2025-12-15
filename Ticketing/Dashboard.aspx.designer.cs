@@ -21,7 +21,16 @@ namespace Ticketing
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Tickets;
+        protected global::System.Web.UI.WebControls.GridView Tickets;
+
+        /// <summary>
+        /// Controllo SetTicketId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource SetTicketId;
 
         /// <summary>
         /// Controllo BCrea.
