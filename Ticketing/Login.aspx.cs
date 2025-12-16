@@ -52,7 +52,7 @@ namespace Ticketing
                                 Dipartimento = r.IsDBNull(r.GetOrdinal("Dipartimento")) ? 0 : r.GetInt32("Dipartimento")
                             };
 
-                        
+
                         
                             Session["CR"] = currentUser;
                             r.Close();

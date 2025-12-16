@@ -36,8 +36,7 @@
 
     
     <asp:ObjectDataSource runat="server" ID="SetTicketId"></asp:ObjectDataSource>
-</div>
-</div>
+
  <div class="grid-button">
 
    
@@ -52,5 +51,7 @@
          
          runat="server"/>
  </div>
+    </div>
+</div>
 
     </asp:Content>    

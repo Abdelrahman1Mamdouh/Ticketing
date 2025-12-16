@@ -20,7 +20,7 @@ namespace Ticketing
         private String note;
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
             if (Session["CR"] != null)
             {
                 utente user = Session["CR"] as utente;
@@ -36,7 +36,7 @@ namespace Ticketing
 
             if (!IsPostBack)
             {
-                LoadDropDownList("SELECT ID,Nome FROM tecnici ORDER BY Nome;", DProdotto , "Scegli un prodotto:");
+                LoadDropDownList("SELECT ID,Prodotto FROM prodotto;", DProdotto , "Scegli un prodotto:");
                 LoadDropDownList("SELECT ID,Categoria FROM categoria ORDER BY Categoria;" , DCategoria , "Scegli una categoria:");
             }
         }
