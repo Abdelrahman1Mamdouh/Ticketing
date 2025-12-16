@@ -24,15 +24,6 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.GridView Tickets;
 
         /// <summary>
-        /// Controllo SetTicketId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource SetTicketId;
-
-        /// <summary>
         /// Controllo BCrea.
         /// </summary>
         /// <remarks>
@@ -40,14 +31,5 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BCrea;
-
-        /// <summary>
-        /// Controllo BStorico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BStorico;
     }
 }

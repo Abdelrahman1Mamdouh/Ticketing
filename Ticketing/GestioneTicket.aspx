@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestioneTicket.aspx.cs" Inherits="Ticketing.GestioneTicket"%>
+<%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     Runat="Server">
@@ -122,13 +123,15 @@
 </div>
 
 <div class="btn-comunicazione">
-<asp:Button ID="BStorico" 
-    Text="Storico"
-    runat="server"/>
+<asp:Button id="BStorico"
+  Text="Storico"         
+  runat="server"
+    OnClick="Storico"/>
 <asp:Button ID="BRisposta" 
     Text="Invia Risposta"
     runat="server"/>
 </div>
 </div>
 </div>
+    <uc:NotifichePopup ID="NotifichePopup" runat="server" />
 </asp:Content>
