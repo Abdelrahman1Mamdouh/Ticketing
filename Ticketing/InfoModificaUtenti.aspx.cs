@@ -22,7 +22,20 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            tente user = null;
+            //user's data fetch from session
+            if (Session["CR"] != null)
+            {
+                user = Session["CR"] as utente;
+                if (user != null)
+                {
+                    string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
         public void clickSalvaModifiche(object sender, EventArgs e)
         {
