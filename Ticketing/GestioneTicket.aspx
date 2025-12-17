@@ -6,65 +6,81 @@
     <div class="grid">
     <div class="col-50">
 
-  <!--<asp:Label ID="LId"
+  <asp:Label ID="LId"
     Text="Id"
-    runat="server"/>
+    runat="server"
+      Visible="false"/>
 
   <asp:TextBox ID="Tid"
       runat="server"
-      placeholder="Id">
+      placeholder="Id"
+      Visible="false">
   </asp:TextBox>
 
 <asp:Label ID="LCliente"
     Text="Cliente"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
 
 <asp:TextBox ID="TCliente"
     runat="server"
-    placeholder="Cliente">
+    placeholder="Cliente"
+    Visible="false">
 </asp:TextBox>
 
 <asp:Label ID="LTecnico"
     Text="Tecnico"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
 
 <asp:TextBox ID="TTecnico"
     runat="server"
-    placeholder="Tecnico">
+    placeholder="Tecnico"
+    Visible="false">
 </asp:TextBox>
 <asp:Label ID="LLivello"
     Text="Livello"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
 <asp:TextBox ID="TLivello"
     runat="server"
+    Visible="false"
     placeholder="Livello">
 </asp:TextBox>
 <asp:Label ID="LStato"
     Text="Stato"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
 <asp:DropDownList ID="DStato"
+    Visible="false"
     runat="server">
         <asp:ListItem>Item1</asp:ListItem>
         <asp:ListItem>Item2</asp:ListItem>
         <asp:ListItem>Item3</asp:ListItem>
-</asp:DropDownList> -->
+</asp:DropDownList>
+
+
 
 
 
 
 <asp:Label ID="LProdotto"
+    Visible="false"
     Text="Prodotto"
     runat="server"/> 
 <asp:DropDownList ID="DProdotto"
+    Visible="false"
     runat="server"
     AutoPostBack="false"
     DataTextField="Prodotto"
     DataValueField="ID">
 </asp:DropDownList>
 <asp:Label ID="LCategoria"
+    Visible="false"
     Text="Categoria"
     runat="server"/>
 <asp:DropDownList ID="DCategoria"
+    Visible="false"
     runat="server"
     AutoPostBack="false"
 DataTextField="Categoria"
@@ -73,16 +89,28 @@ DataValueField="ID">
 
 
 
+<div>
+    <h1 ID="IDlabelTicket"
+        Visible="false"
+        runat="server"
+        ></h1>
+</div>
 
-<!-- <asp:Label ID="LPriorita"
+
+
+<asp:Label ID="LPriorita"
+    Visible="false"
     Text="Priorita"
     runat="server"/>
  <asp:DropDownList ID="DPriorita"
+     Visible="false"
     runat="server">
         <asp:ListItem>Priorita1</asp:ListItem>
         <asp:ListItem>Priorita2</asp:ListItem>
         <asp:ListItem>Priorita3</asp:ListItem>
-</asp:DropDownList> -->
+</asp:DropDownList>
+
+
 
 
 
@@ -90,16 +118,20 @@ DataValueField="ID">
         <div class="col-50">
 <asp:Label ID="LOggetto"
     Text="Oggetto"
+    Visible="false"
     runat="server"/>
 <asp:TextBox ID="TOggetto"
     runat="server"
+    Visible="false"
     placeholder="Oggetto">
 </asp:TextBox>
 <asp:Label ID="LMessaggio"
     Text="Messaggio"
+    Visible="false"
     runat="server"/>
 <asp:TextBox ID="TMessaggio"
     runat="server"
+    Visible="false"
     placeholder="Messaggio"
      ClientIDMode="Static"
     TextMode="MultiLine">
@@ -110,13 +142,16 @@ DataValueField="ID">
 <div class="grid-button">
 <asp:Button ID="BCrea" 
     Text="Crea"
+    Visible="false"
     OnClick="clickCrea"
     runat="server"/>
 <asp:Button ID="BModifica" 
     Text="Modifica"
-    runat="server"/>
+    Visible="false"
+    runat="server"/> 
 <asp:Button ID="BElimina" 
     Text="Elimina"
+    Visible="false"
     runat="server"/>
 </div>
 
@@ -124,9 +159,11 @@ DataValueField="ID">
 
  <asp:Label ID="LComunicazione"
     Text="Comunicazione"
+     Visible="false"
     runat="server"/>
 <asp:TextBox ID="TComunicazione"
     runat="server"
+    Visible="false"
     placeholder="Comunicazione"
     ClientIDMode="Static"
     TextMode="MultiLine">
@@ -136,9 +173,11 @@ DataValueField="ID">
 <div class="btn-comunicazione">
 <asp:Button ID="BStorico" 
     Text="Storico"
+    Visible="false"
     runat="server"/>
 <asp:Button ID="BRisposta" 
     Text="Invia Risposta"
+    Visible="false"
     runat="server"/>
 </div>
 </div>
