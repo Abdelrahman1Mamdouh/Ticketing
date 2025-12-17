@@ -56,10 +56,12 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Società</a></li>
                     </ul>
 
-                   <asp:Image class="Logo"
-                        ID="LogoUtente"
-                        runat="server"
+                    <asp:ImageButton 
+                        CssClass="Logo"
+                        ID="LogoUtente" 
+                        runat="server" 
                         ImageUrl="~/Asset/Logo4.png"
+                        PostBackUrl="~/InfoModificaUtenti.aspx"
                         Width="20px"  
                         Height="20px"
                         NavigateUrl="~/InfoModificaUtenti.aspx"/>
