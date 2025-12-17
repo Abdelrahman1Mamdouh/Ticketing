@@ -16,7 +16,7 @@ namespace Ticketing
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-            userName = TUser.Text.Trim();
+            userName = TUser.Text.Trim().ToLower();
             passwordText = TPass.Text.Trim();
             string query = "SELECT ID, Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Telefono, Email, Pass FROM utente WHERE Email = @Email AND Pass = @Pass";
 
@@ -52,7 +52,7 @@ namespace Ticketing
                                 Dipartimento = r.IsDBNull(r.GetOrdinal("Dipartimento")) ? 0 : r.GetInt32("Dipartimento")
                             };
 
-                        
+
                         
                             Session["CR"] = currentUser;
                             r.Close();
