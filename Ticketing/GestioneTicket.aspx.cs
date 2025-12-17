@@ -233,7 +233,7 @@ namespace Ticketing
 
 
             this.NotifichePopup.Show(tabella);
-
+}
 
         private void CampiCliente()
         {
