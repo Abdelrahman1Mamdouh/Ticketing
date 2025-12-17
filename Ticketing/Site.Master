@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Ticketing.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Ticketing.SiteMaster" %>
+<%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
 <!DOCTYPE html>
 
@@ -12,8 +13,10 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:BundleReference runat="server" Path="~/Content/CssProgetto.css" />
+    
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/CssProgetto.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -61,12 +64,18 @@
                         PostBackUrl="~/InfoModificaUtenti.aspx"
                         Width="20px"  
                         Height="20px"
-                        />
+                        NavigateUrl="~/InfoModificaUtenti.aspx"/>
+                       
+
+                  <asp:ImageButton id="LogoNotifica" runat="server"
+                           AlternateText="LogoNotifica"
+                           ImageAlign="left"
+                           ImageUrl="~/Asset/Logo1.png"
+                           OnClick="MostraNotifica"/>
+                  
+               
       
-                    <asp:Image ID="LogoNotifica"
-                            runat="server"
-                            ImageUrl="~/Asset/Logo1.png"
-                            Visible="false"/>
+                  
 
                     <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false" >
                     <asp:Label ID="lblWelcome" runat="server" />
@@ -77,6 +86,8 @@
         </nav>
            
         <div class="container body-content">
+                  
+
     <asp:ContentPlaceHolder ID="MainContent" runat="server">
     </asp:ContentPlaceHolder>
     <footer class="footer">
@@ -86,7 +97,9 @@
             ImageUrl="~/Asset/dgs-logo.png" />
     </footer>
 </div>
-        
+
+        <uc:NotifichePopup ID="NotifichePopup" runat="server" />
+
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
