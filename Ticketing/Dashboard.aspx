@@ -1,5 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ticketing.Dashboard" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-100">
         <div class="grid">
@@ -37,10 +38,10 @@
     </Columns>
 </asp:GridView>
             </div>
-            <asp:ObjectDataSource runat="server" ID="SetTicketId"></asp:ObjectDataSource>
+            
             <div class="grid-button">
                 <asp:Button ID="BCrea" Text="Crea" runat="server" />
-                <asp:Button ID="BStorico" Text="Storico" runat="server" />
+               
             </div>
         </div>
     </div>

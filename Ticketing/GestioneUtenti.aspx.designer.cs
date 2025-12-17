@@ -51,6 +51,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TCognome;
 
         /// <summary>
+        /// PnlRuolo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlRuolo;
+
+        /// <summary>
         /// LRuolo control.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,22 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.Label LSocieta;
 
         /// <summary>
-        /// TSocieta control.
+        /// DSocieta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TSocieta;
+        protected global::System.Web.UI.WebControls.DropDownList DSocieta;
+
+        /// <summary>
+        /// PnlLivello control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlLivello;
 
         /// <summary>
         /// LLivello control.
@@ -103,6 +121,15 @@ namespace Ticketing
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DLivello;
+
+        /// <summary>
+        /// PnlDipartimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlDipartimento;
 
         /// <summary>
         /// LDipartimento control.
@@ -175,24 +202,6 @@ namespace Ticketing
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TTelefono;
-
-        /// <summary>
-        /// LNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LNote;
-
-        /// <summary>
-        /// TNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TNote;
 
         /// <summary>
         /// BModifica control.

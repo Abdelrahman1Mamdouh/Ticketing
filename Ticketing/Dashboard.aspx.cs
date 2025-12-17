@@ -2,31 +2,31 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Data;
+using Ticketing.Controls;
 using Ticketing.Models;
+
 
 namespace Ticketing
 {
+
     public partial class Dashboard : System.Web.UI.Page
     {
-        string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+        private int currentUser;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            utente user;
             if (Session["CR"] != null)
             {
-                utente user = Session["CR"] as utente;
-                if (user != null)
-                {
-                    string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
-                }
+                user = Session["CR"] as utente;
+                currentUser = user.ID;
             }
             else
             {
                 Response.Redirect("Login.aspx");
             }
-
-
 
             if (!IsPostBack)
             {
@@ -36,11 +36,12 @@ namespace Ticketing
 
         private void BindTickets()
         {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT ID,Cliente,Prodotto,Descrizione,Creata_a FROM ticket", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM ticket ORDER BY Creata_a DESC", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();
@@ -51,6 +52,39 @@ namespace Ticketing
 
             }
         }
+
+        protected void ClickSelectTicket(object sender, EventArgs e)
+        {
+            
+            int ticketId = Convert.ToInt32(Tickets.SelectedDataKey.Value); 
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+
+                using (MySqlConnection con = new MySqlConnection(cs))
+                {
+                    con.Open();
+                    string nuovaTicket = $"UPDATE ticket SET Tecnico=@tecnico WHERE ID=@id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Tecnico", currentUser);
+                        cmd.Parameters.AddWithValue("@id", ticketId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("DB error: " + ex.Message);
+                return;
+            }
+            BindTickets();
+            Response.Write("<script>alert('Fatto')</script>");
+            Response.Redirect("GestioneTicket.aspx");
+        }
     }
 }
+
+        
 
