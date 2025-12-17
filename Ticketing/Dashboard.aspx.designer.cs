@@ -24,30 +24,12 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.GridView Tickets;
 
         /// <summary>
-        /// SetTicketId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource SetTicketId;
-
-        /// <summary>
-        /// BCrea control.
+        /// Controllo BCrea.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BCrea;
-
-        /// <summary>
-        /// BStorico control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BStorico;
     }
 }

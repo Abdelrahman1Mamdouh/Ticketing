@@ -2,14 +2,17 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Data;
+using Ticketing.Controls;
 using Ticketing.Models;
+
 
 namespace Ticketing
 {
+
     public partial class Dashboard : System.Web.UI.Page
     {
         private int currentUser;
-        string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,6 +36,7 @@ namespace Ticketing
 
         private void BindTickets()
         {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
@@ -81,4 +85,6 @@ namespace Ticketing
         }
     }
 }
-}
+
+        
+

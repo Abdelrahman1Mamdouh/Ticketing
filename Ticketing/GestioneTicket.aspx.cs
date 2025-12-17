@@ -226,6 +226,15 @@ namespace Ticketing
                 cmd.ExecuteNonQuery();
             }
         }
+
+        protected void Storico(object sender, EventArgs e)
+        {
+            string tabella = "storico";
+
+
+            this.NotifichePopup.Show(tabella);
+
+
         private void CampiCliente()
         {
             LProdotto.Visible = true;

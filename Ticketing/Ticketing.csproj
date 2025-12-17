@@ -184,6 +184,7 @@
     <Content Include="Content\CssProgetto.css" />
     <Content Include="Content\GestioneTicket.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\NotifichePopup.ascx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="GestioneSocieta.aspx" />
@@ -256,6 +257,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controls\NotifichePopup.ascx.cs">
+      <DependentUpon>NotifichePopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\NotifichePopup.ascx.designer.cs">
+      <DependentUpon>NotifichePopup.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

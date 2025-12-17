@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Ticketing.SiteMaster" %>
+<%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
 <!DOCTYPE html>
 
@@ -59,12 +60,18 @@
                         ImageUrl="~/Asset/Logo4.png"
                         Width="20px"  
                         Height="20px"
-                       NavigateUrl="~/InfoModificaUtenti.aspx"/>
-                        
-                  <asp:Image ID="LogoNotifica"
-                          runat="server"
-                          ImageUrl="~/Asset/Logo1.png"
-                          Visible="false"/>
+                        NavigateUrl="~/InfoModificaUtenti.aspx"/>
+                       
+
+                  <asp:ImageButton id="LogoNotifica" runat="server"
+                           AlternateText="LogoNotifica"
+                           ImageAlign="left"
+                           ImageUrl="~/Asset/Logo1.png"
+                           OnClick="MostraNotifica"/>
+                  
+               
+      
+                  
 
                     <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false" >
                     <asp:Label ID="lblWelcome" runat="server" />
@@ -75,6 +82,8 @@
         </nav>
            
         <div class="container body-content">
+                  
+
     <asp:ContentPlaceHolder ID="MainContent" runat="server">
     </asp:ContentPlaceHolder>
     <footer class="footer">
@@ -84,7 +93,9 @@
             ImageUrl="~/Asset/dgs-logo.png" />
     </footer>
 </div>
-        
+
+        <uc:NotifichePopup ID="NotifichePopup" runat="server" />
+
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
