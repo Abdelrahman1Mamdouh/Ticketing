@@ -22,7 +22,7 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            tente user = null;
+            utente user = null;
             //user's data fetch from session
             if (Session["CR"] != null)
             {
