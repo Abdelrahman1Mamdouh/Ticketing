@@ -141,6 +141,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.DropDownList DCategoria;
 
         /// <summary>
+        /// Controllo IDlabelTicket.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IDlabelTicket;
+
+        /// <summary>
         /// Controllo LPriorita.
         /// </summary>
         /// <remarks>
@@ -202,15 +211,6 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BCrea;
-
-        /// <summary>
-        /// Controllo BModifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BModifica;
 
         /// <summary>
         /// Controllo BElimina.

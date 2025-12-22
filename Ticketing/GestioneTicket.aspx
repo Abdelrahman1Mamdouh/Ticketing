@@ -33,16 +33,22 @@
     runat="server"
     placeholder="Tecnico">
 </asp:TextBox>
+
 <asp:Label ID="LLivello"
     Text="Livello"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
+
 <asp:TextBox ID="TLivello"
     runat="server"
     placeholder="Livello">
 </asp:TextBox>
+
 <asp:Label ID="LStato"
     Text="Stato"
-    runat="server"/>
+    runat="server"
+    Visible="false"/>
+
 <asp:DropDownList ID="DStato"
     runat="server">
         <asp:ListItem>Item1</asp:ListItem>
@@ -129,7 +135,9 @@
     OnClick="Storico"/>
 <asp:Button ID="BRisposta" 
     Text="Invia Risposta"
-    runat="server"/>
+    Visible="false"
+    runat="server"
+    onClick="MandaComunicazione"/>
 </div>
 </div>
 </div>
