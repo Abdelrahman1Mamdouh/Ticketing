@@ -11,6 +11,7 @@ namespace Ticketing
 {
     public partial class GestioneTicket : System.Web.UI.Page
     {
+        private int id;
         private String cliente;
         private String tecnico;
         private String livello;
@@ -57,8 +58,8 @@ namespace Ticketing
             categoria = DCategoria.Text.Trim();
             priorita = DPriorita.Text.Trim();
             oggetto = TOggetto.Text.Trim();
-            messaggio = TMessaggio.Text.Trim();
-            comunicazione = TComunicazione.Text.Trim();
+            note = TMessaggio.Text.Trim();
+            messaggio = TComunicazione.Text.Trim();
 
                 using (MySqlConnection con = new MySqlConnection(cs))
                 {
@@ -83,15 +84,10 @@ namespace Ticketing
                     cmd.ExecuteNonQuery();
                 }
                 
-                    email.sendMail("info@dgs.it", user.Email, $"Creato nuovo ticket{oggetto}", messaggio);
+                    email.sendMail("info@dgs.it", user.Email, $"Creato nuovo ticket {id} ,{oggetto}", messaggio);
                 // qui bisogna aggiungere la logica dei booleani per gestire le notifiche 
-            }
-            catch (Exception ex)
-            {
-                Response.Write("Errore di connessione o del database: " + ex.Message);
-            }
-                Response.Write("<script>alert('Fatto')</script>");
-            }
+         
+         }
 
         public void ClickSceglie(object sender, EventArgs e)
         {
@@ -130,8 +126,8 @@ namespace Ticketing
             categoria = DCategoria.Text.Trim();
             priorita = DPriorita.Text.Trim();
             oggetto = TOggetto.Text.Trim();
-            messaggio = TMessaggio.Text.Trim();
-            comunicazione = TComunicazione.Text.Trim();
+            note = TMessaggio.Text.Trim();
+            messaggio = TComunicazione.Text.Trim();
 
             ID = Tid.Text;
             using (MySqlConnection con = new MySqlConnection(cs))
@@ -158,8 +154,8 @@ namespace Ticketing
                 cmd.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria;
                 cmd.Parameters.Add("@priorita", MySqlDbType.VarChar).Value = priorita;
                 cmd.Parameters.Add("@oggetto", MySqlDbType.VarChar).Value = oggetto;
-                cmd.Parameters.Add("@messaggio", MySqlDbType.VarChar).Value = messaggio;
-                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = comunicazione;
+               // cmd.Parameters.Add("@messaggio", MySqlDbType.VarChar).Value = nota;
+                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = messaggio;
                 cmd.ExecuteNonQuery();
 
                 }
@@ -179,7 +175,7 @@ namespace Ticketing
                     to = "cliente";
 
                 }
-                email.sendMail(to, user.Email, $"Creato nuovo ticket{oggetto}", messaggio);
+                email.sendMail(to, user.Email, $"Creato nuovo ticket {id}, {oggetto}", messaggio);
                 // qui bisogna aggiungere la logica dei booleani per gestire le notifiche 
 
             }
@@ -191,6 +187,7 @@ namespace Ticketing
 
 
             this.NotifichePopup.Show(tabella);
+        }
 
 
         private void CampiCliente()
@@ -218,7 +215,7 @@ namespace Ticketing
             LMessaggio.Visible = true;
             TMessaggio.Visible = true;
             BCrea.Visible = true;
-            BModifica.Visible = true;
+            //BModifica.Visible = true;
             IDlabelTicket.Visible = true;
         }
 
