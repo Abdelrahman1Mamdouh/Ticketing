@@ -36,8 +36,7 @@
 
 <asp:Label ID="LLivello"
     Text="Livello"
-    runat="server"
-    Visible="false"/>
+    runat="server"/>
 
 <asp:TextBox ID="TLivello"
     runat="server"
@@ -46,8 +45,12 @@
 
 <asp:Label ID="LStato"
     Text="Stato"
+    runat="server"/>
+
+<asp:TextBox ID="TStato"
     runat="server"
-    Visible="false"/>
+    placeholder="Stato">
+</asp:TextBox>
 
 <asp:DropDownList ID="DStato"
     runat="server">
@@ -55,45 +58,71 @@
         <asp:ListItem>Item2</asp:ListItem>
         <asp:ListItem>Item3</asp:ListItem>
 </asp:DropDownList>
+
 <asp:Label ID="LProdotto"
     Text="Prodotto"
     runat="server"/>
+
+<asp:TextBox ID="TProdotto"
+    runat="server"
+    placeholder="Prodotto">
+</asp:TextBox>
+
 <asp:DropDownList ID="DProdotto"
     runat="server">
         <asp:ListItem>Prodotto1</asp:ListItem>
         <asp:ListItem>Prodotto2</asp:ListItem>
         <asp:ListItem>Prodotto3</asp:ListItem>
 </asp:DropDownList>
+
 <asp:Label ID="LCategoria"
     Text="Categoria"
     runat="server"/>
+
+<asp:TextBox ID="TCategoria"
+    runat="server"
+    placeholder="Categoria">
+</asp:TextBox>
+
 <asp:DropDownList ID="DCategoria"
     runat="server">
         <asp:ListItem>Categoria1</asp:ListItem>
         <asp:ListItem>Categoria2</asp:ListItem>
         <asp:ListItem>Categoria3</asp:ListItem>
 </asp:DropDownList>
+
 <asp:Label ID="LPriorita"
     Text="Priorita"
     runat="server"/>
+
+<asp:TextBox ID="TPriorita"
+    runat="server"
+    placeholder="Priorita">
+</asp:TextBox>
+
 <asp:DropDownList ID="DPriorita"
     runat="server">
         <asp:ListItem>Priorita1</asp:ListItem>
         <asp:ListItem>Priorita2</asp:ListItem>
         <asp:ListItem>Priorita3</asp:ListItem>
 </asp:DropDownList>
+
         </div>
         <div class="col-50">
+
 <asp:Label ID="LOggetto"
     Text="Oggetto"
     runat="server"/>
+
 <asp:TextBox ID="TOggetto"
     runat="server"
     placeholder="Oggetto">
 </asp:TextBox>
+
 <asp:Label ID="LMessaggio"
     Text="Messaggio"
     runat="server"/>
+
 <asp:TextBox ID="TMessaggio"
     runat="server"
     placeholder="Messaggio"
@@ -135,9 +164,13 @@
     OnClick="Storico"/>
 <asp:Button ID="BRisposta" 
     Text="Invia Risposta"
-    Visible="false"
     runat="server"
     onClick="MandaComunicazione"/>
+    <asp:Button ID="Button1" 
+    Text="Annulla"
+    runat="server"
+    onClick="Annulla"
+        />
 </div>
 </div>
 </div>

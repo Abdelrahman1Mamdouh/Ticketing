@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" 
-    AutoEventWireup="true" CodeBehind="InfoModificaUtenti.aspx.cs" 
+    AutoEventWireup="true" CodeBehind="GestioneUtenti.aspx.cs" 
     Inherits="Ticketing.GestioneUtenti" Title="Gestione Utenti"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"

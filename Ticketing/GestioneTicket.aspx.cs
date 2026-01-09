@@ -3,6 +3,8 @@ using MySqlX.XDevAPI;
 using Org.BouncyCastle.Bcpg;
 using Org.BouncyCastle.Crypto.Generators;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Web.UI.WebControls;
@@ -31,6 +33,8 @@ namespace Ticketing
         string to;
         string from;
 
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -47,25 +51,67 @@ namespace Ticketing
                 Response.Redirect("Login.aspx");
             }
 
+            string action =(string) Session["action"];
 
-            if (Session["DT"] != null)
+
+            if (Session["ticket"] != null & action == "select")
             {
                 ticket tik = new ticket();
-
-                tik = Session["DT"] as ticket;
-
+                tik = Session["ticket"] as ticket;
                 Tid.Text = tik.ID.ToString();
                 TCliente.Text = tik.Cliente.ToString();
                 TTecnico.Text = tik.Tecnico.ToString();
                 TLivello.Text = tik.Livello.ToString();
-                DStato.Text = tik.Stato.ToString();
-                DProdotto.Text = tik.Prodotto.ToString();
-                DCategoria.Text = tik.Categoria.ToString();
-                DPriorita.Text = tik.Priorita.ToString();
+                TStato.Text = tik.Stato.ToString();
+                TProdotto.Text = tik.Prodotto.ToString();
+                TCategoria.Text = tik.Categoria.ToString();
+                TPriorita.Text = tik.Priorita.ToString();
                 TOggetto.Text = tik.Titolo.ToString();
                 TMessaggio.Text = tik.Descrizione.ToString();
             }
 
+            if (action == "select")
+            {
+                DStato.Visible = false;
+                DPriorita.Visible = false;
+                DProdotto.Visible = false;
+                DCategoria.Visible = false;
+                BCrea.Visible = false;
+
+                TLivello.Visible = true;
+                TStato.Visible = true;
+                TPriorita.Visible = true;
+                TProdotto.Visible = true;
+                TCategoria.Visible = true;
+                LComunicazione.Visible = true;
+                TComunicazione.Visible = true;
+                BStorico.Visible = true;
+                BModifica.Visible = true;
+                BElimina.Visible = true;
+                BRisposta.Visible = true;
+            }
+
+            if (action == "create")
+            {
+                DStato.Visible = true;
+                DPriorita.Visible = true;
+                DProdotto.Visible = true;
+                DCategoria.Visible = true;
+                BCrea.Visible = true;
+                
+
+                TLivello.Visible = false;
+                TStato.Visible = false;
+                TPriorita.Visible = false;
+                TProdotto.Visible = false;
+                TCategoria.Visible = false;
+                LComunicazione.Visible = false;
+                TComunicazione.Visible = false;
+                BStorico.Visible = false;
+                BModifica.Visible = false;
+                BElimina.Visible = false;
+                BRisposta.Visible = false;
+            }
 
         }
 
@@ -227,8 +273,8 @@ namespace Ticketing
             LMessaggio.Visible = true;
             TMessaggio.Visible = true;
             BCrea.Visible = true;
-            //BModifica.Visible = true;
-            IDlabelTicket.Visible = true;
+            BModifica.Visible = true;
+            
         }
 
        protected void MandaComunicazione(object sender, EventArgs e)
@@ -237,6 +283,13 @@ namespace Ticketing
 
             email.sendMail(to, from, oggetto, messaggio);
             // qui bisogna aggiungere la logica dei booleani per gestire le notifiche e il to e from delle email
+        }
+
+        protected void Annulla(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("Dashboard.aspx");
         }
     }
 }

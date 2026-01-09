@@ -63,17 +63,18 @@
                            ImageUrl="~/Asset/Logo1.png"
                            OnClick="MostraNotifica"/>
                   
+                
                 <a href="~/InfoModificaUtenti.aspx" runat="server">
+                 <asp:Image class="Logo"
+                      ID="LogoUtente"
+                      runat="server"
+                      ImageUrl="~/Asset/Logo4.png"
+                      Width="20px"  
+                      Height="20px"
+                      />
 
-                <asp:Image class="Logo"
-                     ID="LogoUtente"
-                     runat="server"
-                     ImageUrl="~/Asset/Logo4.png"
-                     Width="20px"  
-                     Height="20px"
-                     />
-
-               </a>
+                </a>
+                
       
                   
 

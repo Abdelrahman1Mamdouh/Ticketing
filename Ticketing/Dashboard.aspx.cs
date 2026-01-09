@@ -1,5 +1,7 @@
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using Ticketing.Controls;
@@ -73,17 +75,19 @@ namespace Ticketing
                     reader.Read();
 
                     tik.ID = reader.GetInt32("ID");
-                    tik.Cliente = reader.GetInt32("Cliente");
-                    tik.Tecnico = reader.GetInt32("Tecnico");
-                    tik.Livello = reader.GetInt32("Livello");
-                    tik.Stato = reader.GetInt32("Stato");
-                    tik.Prodotto = reader.GetInt32("Prodotto");
-                    tik.Categoria = reader.GetInt32("Categoria");
-                    tik.Priorita = reader.GetInt32("Priorita");
+                    tik.Cliente = reader.GetString("Cliente");
+                    tik.Tecnico = reader.GetString("Tecnico");
+                    tik.Livello = reader.GetString("Livello");
+                    tik.Stato = reader.GetString("Stato");
+                    tik.Prodotto = reader.GetString("Prodotto");
+                    tik.Categoria = reader.GetString("Categoria");
+                    tik.Priorita = reader.GetString("Priorita");
                     tik.Titolo = reader.GetString("Titolo");
                     tik.Descrizione = reader.GetString("Descrizione");
+                   
 
-                    Session["DT"] = tik;
+                    Session["ticket"] = tik;
+                    Session["action"] = "select";
 
                 }
             }
@@ -100,6 +104,14 @@ namespace Ticketing
         {
 
             
+        }
+
+        protected void CreateTicket(object sender, EventArgs e)
+        {
+            
+            Session["action"] = "create";
+            Response.Redirect("GestioneTicket.aspx");
+
         }
     }
 }

@@ -96,6 +96,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.Label LStato;
 
         /// <summary>
+        /// Controllo TStato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TStato;
+
+        /// <summary>
         /// Controllo DStato.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LProdotto;
+
+        /// <summary>
+        /// Controllo TProdotto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TProdotto;
 
         /// <summary>
         /// Controllo DProdotto.
@@ -132,6 +150,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.Label LCategoria;
 
         /// <summary>
+        /// Controllo TCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TCategoria;
+
+        /// <summary>
         /// Controllo DCategoria.
         /// </summary>
         /// <remarks>
@@ -141,15 +168,6 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.DropDownList DCategoria;
 
         /// <summary>
-        /// Controllo IDlabelTicket.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IDlabelTicket;
-
-        /// <summary>
         /// Controllo LPriorita.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,15 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LPriorita;
+
+        /// <summary>
+        /// Controllo TPriorita.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TPriorita;
 
         /// <summary>
         /// Controllo DPriorita.
@@ -213,6 +240,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.Button BCrea;
 
         /// <summary>
+        /// Controllo BModifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BModifica;
+
+        /// <summary>
         /// Controllo BElimina.
         /// </summary>
         /// <remarks>
@@ -256,6 +292,15 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BRisposta;
+
+        /// <summary>
+        /// Controllo Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
         /// Controllo NotifichePopup.

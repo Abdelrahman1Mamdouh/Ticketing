@@ -23,11 +23,12 @@ namespace Ticketing
         protected void Page_Load(object sender, EventArgs e)
         {
             utente user = new utente();
-
-           
-
             user = Session["CR"] as utente;
+
             TNome.Text = user.Nome;
+            TCognome.Text = user.Cognome;
+            TTelefono.Text = user.Telefono;
+            TEmail.Text = user.Email;
         }
         public void clickSalvaModifiche(object sender, EventArgs e)
         {
