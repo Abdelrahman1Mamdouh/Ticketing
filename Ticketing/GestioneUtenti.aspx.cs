@@ -131,10 +131,28 @@ namespace Ticketing
                     DSocieta.Enabled=true;
                 }
 
-            } 
+            }
+            BindRubricaUtenti();
         }
 
+        protected void BindRubricaUtenti()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
+                con.Open();
 
+                MySqlCommand command = new MySqlCommand("SELECT * FROM utente", con);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                var table = new DataTable();
+                adapter.Fill(table);
+
+                rubricaUtenti.DataSource = table;
+                rubricaUtenti.DataBind();
+
+            }
+        }
         ///DOMAAANIIIII
         public void clickCrea(object sender, EventArgs e)
         {

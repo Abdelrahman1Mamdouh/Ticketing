@@ -74,6 +74,18 @@
     OnClick="clickElimina"/>
     </div>
 
+<div class ="grid-view"
+            
+    <asp:GridView ID="rubricaUtenti" 
+        runat="server"
+        CellPadding="3"
+        GridLines="None"
+        HorizontalAlign="Center"
+        DataKeyNames="ID"
+        AllowPaging="True"
+        PageSize="20">
+    </asp:GridView>
+</div>
 
 
 </div>
