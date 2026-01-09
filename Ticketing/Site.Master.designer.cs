@@ -15,15 +15,6 @@ namespace Ticketing
     {
 
         /// <summary>
-        /// Controllo LogoUtente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image LogoUtente;
-
-        /// <summary>
         /// Controllo LogoNotifica.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace Ticketing
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton LogoNotifica;
+
+        /// <summary>
+        /// Controllo LogoUtente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image LogoUtente;
 
         /// <summary>
         /// Controllo phUserArea.

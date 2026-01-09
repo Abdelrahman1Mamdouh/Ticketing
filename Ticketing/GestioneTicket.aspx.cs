@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using Org.BouncyCastle.Bcpg;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Configuration;
 using System.Drawing;
@@ -20,8 +21,9 @@ namespace Ticketing
         private String categoria;
         private String priorita;
         private String oggetto;
-        private String messaggio;
         private String note;
+        private String messaggio;
+        
         utente user;
       
         private int DefaultStato = 1;
@@ -44,27 +46,48 @@ namespace Ticketing
             {
                 Response.Redirect("Login.aspx");
             }
+
+
+            if (Session["DT"] != null)
+            {
+                ticket tik = new ticket();
+
+                tik = Session["DT"] as ticket;
+
+                Tid.Text = tik.ID.ToString();
+                TCliente.Text = tik.Cliente.ToString();
+                TTecnico.Text = tik.Tecnico.ToString();
+                TLivello.Text = tik.Livello.ToString();
+                DStato.Text = tik.Stato.ToString();
+                DProdotto.Text = tik.Prodotto.ToString();
+                DCategoria.Text = tik.Categoria.ToString();
+                DPriorita.Text = tik.Priorita.ToString();
+                TOggetto.Text = tik.Titolo.ToString();
+                TMessaggio.Text = tik.Descrizione.ToString();
+            }
+
+
         }
 
         public void clickCrea(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
-            cliente = TCliente.Text.Trim();
-            tecnico = TTecnico.Text.Trim();
-            livello = TLivello.Text.Trim();
-            stato = DStato.Text.Trim();
-            prodotto = DProdotto.Text.Trim();
-            categoria = DCategoria.Text.Trim();
-            priorita = DPriorita.Text.Trim();
-            oggetto = TOggetto.Text.Trim();
-            note = TMessaggio.Text.Trim();
-            messaggio = TComunicazione.Text.Trim();
-
+            cliente = TCliente.Text;
+            tecnico = TTecnico.Text;
+            livello = TLivello.Text;
+            stato = DStato.Text;
+            prodotto = DProdotto.Text;
+            categoria = DCategoria.Text;
+            priorita = DPriorita.Text;
+            oggetto = TOggetto.Text;
+            note = TMessaggio.Text;
+            messaggio = TComunicazione.Text;
+                
                 using (MySqlConnection con = new MySqlConnection(cs))
                 {
                     con.Open();
-                    string nuovaTicket = $"INSERT INTO ticket (Cliente, Prodotto, Categoria, Stato, Titolo, Descrizione, note) VALUES (@{currentUser}, @prodotto, @categoria, @{DefaultStato}, @oggetto, @messaggio, @note);";
+                    string nuovaTicket = $"INSERT INTO ticket (ID, Cliente, Prodotto, Categoria, Stato, Titolo, Descrizione, note) VALUES (@{currentUser}, @prodotto, @categoria, @{DefaultStato}, @oggetto, @messaggio, @note);";
                     // bisogna creare le logiche di creazione delle notifiche ed email nel db
 
 
@@ -84,7 +107,7 @@ namespace Ticketing
                     cmd.ExecuteNonQuery();
                 }
                 
-                    email.sendMail("info@dgs.it", user.Email, $"Creato nuovo ticket {id} ,{oggetto}", messaggio);
+                    email.sendMail(user.Email, "ticketingTest@hotlook.it", $"Creato nuovo ticket {id} ,{oggetto}", messaggio);
                 // qui bisogna aggiungere la logica dei booleani per gestire le notifiche 
          
          }
@@ -118,22 +141,23 @@ namespace Ticketing
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
-            cliente = TCliente.Text.Trim();
-            tecnico = TTecnico.Text.Trim();
-            livello = TLivello.Text.Trim();
-            stato = DStato.Text.Trim();
-            prodotto = DProdotto.Text.Trim();
-            categoria = DCategoria.Text.Trim();
-            priorita = DPriorita.Text.Trim();
-            oggetto = TOggetto.Text.Trim();
-            note = TMessaggio.Text.Trim();
-            messaggio = TComunicazione.Text.Trim();
-
             ID = Tid.Text;
+            cliente = TCliente.Text;
+            tecnico = TTecnico.Text;
+            livello = TLivello.Text;
+            stato = DStato.Text;
+            prodotto = DProdotto.Text;
+            categoria = DCategoria.Text;
+            priorita = DPriorita.Text;
+            oggetto = TOggetto.Text;
+            note = TMessaggio.Text;
+            messaggio = TComunicazione.Text;
+
+            
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
-                string deleteSocieta = "DELETE FROM `societa` [WHERE id== @ID]";
+                string deleteSocieta = "DELETE FROM `ticket ` [WHERE id== @ID]";
                 MySqlCommand cmd = new MySqlCommand(deleteSocieta, con);
 
                 cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = ID; //DOMANIIIIIIIIII 12/12/2025
@@ -142,40 +166,28 @@ namespace Ticketing
                 if (user.Societa == null)
                 {
 
-                    string cliente = $"select email from clienti where id={TCliente.Text}";
+                    string cliente = $"select email from `clienti` where id={TCliente.Text} ";
                     MySqlCommand ver = new MySqlCommand(cliente, con);
                     MySqlDataReader reader = ver.ExecuteReader();
+                    reader.Read();
+                    to = reader.GetString("email");
+                    from = user.Email;
 
-                cmd.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = cliente;
-                cmd.Parameters.Add("@tecnico", MySqlDbType.VarChar).Value = tecnico;
-                cmd.Parameters.Add("@livello", MySqlDbType.VarChar).Value = livello;
-                cmd.Parameters.Add("@stato", MySqlDbType.VarChar).Value = stato;
-                cmd.Parameters.Add("@prodotto", MySqlDbType.VarChar).Value = prodotto;
-                cmd.Parameters.Add("@categoria", MySqlDbType.VarChar).Value = categoria;
-                cmd.Parameters.Add("@priorita", MySqlDbType.VarChar).Value = priorita;
-                cmd.Parameters.Add("@oggetto", MySqlDbType.VarChar).Value = oggetto;
-               // cmd.Parameters.Add("@messaggio", MySqlDbType.VarChar).Value = nota;
-                cmd.Parameters.Add("@comunicazione", MySqlDbType.VarChar).Value = messaggio;
-                cmd.ExecuteNonQuery();
+                    
 
                 }
                 else
                 {
-                    to = "tecnico";
+                    string cliente = $"select email from `tecnici` where id={TTecnico.Text} ";
+                    MySqlCommand ver = new MySqlCommand(cliente, con);
+                    MySqlDataReader reader = ver.ExecuteReader();
+                    reader.Read();
+                    to = reader.GetString("email");
                     from = user.Email;
                 }
 
-                if (user.Societa == null)
-                {
-                    to="teconico";
-
-                }
-                else
-                {
-                    to = "cliente";
-
-                }
-                email.sendMail(to, user.Email, $"Creato nuovo ticket {id}, {oggetto}", messaggio);
+                
+                email.sendMail(to, from, $"Eliminato ticket {id}, {oggetto}", $"L'utente {user.Nome} {user.Cognome} ha eliminato il ticket");
                 // qui bisogna aggiungere la logica dei booleani per gestire le notifiche 
 
             }

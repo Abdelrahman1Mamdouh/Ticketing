@@ -20,11 +20,12 @@ namespace Ticketing
                    
        
             MailMessage mail = new MailMessage(to, from, subject, body);
-            SmtpClient SmtpServer = new SmtpClient("smtp.your-isp.com");
+            SmtpClient SmtpServer = new SmtpClient("smtp-mail.outlook.com");
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("ticketingTest@hotlook.it", "dev2426a1");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
+            
 
         }
        

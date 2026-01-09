@@ -22,7 +22,12 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            utente user = new utente();
 
+           
+
+            user = Session["CR"] as utente;
+            TNome.Text = user.Nome;
         }
         public void clickSalvaModifiche(object sender, EventArgs e)
         {

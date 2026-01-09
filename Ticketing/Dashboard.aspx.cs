@@ -18,6 +18,7 @@ namespace Ticketing
         {
 
             utente user;
+            
             if (Session["CR"] != null)
             {
                 user = Session["CR"] as utente;
@@ -41,7 +42,7 @@ namespace Ticketing
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM ticket ORDER BY Creata_a DESC", con);
+                MySqlCommand command = new MySqlCommand("SELECT * from tik", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();
@@ -56,32 +57,49 @@ namespace Ticketing
         protected void ClickSelectTicket(object sender, EventArgs e)
         {
             
-            int ticketId = Convert.ToInt32(Tickets.SelectedDataKey.Value); 
-            try
+            int ticketId = Convert.ToInt32(Tickets.SelectedDataKey.Value);
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+
+            ticket tik = new ticket();
+
+            using (MySqlConnection con = new MySqlConnection(cs))
             {
-                string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+                con.Open();
+                string nuovaTicket = $"select * from tik WHERE ID={ticketId}";
 
-                using (MySqlConnection con = new MySqlConnection(cs))
+                using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
                 {
-                    con.Open();
-                    string nuovaTicket = $"UPDATE ticket SET Tecnico=@tecnico WHERE ID=@id";
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
 
-                    using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
-                    {
-                        cmd.Parameters.AddWithValue("@Tecnico", currentUser);
-                        cmd.Parameters.AddWithValue("@id", ticketId);
-                        cmd.ExecuteNonQuery();
-                    }
+                    tik.ID = reader.GetInt32("ID");
+                    tik.Cliente = reader.GetInt32("Cliente");
+                    tik.Tecnico = reader.GetInt32("Tecnico");
+                    tik.Livello = reader.GetInt32("Livello");
+                    tik.Stato = reader.GetInt32("Stato");
+                    tik.Prodotto = reader.GetInt32("Prodotto");
+                    tik.Categoria = reader.GetInt32("Categoria");
+                    tik.Priorita = reader.GetInt32("Priorita");
+                    tik.Titolo = reader.GetString("Titolo");
+                    tik.Descrizione = reader.GetString("Descrizione");
+
+                    Session["DT"] = tik;
+
                 }
             }
-            catch (Exception ex)
-            {
-                Response.Write("DB error: " + ex.Message);
-                return;
-            }
-            BindTickets();
-            Response.Write("<script>alert('Fatto')</script>");
+
             Response.Redirect("GestioneTicket.aspx");
+
+
+            
+        }
+
+      
+
+        protected void ClickDeleteTicket(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }
