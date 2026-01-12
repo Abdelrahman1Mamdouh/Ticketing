@@ -18,7 +18,7 @@ namespace Ticketing
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             userName = TUser.Text.Trim().ToLower();
             passwordText = TPass.Text.Trim();
-            string query = "SELECT ID, Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Telefono, Email, Pass FROM utente WHERE Email = @Email AND Pass = @Pass";
+            string query = "SELECT ID, Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Telefono, Email, Pass FROM utenti WHERE Email = @Email AND Pass = @Pass";
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
@@ -46,10 +46,10 @@ namespace Ticketing
                                 Telefono = r.GetString("Telefono"),
                                 Email = r.GetString("Email"),
 
-                                Ruolo = r.IsDBNull(r.GetOrdinal("Ruolo")) ? 0 : r.GetInt32("Ruolo"),
-                                Societa = r.IsDBNull(r.GetOrdinal("Societa")) ? 0 : r.GetInt32("Societa"),
-                                Livello = r.IsDBNull(r.GetOrdinal("Livello")) ? 0 : r.GetInt32("Livello"),
-                                Dipartimento = r.IsDBNull(r.GetOrdinal("Dipartimento")) ? 0 : r.GetInt32("Dipartimento")
+                                Ruolo = r.IsDBNull(r.GetOrdinal("Ruolo")) ? null : r.GetString("Ruolo"),
+                                Societa = r.IsDBNull(r.GetOrdinal("Societa")) ? null : r.GetString("Societa"),
+                                Livello = r.IsDBNull(r.GetOrdinal("Livello")) ? null : r.GetString("Livello"),
+                                Dipartimento = r.IsDBNull(r.GetOrdinal("Dipartimento")) ? null : r.GetString("Dipartimento")
                             };
 
 

@@ -22,13 +22,16 @@ namespace Ticketing
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            utente user = new utente();
-            user = Session["CR"] as utente;
+           
+                utente user = new utente();
+                user = Session["CR"] as utente;
 
-            TNome.Text = user.Nome;
-            TCognome.Text = user.Cognome;
-            TTelefono.Text = user.Telefono;
-            TEmail.Text = user.Email;
+                TNome.Text = user.Nome;
+                TCognome.Text = user.Cognome;
+                TTelefono.Text = user.Telefono;
+                TEmail.Text = user.Email;
+           
+            
         }
         public void clickSalvaModifiche(object sender, EventArgs e)
         {
@@ -43,7 +46,7 @@ namespace Ticketing
             using (MySqlConnection con = new MySqlConnection(cs)) 
             { 
                 con.Open(); 
-                string Modifica = $"UPDATE utenti SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Password= @password, Email= @email WHERE (Email=> @email)";
+                string Modifica = $"UPDATE utente SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Password= @password, Email= @email WHERE (Email== @email)";
                 MySqlCommand cmd = new MySqlCommand(Modifica, con);
 
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;

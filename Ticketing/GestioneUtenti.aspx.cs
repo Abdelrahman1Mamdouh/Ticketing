@@ -20,10 +20,10 @@ namespace Ticketing
         private String email;
         private String pass;
 
-        const int Client = 1;
-        const int Tec = 2;
-        const int Tec_Admin = 3;
-        const int Client_Admin = 4;
+        const string Client = "1";
+        const string Tec = "2";
+        const string Tec_Admin = "3";
+        const string Client_Admin = "4";
 
         
         private void LoadDropDownList(string query, DropDownList DDL, string dataTextField, string label)
@@ -87,9 +87,9 @@ namespace Ticketing
             //role's visibility permissions
             
 
-            bool isTecAdmin = (user.Ruolo == Tec_Admin);
-            bool isTec = (user.Ruolo == Tec);
-            bool isClientAdmin = (user.Ruolo == Client_Admin);
+            bool isTecAdmin = (user.Ruolo == "Amministratore");
+            bool isTec = (user.Ruolo == "Tecnico");
+            bool isClientAdmin = (user.Ruolo == null);
 
             PnlRuolo.Visible = isTecAdmin || isClientAdmin;
             PnlLivello.Visible = isTecAdmin;
@@ -142,7 +142,7 @@ namespace Ticketing
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM utente", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM utenti", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();
@@ -172,10 +172,10 @@ namespace Ticketing
             string dipartimentoStr = DDipartimento.SelectedValue;
 
             
-            int TargetRuolo = 0;
-            int TargetSocieta = 0;
-            int TargetLivello = 0;
-            int TargetDipartimento = 0;
+            string TargetRuolo = null;
+            string TargetSocieta = null;
+            string TargetLivello = null;
+            string TargetDipartimento = null;
 
             
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(cognome) || string.IsNullOrEmpty(pass))
@@ -192,13 +192,13 @@ namespace Ticketing
                 con.Open();
 
                 
-                if (user.Ruolo == Tec_Admin)
+                if (user.Ruolo == "Amministratore")
                 {
                     
-                    if (!int.TryParse(ruoloStr, out TargetRuolo) ||
-                        !int.TryParse(societaStr, out TargetSocieta) ||
-                        !int.TryParse(livelloStr, out TargetLivello) ||
-                        !int.TryParse(dipartimentoStr, out TargetDipartimento))
+                    if (!(ruoloStr ==TargetRuolo) ||
+                        !(societaStr== TargetSocieta) ||
+                        !(livelloStr == TargetLivello) ||
+                        !(dipartimentoStr == TargetDipartimento))
                     {
                         Response.Write("<script>alert('Errore: Tech Admin deve selezionare tutti i campi di ruolo e società.')</script>");
                         return;
@@ -221,13 +221,13 @@ namespace Ticketing
                 }
 
               
-                else if (user.Ruolo == Client_Admin)
+                else if (user.Ruolo == null)
                 {
                     
                     TargetSocieta = user.Societa;
 
                     
-                    if (!int.TryParse(ruoloStr, out TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
+                    if (!(ruoloStr == TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
                     {
                         Response.Write("<script>alert('Errore: Client Admin può creare solo Client o Admin Client.')</script>");
                         return;
@@ -250,7 +250,7 @@ namespace Ticketing
                 else if (user.Ruolo == Tec)
                 {
                     
-                    if (!int.TryParse(societaStr, out TargetSocieta) || !int.TryParse(ruoloStr, out TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
+                    if (!(societaStr == TargetSocieta) || !(ruoloStr == TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
                     {
                         Response.Write("<script>alert('Errore: Tecnico deve selezionare Società e può creare solo Client o Admin Client.')</script>");
                         return;
