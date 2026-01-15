@@ -1,4 +1,5 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Ticketing.SiteMaster" %>
+
 <%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
 <!DOCTYPE html>
@@ -13,14 +14,13 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="~/Content/CssProgetto.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
 </head>
 <body>
-    
+
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -41,7 +41,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-       
+
         <nav class="navbar">
             <div class="container">
 
@@ -53,50 +53,47 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket">Ticket</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti">Utenti</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Società</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Societa</a></li>
                     </ul>
 
-                    <asp:ImageButton 
-                        CssClass="Logo"
-                        ID="LogoUtente" 
-                        runat="server" 
+                    <asp:ImageButton class="Logo"
+                        ID="LogoUtente"
+                        runat="server"
                         ImageUrl="~/Asset/Logo4.png"
-                        PostBackUrl="~/InfoModificaUtenti.aspx"
-                        Width="20px"  
+                        Width="20px"
+                        Visible="false"
                         Height="20px"
-                        NavigateUrl="~/InfoModificaUtenti.aspx"/>
-                       
+                        OnClick="MostraInfoUtente" />
 
-                  <asp:ImageButton id="LogoNotifica" runat="server"
-                           AlternateText="LogoNotifica"
-                           ImageAlign="left"
-                           ImageUrl="~/Asset/Logo1.png"
-                           OnClick="MostraNotifica"/>
-                  
-               
-      
-                  
 
-                    <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false" >
-                    <asp:Label ID="lblWelcome" runat="server" />
-                    <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
+                    <asp:ImageButton ID="LogoNotifica" runat="server"
+                        AlternateText="LogoNotifica"
+                        ImageAlign="left"
+                        ImageUrl="~/Asset/Logo1.png"
+                        OnClick="MostraNotifica" />
+
+
+
+                    <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false">
+                        <asp:Label ID="lblWelcome" runat="server" />
+                        <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
                     </asp:PlaceHolder>
                 </div>
             </div>
         </nav>
-           
-        <div class="container body-content">
-                  
 
-    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-    </asp:ContentPlaceHolder>
-    <footer class="footer">
-        <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
-        <asp:Image class="Logo"
-            runat="server"
-            ImageUrl="~/Asset/dgs-logo.png" />
-    </footer>
-</div>
+        <div class="container body-content">
+
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="footer">
+                <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
+                <asp:Image class="Logo"
+                    runat="server"
+                    ImageUrl="~/Asset/dgs-logo.png" />
+            </footer>
+        </div>
 
         <uc:NotifichePopup ID="NotifichePopup" runat="server" />
 
