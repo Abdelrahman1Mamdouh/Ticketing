@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
+using System.Data;
 using Ticketing.Models;
 
 
@@ -31,6 +32,26 @@ namespace Ticketing
             else
             {
                 Response.Redirect("Login.aspx");
+            }
+            BindRubricaSocieta();
+        }
+
+        protected void BindRubricaSocieta()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
+                con.Open();
+
+                MySqlCommand command = new MySqlCommand("SELECT * FROM societa", con);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                var table = new DataTable();
+                adapter.Fill(table);
+
+                rubricaSocieta.DataSource = table;
+                rubricaSocieta.DataBind();
+
             }
         }
 

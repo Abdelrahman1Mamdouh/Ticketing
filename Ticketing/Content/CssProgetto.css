@@ -1,5 +1,4 @@
-﻿
-.navbar {
+﻿.navbar {
     max-width: 1250px;
     margin: 0 auto;
 }
@@ -13,11 +12,11 @@
     margin: 0 auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     padding: 15px;
-    height:100vh;
+    height: 100vh;
 }
 
 .col-50 {
-    width: 50%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -31,13 +30,13 @@
 }
 
 .col-login {
-    width:100%;
+    width: 100%;
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 10px;
-    border:1px solid red;
+    border: 1px solid red;
 }
 
 .box-login {
@@ -46,7 +45,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
     gap: 30px;
     box-shadow: 0 0 5px #590094;
 }
@@ -59,14 +57,14 @@
     gap: 10px;
 }
 
-    .grid-button-login{
-        justify-content:center;
-    }
+.grid-button-login {
+    justify-content: center;
+}
 
-    .user {
-        width: 300px !important;
-        height: 30px;
-    }
+.user {
+    width: 300px !important;
+    height: 30px;
+}
 
 .password {
     width: 300px !important;
@@ -118,22 +116,22 @@ input[type*="text"] {
     gap: 20px;
 }
 
-#BRP{
-    width:auto !important;
-    padding:auto;
+#BRP {
+    width: auto !important;
+    padding: auto;
 }
 
-/*Liste*/
+/Liste/
 [id*="D"] {
     width: 80%;
     height: 30px;
 }
 
-    [id*="D"]:focus {
-        border-color: none;
-        box-shadow: 0 0 5px #590094;
-        outline: none;
-    }
+[id*="D"]:focus {
+    border-color: none;
+    box-shadow: 0 0 5px #590094;
+    outline: none;
+}
 /* BOTTONI */
 [id*="B"] {
     width: 150px;
@@ -213,9 +211,15 @@ a:hover {
     filter: brightness(0) invert(1);
 }
 
+
 #LogoNotifica {
     height: 20px;
     width: 20px;
+}
+
+#lblWelcome {
+    color: white;
+    text-decoration: 2px underline;
 }
 
 .footer {
@@ -225,6 +229,81 @@ a:hover {
     padding: 15px;
     color: white;
 }
+
+
+/* GRIDVIEW CSS*/
+
+table {
+    border: 1px solid #590094 !important;
+    text-align: center;
+    width: 100%;
+}
+
+.gridvieww {
+    font-weight: bold;
+    table-layout: 100%;
+}
+
+    .gridvieww th {
+        background-color: #590094;
+        color: white;
+        height: 70px;
+        max-width: 70px;
+    }
+
+    .gridvieww td {
+        max-width: 30px;
+        color: black;
+        border: 1px solid #c400a3;
+        padding: 5px;
+    }
+
+        .gridvieww td:nth-child(5) { /* se è la seconda colonna */
+            max-width: 200px; /* larghezza massima della cella */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+
+.col-button {
+    width: 50px;
+}
+
+.iconb {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 18px;
+    color: #590094;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 5px 2px rgba(0,0,0,0.2);
+}
+
+.elimina {
+    background-color: red;
+    color: white;
+}
+
+    .elimina:hover {
+        background-color: darkred !important;
+    }
+
+.iconb:hover {
+    border: 1px #590094;
+    background: #590094;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 18px;
+    color: white;
+}
+
+
+
 /* RESET */
 
 *, *:before, *:after {

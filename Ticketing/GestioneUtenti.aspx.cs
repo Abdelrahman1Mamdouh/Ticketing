@@ -85,7 +85,7 @@ namespace Ticketing
             }
 
             //role's visibility permissions
-            
+            BindRubricaUtenti();
 
             bool isTecAdmin = (user.Ruolo == Tec_Admin);
             bool isTec = (user.Ruolo == Tec);
@@ -134,7 +134,24 @@ namespace Ticketing
             } 
         }
 
+        protected void BindRubricaUtenti()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
+                con.Open();
 
+                MySqlCommand command = new MySqlCommand("SELECT * FROM dashboard", con);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                var table = new DataTable();
+                adapter.Fill(table);
+
+                rubricaUtenti.DataSource = table;
+                rubricaUtenti.DataBind();
+
+            }
+        }
         ///DOMAAANIIIII
         public void clickCrea(object sender, EventArgs e)
         {
@@ -285,8 +302,8 @@ namespace Ticketing
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             utente user = Session["CR"] as utente;
             string TargetEmail=TEmail.Text.Trim();
-
             
+
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
@@ -320,5 +337,7 @@ namespace Ticketing
                 cmd.ExecuteNonQuery();
             }
         }
+
+
     }
 }

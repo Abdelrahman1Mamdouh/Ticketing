@@ -14,6 +14,7 @@ namespace Ticketing
             bool login = Session["CR"] != null;
             phUserArea.Visible = login;
             LogoNotifica.Visible = login;
+            LogoUtente.Visible = login;
 
 
             if (login)
@@ -33,9 +34,13 @@ namespace Ticketing
         {
             string tabella = "notifica";
             
-                
+
                 NotifichePopup.Show(tabella);
             
+        }
+        protected void MostraInfoUtente(object sender, EventArgs e)
+        {
+            Response.Redirect("~/InfoModificaUtenti.aspx");
         }
     }
 }

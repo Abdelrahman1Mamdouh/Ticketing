@@ -24,7 +24,7 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.GridView Tickets;
 
         /// <summary>
-        /// Controllo BCrea.
+        /// BCrea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

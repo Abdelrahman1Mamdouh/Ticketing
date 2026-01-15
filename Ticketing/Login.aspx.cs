@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
-using System.Runtime.Remoting.Messaging;
 using Ticketing.Models;
 
 namespace Ticketing
@@ -22,11 +21,8 @@ namespace Ticketing
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
-
-
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-
                     cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = userName;
                     cmd.Parameters.Add("@Pass", MySqlDbType.VarChar).Value = passwordText;
 
@@ -42,7 +38,7 @@ namespace Ticketing
                                 ID = r.GetInt32("ID"),
                                 Nome = r.GetString("Nome"),
                                 Cognome = r.GetString("Cognome"),
-                               
+
                                 Telefono = r.GetString("Telefono"),
                                 Email = r.GetString("Email"),
 
@@ -52,8 +48,6 @@ namespace Ticketing
                                 Dipartimento = r.IsDBNull(r.GetOrdinal("Dipartimento")) ? 0 : r.GetInt32("Dipartimento")
                             };
 
-
-                        
                             Session["CR"] = currentUser;
                             r.Close();
                             Response.Redirect("Dashboard.aspx");
