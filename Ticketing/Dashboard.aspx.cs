@@ -14,12 +14,12 @@ namespace Ticketing
         utente user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (Session["CR"] != null)
             {
                 user = Session["CR"] as utente;
                 currentUser = user.ID;
-                if(user.Societa != null)
+                if (user.Societa != 0)
                 {
                     BCrea.Visible = true;
                 }
@@ -58,7 +58,7 @@ namespace Ticketing
         {
             Control btn = (Control)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
-           //GridViewRow row = Tickets.SelectedRow;
+            //GridViewRow row = Tickets.SelectedRow;
 
             int ticketId = Convert.ToInt32(Tickets.DataKeys[row.RowIndex].Value);
 
@@ -74,10 +74,10 @@ namespace Ticketing
             string titolo = row.Cells[9].Text;
             string priorita = row.Cells[10].Text;
 
-            
+
 
             string[] tik = new string[9];
-            tik[0]= cliente;
+            tik[0] = cliente;
             tik[1] = tecnico;
             tik[2] = livello;
             tik[3] = stato;
@@ -88,9 +88,9 @@ namespace Ticketing
             tik[8] = priorita;
 
             Session["ticket"] = tik;
-            
 
-             
+
+
             //try
             //{
             //    if (user.Ruolo == 1 || user.Ruolo == 4)

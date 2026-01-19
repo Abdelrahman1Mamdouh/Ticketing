@@ -15,12 +15,12 @@ namespace Ticketing
             phUserArea.Visible = login;
             LogoNotifica.Visible = login;
             LogoUtente.Visible = login;
+            lblWelcome.Visible = login;
 
 
             if (login)
             {
                 utente user = Session["CR"] as utente;
-                lblWelcome.Text = "Welcome, " + user.Nome + " " + user.Cognome;
             }
         }
         protected void BtnLogout_Click(object sender, EventArgs e)

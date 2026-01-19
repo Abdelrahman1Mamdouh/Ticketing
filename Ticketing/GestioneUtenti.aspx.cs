@@ -25,12 +25,12 @@ namespace Ticketing
         const int Tec_Admin = 3;
         const int Client_Admin = 4;
 
-        
+
         private void LoadDropDownList(string query, DropDownList DDL, string dataTextField, string label)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
-            
+
             try
             {
                 using (var con = new MySqlConnection(cs))
@@ -39,21 +39,21 @@ namespace Ticketing
                     {
                         con.Open();
 
-                        
+
                         using (var da = new MySqlDataAdapter(cmd))
                         {
                             DataTable dt = new DataTable();
                             da.Fill(dt);
 
-                            
-                            
+
+
                             DDL.DataTextField = dataTextField;
                             DDL.DataValueField = "ID";
                             DDL.DataSource = dt;
                             DDL.DataBind();
-                        } 
+                        }
 
-                        
+
                         DDL.Items.Insert(0, new ListItem(label, ""));
                         DDL.Items[0].Attributes["disabled"] = "disabled";
                         DDL.Items[0].Attributes["selected"] = "selected";
@@ -95,7 +95,8 @@ namespace Ticketing
             PnlLivello.Visible = isTecAdmin;
             PnlDipartimento.Visible = isTecAdmin;
 
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
 
                 LoadDropDownList("SELECT ID, Ruolo FROM ruolo ORDER BY ID", DRuolo, "Ruolo", "Seleziona Ruolo");
                 LoadDropDownList("SELECT ID, Nome FROM societa ORDER BY ID", DSocieta, "Nome", "Seleziona Società");
@@ -106,7 +107,7 @@ namespace Ticketing
                 BModifica.Visible = isTecAdmin || isClientAdmin || isTec;
                 BElimina.Visible = isTecAdmin || isTec || isClientAdmin;
 
-                
+
                 DRuolo.Enabled = isTecAdmin || isClientAdmin;
                 DDipartimento.Enabled = isTecAdmin;
                 DLivello.Enabled = isTecAdmin;
@@ -117,21 +118,22 @@ namespace Ticketing
                 TTelefono.ReadOnly = !isUserAdmin;
                 TEmail.ReadOnly = !isUserAdmin;
                 TPassword.ReadOnly = !isUserAdmin;
-                
 
-                if (isClientAdmin) { 
-                
-                    DSocieta.SelectedValue=user.Societa.ToString();
+
+                if (isClientAdmin)
+                {
+
+                    DSocieta.SelectedValue = user.Societa.ToString();
                     DSocieta.Enabled = false;
 
 
                 }
                 else
                 {
-                    DSocieta.Enabled=true;
+                    DSocieta.Enabled = true;
                 }
 
-            } 
+            }
         }
 
         protected void BindRubricaUtenti()
@@ -158,7 +160,7 @@ namespace Ticketing
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             utente user = Session["CR"] as utente;
 
-            
+
             string nome = TNome.Text;
             string cognome = TCognome.Text;
             string pass = TPassword.Text;
@@ -170,13 +172,13 @@ namespace Ticketing
             string livelloStr = DLivello.SelectedValue;
             string dipartimentoStr = DDipartimento.SelectedValue;
 
-            
+
             int TargetRuolo = 0;
             int TargetSocieta = 0;
             int TargetLivello = 0;
             int TargetDipartimento = 0;
 
-            
+
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(cognome) || string.IsNullOrEmpty(pass))
             {
                 Response.Write("<script>alert('Errore: Campi Nome, Cognome, e Password sono obbligatori.')</script>");
@@ -190,10 +192,10 @@ namespace Ticketing
             {
                 con.Open();
 
-                
+
                 if (user.Ruolo == Tec_Admin)
                 {
-                    
+
                     if (!int.TryParse(ruoloStr, out TargetRuolo) ||
                         !int.TryParse(societaStr, out TargetSocieta) ||
                         !int.TryParse(livelloStr, out TargetLivello) ||
@@ -203,7 +205,7 @@ namespace Ticketing
                         return;
                     }
 
-                    
+
                     insertQuery = "INSERT INTO utente (Nome, Cognome, Ruolo, Societa, Livello, Dipartimento, Telefono, Email, Pass) " +
                                   "VALUES (@nome, @cognome, @ruolo, @societa, @livello, @dipartimento , @telefono, @email, @password)";
 
@@ -219,20 +221,20 @@ namespace Ticketing
                     }
                 }
 
-              
+
                 else if (user.Ruolo == Client_Admin)
                 {
-                    
+
                     TargetSocieta = user.Societa;
 
-                    
+
                     if (!int.TryParse(ruoloStr, out TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
                     {
                         Response.Write("<script>alert('Errore: Client Admin può creare solo Client o Admin Client.')</script>");
                         return;
                     }
 
-                    
+
                     insertQuery = "INSERT INTO utente (Nome, Cognome, Ruolo, Societa, Telefono, Email, Pass) VALUES (@nome, @cognome, @ruolo, @societa, @telefono, @email, @password)";
 
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, con))
@@ -245,17 +247,17 @@ namespace Ticketing
                     }
                 }
 
-               
+
                 else if (user.Ruolo == Tec)
                 {
-                    
+
                     if (!int.TryParse(societaStr, out TargetSocieta) || !int.TryParse(ruoloStr, out TargetRuolo) || (TargetRuolo != Client && TargetRuolo != Client_Admin))
                     {
                         Response.Write("<script>alert('Errore: Tecnico deve selezionare Società e può creare solo Client o Admin Client.')</script>");
                         return;
                     }
 
-                    
+
                     insertQuery = "INSERT INTO utente (Nome, Cognome, Ruolo, Societa, Telefono, Email, Pass) " +
                                   "VALUES (@nome, @cognome, @ruolo, @societa, @telefono, @email, @password)";
 
@@ -269,14 +271,14 @@ namespace Ticketing
                     }
                 }
 
-               
+
                 else
                 {
                     Response.Write("<script>alert('Errore di autorizzazione: Non sei autorizzato a creare utenti.')</script>");
                     return;
                 }
 
-                
+
                 if (success)
                 {
                     Response.Write("<script>alert('Utente creato con successo!')</script>");
@@ -301,8 +303,8 @@ namespace Ticketing
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
             utente user = Session["CR"] as utente;
-            string TargetEmail=TEmail.Text.Trim();
-            
+            string TargetEmail = TEmail.Text.Trim();
+
 
 
             using (MySqlConnection con = new MySqlConnection(cs))
