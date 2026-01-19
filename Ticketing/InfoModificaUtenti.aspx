@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InfoModificaUtenti.aspx.cs" Inherits="Ticketing.InfoModificaUtenti" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InfoModificaUtenti.aspx.cs" Inherits="Ticketing.InfoModificaUtenti" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
