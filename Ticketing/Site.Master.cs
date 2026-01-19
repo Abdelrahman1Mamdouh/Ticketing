@@ -11,16 +11,41 @@ namespace Ticketing
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            
             bool login = Session["CR"] != null;
             phUserArea.Visible = login;
             LogoNotifica.Visible = login;
             LogoUtente.Visible = login;
-            lblWelcome.Visible = login;
-
+            Navigation.Visible = login;
 
             if (login)
             {
                 utente user = Session["CR"] as utente;
+                switch (user.Ruolo)
+                {
+                    case 1:
+                        Utenti.Visible = false;
+                        Societa.Visible = false;
+                        break;
+
+                    case 2:
+                        Societa.Visible = false;
+                        break;
+
+                    case 3:
+
+                        Societa.Visible = true;
+                        break;
+
+                    case 4:
+                        Societa.Visible = false;
+                        break;
+
+
+                }
+                
+                lblWelcome.Text = "Welcome, " + user.Nome + " " + user.Cognome;
             }
         }
         protected void BtnLogout_Click(object sender, EventArgs e)

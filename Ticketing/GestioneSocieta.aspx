@@ -54,10 +54,6 @@
                 runat="server"
                 placeholder="P. Iva">
             </asp:TextBox>
-        </div>
-
-
-        <div class="col-50">
             <asp:Label ID="LNote"
                 Text="Note"
                 runat="server" />
@@ -67,25 +63,9 @@
                 ClientIDMode="Static"
                 TextMode="MultiLine">
             </asp:TextBox>
-
         </div>
 
-        <div class="grid-button">
-            <asp:Button ID="BModifica"
-                Text="Modifica"
-                OnClick="clickModifica"
-                runat="server" />
-            <asp:Button ID="BCrea"
-                Text="Crea"
-                OnClick="clickCrea"
-                runat="server" />
-            <asp:Button ID="BElimina"
-                Text="Elimina"
-                OnClick="clickElimina"
-                runat="server" />
-        </div>
-
-        <div class ="grid-view">
+            <div class ="col-50 gridvieww">
             
     <asp:GridView ID="rubricaSocieta" 
         runat="server"
@@ -99,15 +79,15 @@
          <Columns>
      <asp:TemplateField HeaderText="Opzioni">
          <ItemTemplate>
+
              <div style="display: flex; justify-content: center; width: auto;">
                  <asp:LinkButton
                      ID="BtnApri"
                      runat="server"
                      CssClass="iconb"
                      ToolTip="Apri"
-                     OnClick="clickModifica"
-
-                     Text="&#xf06e;">
+                     OnClick="clickMod"
+                     >
                      <i class="fa fa-pencil-alt"></i>
                  </asp:LinkButton>
 
@@ -115,7 +95,7 @@
                      ID="BtnElimina"
                      runat="server"
                      CssClass="iconb elimina"
-                    OnClick="clickElimina"
+                    OnClick="clickElim"
                      ToolTip="Elimina" Text="&#xf1f8;">
                     <i class="fa-solid fa-trash"></i>
                  </asp:LinkButton>
@@ -125,7 +105,25 @@
      </asp:TemplateField>
  </Columns>
     </asp:GridView>
+                
 </div>
 
-    </div>
+        <div class="grid-button">
+            <asp:Button ID="BModifica"
+                Text="Modifica"
+                OnClick="clickModifica"
+                runat="server" />
+            <asp:Button ID="BCrea"
+                Text="Crea"
+                OnClick="clickCrea"
+                runat="server" />
+            <asp:Button ID="BElimina"
+                Text="Annulla"
+                OnClick="clickElimina"
+                runat="server" />
+        </div>
+
+    
+
+    </div> 
 </asp:Content>

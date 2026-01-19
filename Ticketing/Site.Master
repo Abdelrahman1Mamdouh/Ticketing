@@ -44,16 +44,15 @@
 
         <nav class="navbar">
             <div class="container">
-
                 <div class="menu">
                     <asp:Image class="Logo"
                         runat="server"
                         ImageUrl="~/Asset/dgs-logo.png" />
-                    <ul class="navigazione">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket">Ticket</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti">Utenti</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta">Societa</a></li>
+                    <ul class="navigazione" id="Navigation" runat="server">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard" id="Dashboard">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket" id="Ticket">Ticket</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti" id="Utenti">Utenti</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta" id="Societa">Societa</a></li>
                     </ul>
 
                     <asp:ImageButton class="Logo"
