@@ -61,6 +61,50 @@
 
         <div class="mt-1 mb-1">
             <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" class="btn-viola" />
+    <div class="col-100">
+        <div class="grid">
+            <div style="width: 100%; height: 80%; overflow-x: scroll;">
+                <asp:GridView ID="Tickets"
+                    runat="server"
+                    DataKeyNames="ID"
+                    GridLines="None"
+                    HorizontalAlign="Center"
+                    AllowPaging="True"
+                    PageSize="20"
+                    CssClass="gridvieww"
+                    AutoGenerateColumns="True">
+
+                    <Columns>
+                        <asp:TemplateField HeaderText="Opzioni">
+                            <ItemTemplate>
+                                <div style="display: flex; justify-content: center; width: auto;">
+                                    <asp:LinkButton
+                                        ID="BtnApri"
+                                        runat="server"
+                                        CssClass="iconb"
+                                        ToolTip="Apri"
+                                        OnClick="ClickSelectTicket"
+
+                                        Text="&#xf06e;">    
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </asp:LinkButton>
+
+                                    <asp:LinkButton
+                                        ID="BtnElimina"
+                                        runat="server"
+                                        CssClass="iconb elimina"
+                                        OnClick="ClickDeleteTicket"
+                                        ToolTip="Elimina" Text="&#xf1f8;">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </asp:LinkButton>
+
+                                    <%--<asp:Button ID="BtnElimina" runat="server" CssClass="iconb elimina" ToolTip="Elimina" Text="&#xf1f8;" />--%>
+                                </div>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            
         </div>
     
 
