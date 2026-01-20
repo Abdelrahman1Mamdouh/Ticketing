@@ -42,7 +42,7 @@ namespace Ticketing
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM detailsticket ORDER BY Creata_a DESC", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM tikdetails ORDER BY Creata_a DESC", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();

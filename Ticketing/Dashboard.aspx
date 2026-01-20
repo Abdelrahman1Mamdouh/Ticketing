@@ -25,7 +25,7 @@
                                         ToolTip="Apri"
                                         OnClick="ClickSelectTicket"
 
-                                        Text="&#xf06e;">
+                                        Text="&#xf06e;">    
                                         <i class="fa fa-pencil-alt"></i>
                                     </asp:LinkButton>
 
