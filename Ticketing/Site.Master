@@ -43,7 +43,7 @@
         </asp:ScriptManager>
 
 
-       <nav>
+        <nav>
             <div class="navigation">
 
                 <asp:Image class="navigation__logo"
@@ -56,27 +56,38 @@
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta" id="Societa">Societa</a></li>
                 </ul>
 
-                <asp:ImageButton class="navigation__utente"
-                    ID="LogoUtente"
-                    runat="server"
-                    ImageUrl="~/Asset/Logo4.png"
-                    Width="20px"
-                    Visible="false"
-                    Height="20px"
-                    OnClick="MostraInfoUtente" />
 
-
-                <asp:ImageButton class="navigation__notifica" ID="LogoNotifica" runat="server"
-                    AlternateText="LogoNotifica"
-                    ImageAlign="left"
-                    ImageUrl="~/Asset/Logo1.png"
-                    OnClick="MostraNotifica" />
 
 
 
                 <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false">
                     <asp:Label ID="lblWelcome" runat="server" class="lblwelcome" />
-                    <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
+                    <div class="icone-navbar">
+                    <asp:ImageButton class="navigation__utente"
+                        ID="LogoUtente"
+                        runat="server"
+                        ImageUrl="~/Asset/user_setting.png"
+                        Width="20px"
+                        Visible="false"
+                        Height="20px"
+                        OnClick="MostraInfoUtente"
+                        ToolTip="Modifica Dati Utente" />
+
+
+                    <asp:ImageButton class="navigation__notifica" ID="LogoNotifica" runat="server"
+                        AlternateText="LogoNotifica"
+                        ImageAlign="left"
+                        ImageUrl="~/Asset/Logo1.png"
+                        OnClick="MostraNotifica"
+                        ToolTip="Visualizza Notifiche" />
+                    <asp:ImageButton ID="btnLogout" runat="server"
+                        AlternateText="LogoNotifica"
+                        ImageAlign="left"
+                        ImageUrl="~/Asset/logout.png"
+                        OnClick="BtnLogout_Click"
+                        class="icon-logout"
+                        ToolTip="Effettua Logout" />
+                </div>
                 </asp:PlaceHolder>
             </div>
 
@@ -95,14 +106,14 @@
     </asp:PlaceHolder>
 
 
-        <footer class="foot">
-    <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
-    <asp:Image class="navigation__logo"
-        runat="server"
-        ImageUrl="~/Asset/dgs-logo.png" />
-</footer>
+    <footer class="foot">
+        <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
+        <asp:Image class="navigation__logo"
+            runat="server"
+            ImageUrl="~/Asset/dgs-logo.png" />
+    </footer>
 </body>
 
-   
+
 
 </html>

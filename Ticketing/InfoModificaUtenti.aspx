@@ -45,7 +45,8 @@
     <div class="grid-button">
         <asp:Button ID="BSalvaModifiche"
             Text="Salva Modifica"
-            runat="server" />
+            runat="server" 
+            class="btn-viola"/>
     </div>
 </asp:Content>
 
