@@ -40,6 +40,7 @@
                     placeholder="Tecnico"
                     Visible="false">
                 </asp:TextBox>
+
                 <asp:DropDownList
                     ID="DTecnici"
                     Visible="false"
@@ -48,6 +49,13 @@
                     DataTextField="Nome"
                     DataValueField="ID">
                 </asp:DropDownList>
+
+                <asp:Button ID="BbAssegna"
+                    Text="Assegna il Ticket"
+                    Visible="false"
+                    OnClick="ClickAssegna"
+                    runat="server" />
+
                 <asp:Label ID="LLivello"
                     Text="Livello"
                     runat="server"
@@ -124,13 +132,6 @@
                     DataTextField="Priorita"
                     DataValueField="ID">
                 </asp:DropDownList>
-
-
-                <asp:Button ID="BbAssegna"
-                    Text="Assegna il Ticket"
-                    Visible="false"
-                    OnClick="ClickAssegna"
-                    runat="server" />
 
                 <asp:Button ID="BbSalva"
                     Text="Salva"

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Ajax.Utilities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Data;
@@ -25,8 +26,6 @@ namespace Ticketing
 
         utente user;
         ticket currentTicket = new ticket();
-        email comunicazione = new email();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["CR"] == null)
@@ -38,8 +37,7 @@ namespace Ticketing
             user = Session["CR"] as utente;
 
             // ✅ ticketId is OPTIONAL: only exists in details mode
-            int ticketId = 0;
-            bool hasTicketId = int.TryParse(Request.QueryString["id"], out ticketId);
+            bool hasTicketId = int.TryParse(Request.QueryString["id"], out int ticketId);
 
             // If we have an id -> we are opening an existing ticket
             if (hasTicketId)
@@ -76,7 +74,7 @@ namespace Ticketing
                 Session["ticket"] = null;
             }
         }
-        public void LoadDropDownList(string query, DropDownList DDL, string label)
+        public static void LoadDropDownList(string query, DropDownList DDL, string label)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
@@ -175,7 +173,7 @@ namespace Ticketing
                 // ✅ (Fix #1) WHERE TicketID (not Ticket)
                 // Keep Oggetto if your storico has it; if not, remove it from SELECT.
                 var cmd = new MySqlCommand(@"
-                    SELECT ID, Mittente, Destinatario, Oggetto, Messaggio
+                    SELECT ID, nomeMittente, nomeDestinatario, Oggetto, Messaggio
                     FROM storico
                     WHERE Ticket = @TicketID
                     ORDER BY ID ASC;", con);
@@ -199,12 +197,14 @@ namespace Ticketing
                 con.Open();
 
                 var cmd = new MySqlCommand(@"
-                    INSERT INTO storico (Ticket, Mittente, Destinatario, Messaggio)
-                    VALUES (@TicketID, @Mittente, @Destinatario, @Messaggio);", con);
+                    INSERT INTO storico (Ticket,idMittente ,nomeMittente, nomeDestinatario, Messaggio, letturaNotifica)
+                    VALUES (@TicketID,@idMittente, @Mittente, @Destinatario, @Messaggio, @letturaNotifica);", con);
 
                 cmd.Parameters.Add("@TicketID", MySqlDbType.Int32).Value = ticketId;
+                cmd.Parameters.Add("@idMittente", MySqlDbType.Int32).Value = user.ID;
                 cmd.Parameters.Add("@Mittente", MySqlDbType.VarChar).Value = mittente;
                 cmd.Parameters.Add("@Destinatario", MySqlDbType.VarChar).Value = destinatario;
+                cmd.Parameters.Add("@letturaNotifica", MySqlDbType.Int32).Value = 0;
 
                 // ✅ (Fix #5) use TEXT (messages can be long)
                 cmd.Parameters.Add("@Messaggio", MySqlDbType.Text).Value = messaggio ?? "";
@@ -351,7 +351,8 @@ namespace Ticketing
             LComunicazione.Visible = true;
             TComunicazione.Visible = true;
 
-            if (livello == null && priorita == null && LLivello.Text.Equals("Livello : &nbsp;") && LPriorita.Text.Equals("Priorita : &nbsp;"))
+         
+            if (livello == null && priorita == null && tik[2].IsNullOrWhiteSpace()/*Llivello*/ && tik[8].IsNullOrWhiteSpace()/*LPriorita*/)
             {
                 BbSalva.Visible = true;
             }
@@ -377,13 +378,13 @@ namespace Ticketing
             BAnnulla.Visible = true;
             BChiudi.Visible = true;
 
-            if (!LTecnico.Text.Equals("Tecnico : &nbsp;") && user.Ruolo != 3)
+            if (tik[1].IsNullOrWhiteSpace() && user.Ruolo == 2)
             {
-                BbAssegna.Visible = false;
+                BbAssegna.Visible = true;
             }
             else
             {
-                BbAssegna.Visible = true;
+                BbAssegna.Visible = false;
             }
 
             if (!IsPostBack)
