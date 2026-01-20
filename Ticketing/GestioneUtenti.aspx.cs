@@ -143,7 +143,7 @@ namespace Ticketing
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM dashboard", con);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM tikdetails", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();

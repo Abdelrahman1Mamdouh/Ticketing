@@ -179,6 +179,7 @@
     <Content Include="Asset\logo2.png" />
     <Content Include="Asset\logo3.png" />
     <Content Include="Asset\Logo4.png" />
+    <Content Include="Asset\user.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -197,6 +198,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CssProgetto.css" />
     <Content Include="Content\GestioneTicket.css" />
+    <Content Include="Content\NewCss.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Controls\NotifichePopup.ascx" />
     <Content Include="Dashboard.aspx" />

@@ -15,7 +15,6 @@ namespace Ticketing
     {
 
         /// <summary>
-        /// Controllo Tickets.
         /// Controllo Alltick.
         /// </summary>
         /// <remarks>

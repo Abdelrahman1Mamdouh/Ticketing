@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
-    <div class="grid">
+    <div class="grid_system">
         <div class="col-50">
 
             <asp:Label ID="LNome"
@@ -65,65 +65,68 @@
             </asp:TextBox>
         </div>
 
-            <div class ="col-50 gridvieww">
-            
-    <asp:GridView ID="rubricaSocieta" 
-        runat="server"
-        CellPadding="3"
-        GridLines="None"
-        HorizontalAlign="Center"
-        DataKeyNames="ID"
-        CssClass="gridvieww"
-        AllowPaging="True"
-        PageSize="20">
-         <Columns>
-     <asp:TemplateField HeaderText="Opzioni">
-         <ItemTemplate>
+        <div class="col-50">
+            <div class="box-gridview">
+            <asp:GridView ID="rubricaSocieta"
+                runat="server"
+                CellPadding="3"
+                GridLines="None"
+                HorizontalAlign="Center"
+                DataKeyNames="ID"
+                CssClass="gridview"
+                AllowPaging="True"
+                PageSize="20"
+                AutoGenerateColumns="True">
+                <Columns>
+                    <asp:TemplateField HeaderText="Opzioni">
+                        <ItemTemplate>
 
-             <div style="display: flex; justify-content: center; width: auto;">
-                 <asp:LinkButton
-                     ID="BtnApri"
-                     runat="server"
-                     CssClass="iconb"
-                     ToolTip="Apri"
-                     OnClick="clickMod"
-                     >
-                     <i class="fa fa-pencil-alt"></i>
-                 </asp:LinkButton>
+                            <div style="display: flex; justify-content: center; width: auto;">
+                                <asp:LinkButton
+                                    ID="BtnApri"
+                                    runat="server"
+                                    CssClass="iconb"
+                                    ToolTip="Apri"
+                                    OnClick="clickMod"
+                                     Text="&#xf1f8;">
+                                    <i class="fa fa-pencil-alt"></i>
+                                </asp:LinkButton>
 
-                 <asp:LinkButton
-                     ID="BtnElimina"
-                     runat="server"
-                     CssClass="iconb elimina"
-                    OnClick="clickElim"
-                     ToolTip="Elimina" Text="&#xf1f8;">
+                                <asp:LinkButton
+                                    ID="BtnElimina"
+                                    runat="server"
+                                    CssClass="iconb elimina"
+                                    OnClick="clickElim"
+                                    ToolTip="Elimina" 
+                                    T Text="&#xf1f8;">
                     <i class="fa-solid fa-trash"></i>
-                 </asp:LinkButton>
+                                </asp:LinkButton>
 
-             </div>
-         </ItemTemplate>
-     </asp:TemplateField>
- </Columns>
-    </asp:GridView>
-                
-</div>
-
-        <div class="grid-button">
-            <asp:Button ID="BModifica"
-                Text="Modifica"
-                OnClick="clickModifica"
-                runat="server" />
-            <asp:Button ID="BCrea"
-                Text="Crea"
-                OnClick="clickCrea"
-                runat="server" />
-            <asp:Button ID="BElimina"
-                Text="Annulla"
-                OnClick="clickElimina"
-                runat="server" />
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            </div>
         </div>
 
-    
-
-    </div> 
+       
+    </div>
+    <div class="box-tasto-crea">
+    <asp:Button ID="BModifica"
+        Text="Salva Modifica"
+        OnClick="clickModifica"
+        runat="server"
+        class="btn-modifica" />
+    <asp:Button ID="BCrea"
+        Text="Crea"
+        OnClick="clickCrea"
+        runat="server"
+        class="btn-viola" />
+    <asp:Button ID="BElimina"
+        Text="Annulla"
+        OnClick="clickElimina"
+        runat="server"
+        class="btn-annulla" />
+</div>
 </asp:Content>
