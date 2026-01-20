@@ -1,13 +1,13 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master"
+<%@ Page Language="C#" MasterPageFile="~/Site.Master"
     AutoEventWireup="true" CodeBehind="GestioneUtenti.aspx.cs"
     Inherits="Ticketing.GestioneUtenti" Title="Gestione Utenti" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
 
-    <div class="grid">
+    <div class="grid_system">
 
-        <div class="col-50">
+        <div class="col-utenti-50">
 
             <asp:Label ID="LNome" Text="Nome" runat="server" />
             <asp:TextBox ID="TNome" runat="server" placeholder="Nome"></asp:TextBox>
@@ -63,7 +63,7 @@
             </asp:Panel>
         </div>
 
-        <div class="col-50">
+        <div class="col-utenti-50">
             <asp:Label ID="LPassword"
                 Text="Password"
                 runat="server" />
@@ -114,7 +114,7 @@
 
         </div>
 
-        <div class="grid-button">
+         <div class="grid-button">
             
             <asp:Button ID="BCrea"
                 Text="Crea"
@@ -129,122 +129,53 @@
                 CausesValidation="false"/>
             
         </div>
-        
 
-                   <div class="grid-view">
-    <div class="table-scroll-container">
-        <asp:GridView ID="rubricaUtenti" 
-            runat="server"
-            AutoGenerateColumns="False" 
-            DataKeyNames="ID"
-            CssClass="gridvieww"
-            GridLines="None"
-            AllowPaging="True"
-            PageSize="20">
 
-            <Columns>
-                <asp:TemplateField HeaderText="Opzioni">
-                    <ItemTemplate>
-                        <div class="icon-container">
-                            <asp:LinkButton ID="BtnApri" runat="server" CssClass="iconb" OnClick="clickModifica" ToolTip="Modifica">
-                                <i class="fa fa-pencil-alt"></i>
-                            </asp:LinkButton>
-                            <asp:LinkButton ID="BtnElimina" runat="server" CssClass="iconb elimina" OnClick="clickElimina" 
-                                OnClientClick="return confirm('Sei sicuro di voler eliminare questo utente?');" ToolTip="Elimina">
-                                <i class="fa-solid fa-trash"></i>
-                            </asp:LinkButton>
-                        </div>
-                    </ItemTemplate>
-                </asp:TemplateField>
+        <div class="grid-view">
+            <div class="box-gridview">
+                <asp:GridView ID="rubricaUtenti"
+                    runat="server"
+                    CellPadding="3"
+                    GridLines="None"
+                    HorizontalAlign="Center"
+                    DataKeyNames="ID"
+                    AllowPaging="True"
+                    CssClass="gridview"
+                    PageSize="20">
 
-               
-                <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-Width="40px" />
-                <asp:BoundField DataField="Utente" HeaderText="Utente" />
-                <asp:BoundField DataField="Ruolo" HeaderText="Ruolo" ItemStyle-Width="60px" />
-                <asp:BoundField DataField="Societa" HeaderText="Soc." ItemStyle-Width="60px" />
-                <asp:BoundField DataField="Livello" HeaderText="Liv." ItemStyle-Width="40px" />
-                <asp:BoundField DataField="Dipartimento" HeaderText="Dip." ItemStyle-Width="40px" />
-                <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-            </Columns>
-        </asp:GridView>
-    </div>
-</div>
-       <style>
-    
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        margin-bottom: 20px;
-    }
+                    <Columns>
+                        <asp:TemplateField HeaderText="Opzioni">
+                            <ItemTemplate>
+                                <div style="display: flex; justify-content: center; width: auto;">
+                                    <asp:LinkButton
+                                        ID="BtnApri"
+                                        runat="server"
+                                        CssClass="iconb"
+                                        ToolTip="Apri"
+                                        OnClick="clickModifica"
+                                        Text="&#xf06e;">
+                     <i class="fa fa-pencil-alt"></i>
+                                    </asp:LinkButton>
 
-    
-    .table-scroll-container {
-        width: 100%;
-        max-height: 400px; 
-        overflow-y: auto;  
-        overflow-x: auto;  
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background-color: white;
-        margin-bottom: 40px; 
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+                                    <asp:LinkButton
+                                        ID="BtnElimina"
+                                        runat="server"
+                                        CssClass="iconb elimina"
+                                        OnClick="clickElimina"
+                                        ToolTip="Elimina" Text="&#xf1f8;">
+                    <i class="fa-solid fa-trash"></i>
+                                    </asp:LinkButton>
 
-    
-    .gridvieww th {
-        position: sticky;
-        top: 0;
-        background-color: #6a1b9a;
-        color: white;
-        padding: 12px;
-        text-align: left;
-        font-size: 14px;
-        z-index: 10;
-    }
-
-    .gridvieww {
-        width: 100%;
-        table-layout: fixed; 
-        border-collapse: collapse;
-    }
-
-    .gridvieww td {
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-        font-size: 13px;
-        word-wrap: break-word; 
-    }
-
-    
-    .icon-container {
-        display: flex; 
-        gap: 10px; 
-        justify-content: center;
-    }
-
-    .iconb {
-        text-decoration: none;
-        font-size: 16px;
-        color: #6a1b9a;
-    }
-
-    .elimina {
-        color: #d32f2f;
-    }
-
-    
-    .table-scroll-container::-webkit-scrollbar {
-        width: 8px;
-    }
-    .table-scroll-container::-webkit-scrollbar-thumb {
-        background: #6a1b9a;
-        border-radius: 4px;
-    }
-</style>
+                                    <%--<asp:Button ID="BtnElimina" runat="server" CssClass="iconb elimina" ToolTip="Elimina" Text="&#xf1f8;" />--%>
+                                </div>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
 
     </div>
 
-          
+
 </asp:Content>

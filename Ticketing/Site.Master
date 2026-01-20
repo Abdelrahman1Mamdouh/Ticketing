@@ -16,7 +16,8 @@
 
 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/Content/CssProgetto.css" rel="stylesheet" type="text/css" />
+    <%--<link href="~/Content/CssProgetto.css" rel="stylesheet" type="text/css" />--%>
+    <link href="~/Content/NewCss.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -42,56 +43,48 @@
         </asp:ScriptManager>
 
 
-        <nav class="navbar">
-            <div class="container">
-                <div class="menu">
-                    <asp:Image class="Logo"
-                        runat="server"
-                        ImageUrl="~/Asset/dgs-logo.png" />
-                    <ul class="navigazione" id="Navigation" runat="server">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard" id="Dashboard">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket" id="Ticket">Ticket</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti" id="Utenti">Utenti</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta" id="Societa">Societa</a></li>
-                    </ul>
+       <nav>
+            <div class="navigation">
 
-                    <asp:ImageButton class="Logo"
-                        ID="LogoUtente"
-                        runat="server"
-                        ImageUrl="~/Asset/Logo4.png"
-                        Width="20px"
-                        Visible="false"
-                        Height="20px"
-                        OnClick="MostraInfoUtente" />
+                <asp:Image class="navigation__logo"
+                    runat="server"
+                    ImageUrl="~/Asset/dgs-logo.png" />
+                <ul class="navigation__menu" id="Navigation" runat="server">
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Dashboard" id="Dashboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneTicket" id="Ticket">Ticket</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneUtenti" id="Utenti">Utenti</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/GestioneSocieta" id="Societa">Societa</a></li>
+                </ul>
 
-
-                    <asp:ImageButton ID="LogoNotifica" runat="server"
-                        AlternateText="LogoNotifica"
-                        ImageAlign="left"
-                        ImageUrl="~/Asset/Logo1.png"
-                        OnClick="MostraNotifica" />
+                <asp:ImageButton class="navigation__utente"
+                    ID="LogoUtente"
+                    runat="server"
+                    ImageUrl="~/Asset/Logo4.png"
+                    Width="20px"
+                    Visible="false"
+                    Height="20px"
+                    OnClick="MostraInfoUtente" />
 
 
+                <asp:ImageButton class="navigation__notifica" ID="LogoNotifica" runat="server"
+                    AlternateText="LogoNotifica"
+                    ImageAlign="left"
+                    ImageUrl="~/Asset/Logo1.png"
+                    OnClick="MostraNotifica" />
 
-                    <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false">
-                        <asp:Label ID="lblWelcome" runat="server" />
-                        <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
-                    </asp:PlaceHolder>
-                </div>
+
+
+                <asp:PlaceHolder ID="phUserArea" runat="server" Visible="false">
+                    <asp:Label ID="lblWelcome" runat="server" class="lblwelcome" />
+                    <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="BtnLogout_Click" />
+                </asp:PlaceHolder>
             </div>
+
         </nav>
 
         <div class="container body-content">
-
-
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <footer class="footer">
-                <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
-                <asp:Image class="Logo"
-                    runat="server"
-                    ImageUrl="~/Asset/dgs-logo.png" />
-            </footer>
         </div>
 
         <uc:NotifichePopup ID="NotifichePopup" runat="server" />
@@ -100,5 +93,16 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+
+
+        <footer class="foot">
+    <p>&copy; <%: DateTime.Now.Year %> - Dgs Spa</p>
+    <asp:Image class="navigation__logo"
+        runat="server"
+        ImageUrl="~/Asset/dgs-logo.png" />
+</footer>
 </body>
+
+   
+
 </html>

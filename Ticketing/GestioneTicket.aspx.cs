@@ -378,13 +378,13 @@ namespace Ticketing
             BAnnulla.Visible = true;
             BChiudi.Visible = true;
 
-            if (tik[1].IsNullOrWhiteSpace() && user.Ruolo == 2)
+            if (!tik[1].IsNullOrWhiteSpace() && user.Ruolo != 3)
             {
-                BbAssegna.Visible = true;
+                BbAssegna.Visible = false;
             }
             else
             {
-                BbAssegna.Visible = false;
+                BbAssegna.Visible = true;
             }
 
             if (!IsPostBack)
