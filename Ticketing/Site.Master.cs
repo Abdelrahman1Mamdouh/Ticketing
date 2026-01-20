@@ -32,11 +32,7 @@ namespace Ticketing
 
         protected void MostraNotifica(object sender, EventArgs e)
         {
-            string tabella = "notifica";
-            
-
-                NotifichePopup.Show(tabella);
-            
+                NotifichePopup.Show();    
         }
         protected void MostraInfoUtente(object sender, EventArgs e)
         {
