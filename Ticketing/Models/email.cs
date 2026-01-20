@@ -17,14 +17,14 @@ namespace Ticketing
         public string body { get; set; }
 
 
-       
+
         public static async Task sendMail(string receiver, string mailer, string subject, string body, int idTicket)
         {
 
 
             var mail = new MimeMessage();
-        mail.From.Add(new MailboxAddress( "mittente",mailer));
-            mail.To.Add(new MailboxAddress( "destinatario",receiver));
+            mail.From.Add(new MailboxAddress("mittente", mailer));
+            mail.To.Add(new MailboxAddress("destinatario", receiver));
             mail.Subject = subject;
             mail.Body = new TextPart("plain")
             {
@@ -66,8 +66,6 @@ VALUES (@mittente, @destinatario, @oggetto, @messaggio, @idTicket);
                 cmd.ExecuteNonQuery();
 
             }
-
-
         }
     }
 }

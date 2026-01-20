@@ -69,6 +69,24 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TTecnico;
 
         /// <summary>
+        /// DTecnici control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DTecnici;
+
+        /// <summary>
+        /// BbAssegna control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BbAssegna;
+
+        /// <summary>
         /// LLivello control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace Ticketing
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TLivello;
+
+        /// <summary>
+        /// DLivello control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DLivello;
 
         /// <summary>
         /// LStato control.
@@ -175,6 +202,15 @@ namespace Ticketing
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DPriorita;
+
+        /// <summary>
+        /// BbSalva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BbSalva;
 
         /// <summary>
         /// LOggetto control.

@@ -1,6 +1,78 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ticketing.Dashboard" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ticketing.Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="col-100"><
+    
+<div class="grid-button">
+    <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" />
+    <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" />
+
+
+    <asp:DropDownList ID="DTecnico"
+        Visible="false"
+        runat="server"
+        DataTextField="Tecnico"
+        
+        DataValueField="Tecnico">
+    </asp:DropDownList>
+
+
+    <asp:DropDownList ID="DLivello"
+        Visible="false"
+        runat="server"
+        DataTextField="Livello"
+        
+        DataValueField="Livello">
+    </asp:DropDownList>
+
+
+    <asp:DropDownList ID="DStato"
+        Visible="false"
+        runat="server"
+        DataTextField="Stato"
+        
+        DataValueField="Stato">
+    </asp:DropDownList>
+
+  
+    <asp:DropDownList ID="DPriorita"
+        Visible="false"
+        runat="server"
+        DataTextField="Priorita"
+        
+        DataValueField="Priorita">
+    </asp:DropDownList>
+
+
+    <asp:DropDownList ID="DSocieta"
+        Visible="false"
+        runat="server"
+        DataTextField="Societa"
+        
+        DataValueField="Societa">
+    </asp:DropDownList>
+
+   
+    <asp:DropDownList ID="DProdotto"
+        Visible="false"
+        runat="server"        
+        DataTextField="Prodotto"
+        DataValueField="Prodotto">
+    </asp:DropDownList>
+    <asp:Button ID="BVedi" Text="Filtri" OnClick="MixTicket" Visible="false" runat="server" />
+
+
+
+</div>
+
+<div class="grid-button ">
+    <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" />
+
+</div>
+        </div>
+
+
     <div class="col-100">
         <div class="grid">
             <div style="width: 100%; height: 80%; overflow-x: scroll;">
@@ -44,12 +116,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-            </div>
-
-            <div class="grid-button">
-                <asp:Button ID="BCrea" Text="Crea" OnClick="CreateTicket" Visible="false" runat="server" />
-
-            </div>
+            
         </div>
     </div>
 </asp:Content>

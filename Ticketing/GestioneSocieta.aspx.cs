@@ -2,6 +2,10 @@
 using System;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Ticketing.Models;
 
 
@@ -18,6 +22,7 @@ namespace Ticketing
         private string email;
         private string piva;
         private string note;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +32,7 @@ namespace Ticketing
                 if (user != null)
                 {
                     string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
+                    BModifica.Visible = false;
                 }
             }
             else
@@ -34,6 +40,7 @@ namespace Ticketing
                 Response.Redirect("Login.aspx");
             }
             BindRubricaSocieta();
+            
         }
 
         protected void BindRubricaSocieta()
@@ -43,16 +50,96 @@ namespace Ticketing
             {
                 con.Open();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM societa", con);
+                MySqlCommand command = new MySqlCommand("SELECT ID,Nome,Email,Telefono FROM societa", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 var table = new DataTable();
                 adapter.Fill(table);
-
+                
                 rubricaSocieta.DataSource = table;
                 rubricaSocieta.DataBind();
+                
 
             }
+        }
+
+        protected void clickMod(object sender, EventArgs e)
+        {
+            
+            LinkButton btn = (LinkButton)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+
+            int id = Convert.ToInt32(rubricaSocieta.DataKeys[row.RowIndex].Value);
+            CaricaDatiNeiCampi(id);
+          
+
+        }
+
+        protected void clickElim(object sender, EventArgs e)
+        {
+
+            LinkButton btn = (LinkButton)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+
+            int id = Convert.ToInt32(rubricaSocieta.DataKeys[row.RowIndex].Value);
+            EliminaRiga(id);
+
+
+        }
+
+        private void EliminaRiga(int id)
+        {
+            Response.Write("<script>alert('Stai eliminando dal database la societa')</script>");
+        }
+
+        private void CaricaDatiNeiCampi(int id)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+
+            string query = @"SELECT Nome, Indirizzo, Citta, Cap, Telefono, Email, PIva, Note
+                     FROM societa
+                     WHERE ID = @ID";
+
+            using (MySqlConnection conn = new MySqlConnection(cs))
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
+
+                conn.Open();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        TNome.Text = reader["Nome"]?.ToString() ?? "";
+                        TIndirizzo.Text = reader["Indirizzo"]?.ToString() ?? "";
+                        TCitta.Text = reader["Citta"]?.ToString() ?? "";
+                        TCap.Text = reader["Cap"]?.ToString() ?? "";
+                        TTelefono.Text = reader["Telefono"]?.ToString() ?? "";
+                        TeMail.Text = reader["Email"]?.ToString() ?? "";
+                        TPIva.Text = reader["PIva"]?.ToString() ?? "";
+                        TNote.Text = reader["Note"]?.ToString() ?? "";
+
+                        ViewState["IdSocietaSelezionata"] = id;
+
+                        BModifica.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void SvuotaCampi()
+        {
+            TNome.Text = "";
+            TIndirizzo.Text = "";
+            TCitta.Text = "";
+            TCap.Text = "";
+            TTelefono.Text = "";
+            TeMail.Text = "";
+            TPIva.Text = "";
+            TNote.Text = "";
+
+            ViewState["IdSocietaSelezionata"] = null;
+            
         }
 
         public void clickCrea(object sender, EventArgs e)
@@ -87,6 +174,8 @@ namespace Ticketing
                 cmd.Parameters.Add("@note", MySqlDbType.VarChar).Value = note;
 
                 cmd.ExecuteNonQuery();
+
+                
             }
 
         }
@@ -111,6 +200,7 @@ namespace Ticketing
                 con.Open();
                 string modificaSocieta =
                 "UPDATE societa SET Nome= @nome, Indirizzo= @indirizzo, Citta= @citta, Cap= @cap, Telefono= @telefono, Email= @email, PIva=@piva WHERE PIva = @piva"; //change textbox to piva
+               
                 MySqlCommand cmd = new MySqlCommand(modificaSocieta, con);
 
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
@@ -121,23 +211,27 @@ namespace Ticketing
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
                 cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
                 cmd.Parameters.Add("@note", MySqlDbType.VarChar).Value = note;
-                cmd.ExecuteNonQuery();
+
+                int righeAggiornate = cmd.ExecuteNonQuery();
+
+                if (righeAggiornate > 0)
+                {
+                    Response.Write("<script>alert('Modifica avvenuta con successo')</script>");
+                    
+                } else
+                {
+                    Response.Write("<script>alert('Nessuna Modifica Effettuata')</script>");
+                }
+
             }
+
+            SvuotaCampi();
+            BindRubricaSocieta();
 
         }
         public void clickElimina(object sender, EventArgs e)
         {
-            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-            piva = TPIva.Text.Trim();
-            using (MySqlConnection con = new MySqlConnection(cs))
-            {
-                con.Open();
-                string deleteSocieta = "DELETE FROM `societa` WHERE PIva= @piva";
-                MySqlCommand cmd = new MySqlCommand(deleteSocieta, con);
-
-                cmd.Parameters.Add("@piva", MySqlDbType.VarChar).Value = piva;
-                cmd.ExecuteNonQuery();
-            }
+            SvuotaCampi();
         }
     }
 }

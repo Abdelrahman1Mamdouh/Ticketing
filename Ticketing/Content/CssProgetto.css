@@ -16,11 +16,20 @@
 }
 
 .col-50 {
-    width: 33%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
+.colsocieta-33 {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
 
 .col-100 {
     width: 100%;
@@ -230,6 +239,12 @@ a:hover {
     color: white;
 }
 
+/* PAGINA SOCIETA*/
+/*COLONNE*/
+
+
+
+
 
 /* GRIDVIEW CSS*/
 
@@ -258,8 +273,8 @@ table {
         padding: 5px;
     }
 
-        .gridvieww td:nth-child(5) { /* se è la seconda colonna */
-            max-width: 200px; /* larghezza massima della cella */
+        .gridvieww td:nth-child(5) { /*se è la seconda colonna */
+            max-width: 200px; /*larghezza massima della cella */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -301,8 +316,6 @@ table {
     font-size: 18px;
     color: white;
 }
-
-
 
 /* RESET */
 

@@ -325,6 +325,8 @@
     </Compile>
     <Compile Include="Models\categoria.cs" />
     <Compile Include="Models\email.cs" />
+    <Compile Include="Models\filtri.cs" />
+    <Compile Include="Models\notifica.cs" />
     <Compile Include="Models\societa.cs" />
     <Compile Include="Models\stato.cs" />
     <Compile Include="Models\ruolo.cs" />

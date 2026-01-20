@@ -40,6 +40,22 @@
                     placeholder="Tecnico"
                     Visible="false">
                 </asp:TextBox>
+
+                <asp:DropDownList
+                    ID="DTecnici"
+                    Visible="false"
+                    runat="server"
+                    AutoPostBack="false"
+                    DataTextField="Nome"
+                    DataValueField="ID">
+                </asp:DropDownList>
+
+                <asp:Button ID="BbAssegna"
+                    Text="Assegna il Ticket"
+                    Visible="false"
+                    OnClick="ClickAssegna"
+                    runat="server" />
+
                 <asp:Label ID="LLivello"
                     Text="Livello"
                     runat="server"
@@ -49,6 +65,12 @@
                     Visible="false"
                     placeholder="Livello">
                 </asp:TextBox>
+                <asp:DropDownList ID="DLivello"
+                    Visible="false"
+                    runat="server"
+                    DataTextField="Livello"
+                    DataValueField="ID">
+                </asp:DropDownList>
                 <asp:Label ID="LStato"
                     Text="Stato"
                     runat="server"
@@ -111,9 +133,11 @@
                     DataValueField="ID">
                 </asp:DropDownList>
 
-
-
-
+                <asp:Button ID="BbSalva"
+                    Text="Salva"
+                    Visible="false"
+                    OnClick="ClickSalva"
+                    runat="server" />
 
             </div>
             <div class="col-50">
@@ -140,21 +164,20 @@
 
             </div>
 
-                     <div class="col-50">
+            <div class="col-50">
 
-                <asp:GridView ID="Storico" 
-               runat="server"
-DataKeyNames="ID"
-GridLines="None"
-HorizontalAlign="Center"
-AllowPaging="True"
-PageSize="20"
-CssClass="gridvieww"
-AutoGenerateColumns="True">
-             
-</asp:GridView>
+                <asp:GridView ID="Storico"
+                    runat="server"
+                    DataKeyNames="ID"
+                    GridLines="None"
+                    HorizontalAlign="Center"
+                    AllowPaging="True"
+                    PageSize="20"
+                    CssClass="gridvieww"
+                    AutoGenerateColumns="True">
+                </asp:GridView>
 
-         </div>
+            </div>
 
             <div class="grid-button">
                 <asp:Button ID="BCrea"
@@ -162,14 +185,15 @@ AutoGenerateColumns="True">
                     Visible="false"
                     OnClick="clickCrea"
                     runat="server" />
-               
+
                 <asp:Button ID="BChiudi"
                     Text="Chiudi"
                     Visible="false"
+                    OnClick="Annulla"
                     runat="server" />
             </div>
 
-          
+
 
             <div class="col-100">
 
@@ -187,7 +211,7 @@ AutoGenerateColumns="True">
             </div>
 
             <div class="btn-comunicazione">
-<%--                <asp:Button ID="BStorico"
+                <%--                <asp:Button ID="BStorico"
                     Text="Storico"
                     Visible="false"
                     runat="server"
@@ -195,13 +219,13 @@ AutoGenerateColumns="True">
                 <asp:Button ID="BRisposta"
                     Text="Invia Risposta"
                     Visible="false"
-                    onclick="MandaComunicazione"
+                    OnClick="MandaComunicazione"
                     runat="server" />
                 <asp:Button ID="BAnnulla"
                     Text="Annulla"
                     Visible="false"
-                    onclick="Annulla"
-                        runat="server" />
+                    OnClick="Annulla"
+                    runat="server" />
 
             </div>
         </div>
