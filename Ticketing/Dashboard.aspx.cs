@@ -107,7 +107,7 @@ namespace Ticketing
                 GestioneTicket.LoadDropDownList(QTecnico, DTecnico, "Scegli un tecnico:");
                 GestioneTicket.LoadDropDownList(QSocieta, DSocieta, "Scegli una societa:");
                 GestioneTicket.LoadDropDownList(QStato, DStato, "Scegli un stato:");
-                GestioneTicket.LoadDropDownList(QPriorita, DPriorita, "Scegli una priorit‡:");
+                GestioneTicket.LoadDropDownList(QPriorita, DPriorita, "Scegli una priorit√†:");
                 GestioneTicket.LoadDropDownList(QProdotto, DProdotto, "Scegli un prodotto:");
                 GestioneTicket.LoadDropDownList(QLivello, DLivello, "Scegli una livello:");
             }
