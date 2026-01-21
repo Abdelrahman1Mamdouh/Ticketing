@@ -249,6 +249,15 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TEmail;
 
         /// <summary>
+        /// RfVEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfVEmail;
+
+        /// <summary>
         /// RevEmail control.
         /// </summary>
         /// <remarks>

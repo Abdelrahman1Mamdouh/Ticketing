@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestioneTicket.aspx.cs" Inherits="Ticketing.GestioneTicket" %>
+<%@ Page Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestioneTicket.aspx.cs" Inherits="Ticketing.GestioneTicket" %>
 
 <%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
@@ -87,8 +87,12 @@
                     DataValueField="ID">
                 </asp:DropDownList>
 
-               
 
+                <asp:Button ID="BCambiaStato"
+                    Text="Cambia Stato"
+                    Visible="false"
+                    OnClick="CambiaStato"
+                    runat="server" />
 
                 <asp:Label ID="LProdotto"
                     Visible="false"

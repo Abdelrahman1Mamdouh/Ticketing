@@ -30,7 +30,7 @@ namespace Ticketing
             return table;
         }
 
-        public static DataTable Filtro(string stringa,  string tabella)
+        public static DataTable Filtro(string stringa, string tabella)
         {
             var table = new DataTable();
 
@@ -40,6 +40,25 @@ namespace Ticketing
                 con.Open();
 
                 MySqlCommand command = new MySqlCommand($"SELECT * FROM {tabella} where {stringa} ORDER BY  Creata_a DESC", con);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                adapter.Fill(table);
+
+            }
+
+            return table;
+        }
+        public static DataTable Filtroo(string stringa, string stringa2, string tabella)
+        {
+            var table = new DataTable();
+
+            string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+            using (MySqlConnection con = new MySqlConnection(cs))
+            {
+                con.Open();
+
+                MySqlCommand command = new MySqlCommand($"SELECT * FROM {tabella} WHERE {stringa} OR {stringa2} ORDER BY Creata_a DESC;", con);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
 
