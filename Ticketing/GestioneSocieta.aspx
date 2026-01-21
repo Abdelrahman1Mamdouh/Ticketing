@@ -66,7 +66,7 @@
         </div>
 
         <div class="col-50">
-            <div class="box-gridview">
+            <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
             <asp:GridView ID="rubricaSocieta"
                 runat="server"
                 CellPadding="3"
@@ -74,9 +74,9 @@
                 HorizontalAlign="Center"
                 DataKeyNames="ID"
                 CssClass="gridview"
-                AllowPaging="True"
-                PageSize="20"
-                AutoGenerateColumns="True">
+                PageSize="5"
+                AutoGenerateColumns="True"
+                >
                 <Columns>
                     <asp:TemplateField HeaderText="Opzioni">
                         <ItemTemplate>
