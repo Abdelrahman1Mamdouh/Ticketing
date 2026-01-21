@@ -154,7 +154,7 @@
                                         ToolTip="Apri"
                                         OnClick="clickModifica"
                                         Text="&#xf06e;">
-                     <i class="fa fa-pencil-alt"></i>
+                                        <i class="fa fa-pencil-alt"></i>
                                     </asp:LinkButton>
 
                                     <asp:LinkButton

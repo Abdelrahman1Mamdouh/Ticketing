@@ -60,24 +60,6 @@ namespace Ticketing
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Societa;
 
         /// <summary>
-        /// Controllo LogoUtente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton LogoUtente;
-
-        /// <summary>
-        /// Controllo LogoNotifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton LogoNotifica;
-
-        /// <summary>
         /// Controllo phUserArea.
         /// </summary>
         /// <remarks>
@@ -96,13 +78,31 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.Label lblWelcome;
 
         /// <summary>
+        /// Controllo LogoUtente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton LogoUtente;
+
+        /// <summary>
+        /// Controllo LogoNotifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton LogoNotifica;
+
+        /// <summary>
         /// Controllo btnLogout.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.WebControls.ImageButton btnLogout;
 
         /// <summary>
         /// Controllo MainContent.

@@ -173,13 +173,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\account.png" />
     <Content Include="Asset\dgs-logo.png" />
     <Content Include="Asset\DgsLogo.png" />
     <Content Include="Asset\Logo1.png" />
     <Content Include="Asset\logo2.png" />
     <Content Include="Asset\logo3.png" />
     <Content Include="Asset\Logo4.png" />
+    <Content Include="Asset\logout.png" />
     <Content Include="Asset\user.png" />
+    <Content Include="Asset\user_setting.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
