@@ -11,8 +11,6 @@ namespace Ticketing
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
             bool login = Session["CR"] != null;
             phUserArea.Visible = login;
             LogoNotifica.Visible = login;
@@ -22,6 +20,32 @@ namespace Ticketing
             if (login)
             {
                 utente user = Session["CR"] as utente;
+
+                
+                string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+                using (MySqlConnection con = new MySqlConnection(cs))
+                {
+                    con.Open();
+                    
+                    string sql = "SELECT COUNT(*) FROM Notificas WHERE idDestinatario = @userID AND letturaNotifica = 0";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@userID", user.ID);
+                        int unreadCount = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (unreadCount > 0)
+                        {
+                            
+                            LogoNotifica.ImageUrl = "~/Asset/Logo3.png";
+                        }
+                        else
+                        {
+                            
+                            LogoNotifica.ImageUrl = "~/Asset/Logo1.png";
+                        }
+                    }
+                }
+                
                 switch (user.Ruolo)
                 {
                     case 1:
@@ -44,7 +68,6 @@ namespace Ticketing
 
 
                 }
-                
                 lblWelcome.Text = "Welcome, " + user.Nome + " " + user.Cognome;
             }
         }

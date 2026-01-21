@@ -42,7 +42,7 @@ namespace Ticketing
 
                         Alltick.Visible = true;
                         Mytick.Visible = true;
-
+                        BCrea.Visible = true;
                         break;
 
                     case 3:
@@ -54,6 +54,7 @@ namespace Ticketing
                         DSocieta.Visible = true;
                         DProdotto.Visible = true;
                         BVedi.Visible = true;
+                        BCrea.Visible = true;
                         break;
 
                     case 4:
@@ -62,6 +63,7 @@ namespace Ticketing
                         DStato.Visible = true;
                         DPriorita.Visible = true;
                         BVedi.Visible = true;
+                        BCrea.Visible = true;
                         break;
 
                 }
@@ -90,9 +92,9 @@ namespace Ticketing
                     }
                 }
                 Usocieta = cuser[1];
-                Uruolo = cuser[1];
+                Uruolo = cuser[0];
                 Ulivello = cuser[2];
-                Udipartimento = cuser[1];
+                Udipartimento = cuser[3];
             }
             else
             {
@@ -101,18 +103,16 @@ namespace Ticketing
 
             if (!IsPostBack)
             {
-                var table1 = new DataTable();
-                table1 = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
-                BindTickets(table1);
+                BindDefaultTicketsByRole();
+
                 GestioneTicket.LoadDropDownList(QTecnico, DTecnico, "Scegli un tecnico:");
                 GestioneTicket.LoadDropDownList(QSocieta, DSocieta, "Scegli una societa:");
                 GestioneTicket.LoadDropDownList(QStato, DStato, "Scegli un stato:");
-                GestioneTicket.LoadDropDownList(QPriorita, DPriorita, "Scegli una priorit‡:");
+                GestioneTicket.LoadDropDownList(QPriorita, DPriorita, "Scegli una priorit√†:");
                 GestioneTicket.LoadDropDownList(QProdotto, DProdotto, "Scegli un prodotto:");
                 GestioneTicket.LoadDropDownList(QLivello, DLivello, "Scegli una livello:");
             }
         }
-
         private void BindTickets(DataTable table)
         {
             Tickets.DataSource = table;
@@ -177,38 +177,44 @@ namespace Ticketing
         protected void ClickDeleteTicket(object sender, EventArgs e)
         {
 
-
         }
 
         // filtri Gridview
 
         protected void AllTicket(object sender, EventArgs e)
         {
+            BindDefaultTicketsByRole();
+        }
+        private void BindDefaultTicketsByRole()
+        {
+            DataTable table;
+
             switch (user.Ruolo)
             {
                 case 1:
-                    var table1 = new DataTable();
-                    table1 = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
-                    BindTickets(table1);
+                    table = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
                     break;
+
                 case 2:
-                    var table2 = new DataTable();
-                    table2 = filtri.Filtro($" Livello = \"{Ulivello}\"", "tikdetails");
-                    BindTickets(table2);
+                    table = filtri.Filtro($"(Livello = \"{Ulivello}\" OR Livello IS NULL)", "tikdetails");
                     break;
+
                 case 3:
-                    var table3 = new DataTable();
-                    table3 = filtri.Filtro("tikdetails");
-                    BindTickets(table3);
+                    table = filtri.Filtro("tikdetails");
                     break;
+
                 case 4:
-                    var table4 = new DataTable();
-                    table4 = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
-                    BindTickets(table4);
+                    table = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
+                    break;
+
+                default:
+                    table = filtri.Filtro($"Societa = \"{Usocieta}\"", "tikdetails");
                     break;
             }
 
+            BindTickets(table);
         }
+
         protected void MyTicket(object sender, EventArgs e)
         {
 
@@ -231,7 +237,6 @@ namespace Ticketing
 
         protected void MixTicket(object sender, EventArgs e)
         {
-
             ArrayList lista = new ArrayList();
 
             string Tecnico = DTecnico.SelectedValue;
@@ -268,8 +273,12 @@ namespace Ticketing
             }
             if (Priorita != "")
             {
-
                 lista.Add($"Priorita = \"{Priorita}\"");
+            }
+            if (lista.Count == 0)
+            {
+                BindDefaultTicketsByRole();
+                return;
             }
 
             string search = "";
@@ -291,6 +300,7 @@ namespace Ticketing
             var table1 = new DataTable();
             table1 = filtri.Filtro(search, "tikdetails");
             BindTickets(table1);
+
         }
     }
 }
