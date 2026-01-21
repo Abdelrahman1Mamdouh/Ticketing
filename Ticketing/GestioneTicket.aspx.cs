@@ -359,7 +359,7 @@ namespace Ticketing
                 BRisposta.Visible = true;
                 BAnnulla.Visible = true;
 
-                LoadDropDownList("SELECT ID,Stato FROM stato;", DStato, "Scegli lo stato");
+
 
             }
         }
@@ -404,11 +404,6 @@ namespace Ticketing
             LComunicazione.Visible = true;
             TComunicazione.Visible = true;
 
-            if (user.Ruolo == 3)
-            {
-                DTecnici.Visible = true;
-            }
-
             BbAssegna.Visible = true;
             BbSalva.Visible = true;
             DLivello.Enabled = true;
@@ -419,15 +414,87 @@ namespace Ticketing
             BAnnulla.Visible = true;
             BChiudi.Visible = true;
 
-            if (!tik[1].IsNullOrWhiteSpace() && user.Ruolo != 3)
-            {
-                BbAssegna.Visible = false;
-            }
-            else
+
+
+            string currentFullName = (user.Nome + " " + user.Cognome).Trim();
+            string ticketTecnicoName = (tik[1] ?? "").Trim();
+
+            // ADMIN 
+            if (user.Ruolo == 3)
             {
                 BbAssegna.Visible = true;
-                DStato.Visible = true;
+                DTecnici.Visible = true;
+                BbSalva.Visible = true;
+                BCambiaStato.Visible = true;
+                DLivello.Enabled = true;
+                DPriorita.Enabled = true;
+                DStato.Enabled = true;
+
+                if (ticketTecnicoName.ToLower() == currentFullName.ToLower())
+                {
+                    LComunicazione.Visible = true;
+                    TComunicazione.Visible = true;
+                    BRisposta.Visible = true;
+                    BAnnulla.Visible = true;
+                }
+                else
+                {
+                    LComunicazione.Visible = false;
+                    TComunicazione.Visible = false;
+                    BRisposta.Visible = false;
+                    BAnnulla.Visible = false;
+                }
             }
+            //TECNICO ASSEGNATO A SE STESSO
+            else if (ticketTecnicoName != "" &&
+                     ticketTecnicoName.ToLower() == currentFullName.ToLower())
+            {
+                BbAssegna.Visible = false;
+                BbSalva.Visible = true;
+                BCambiaStato.Visible = true;
+                DLivello.Enabled = true;
+                DPriorita.Enabled = true;
+                DStato.Enabled = true;
+
+                LComunicazione.Visible = true;
+                TComunicazione.Visible = true;
+                BRisposta.Visible = true;
+                BAnnulla.Visible = true;
+            }//TECNICO NON ASSEGNATO
+            else if (ticketTecnicoName == "")
+            {
+                BbAssegna.Visible = true;
+                BbSalva.Visible = false;
+                BCambiaStato.Visible = false;
+                DLivello.Enabled = false;
+                DPriorita.Enabled = false;
+                DStato.Enabled = false;
+
+                LComunicazione.Visible = false;
+                TComunicazione.Visible = false;
+                BRisposta.Visible = false;
+
+                BAnnulla.Visible = false;
+
+            }
+            //Altro TECNICO ASSEGNATO
+            else
+            {
+                BbAssegna.Visible = false;
+
+                BbSalva.Visible = false;
+                BCambiaStato.Visible = false;
+                DLivello.Enabled = false;
+                DPriorita.Enabled = false;
+                DStato.Enabled = false;
+
+                LComunicazione.Visible = false;
+                TComunicazione.Visible = false;
+                BRisposta.Visible = false;
+
+                BAnnulla.Visible = false;
+            }
+
 
             if (!IsPostBack)
             {
@@ -472,8 +539,8 @@ namespace Ticketing
                     using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
                     {
                         cmd.Parameters.Add("@Tecnico", MySqlDbType.VarChar).Value = user.ID;
-                        cmd.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = currentTicket.ID;
-                        cmd.Parameters.AddWithValue("@stato", MySqlDbType.Int32).Value = 4;
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
+                        cmd.Parameters.Add("@stato", MySqlDbType.Int32).Value = 4;
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -496,8 +563,22 @@ namespace Ticketing
                     using (MySqlCommand cmd = new MySqlCommand(updateLivelloPriorita, con))
                     {
                         cmd.Parameters.Add("@livello", MySqlDbType.Int32).Value = livello;
-                        cmd.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = currentTicket.ID;
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
                         cmd.ExecuteNonQuery();
+                    }
+                }
+                if(user.Ruolo == 2)
+                {
+                    using (MySqlConnection con = new MySqlConnection(cs))
+                    {
+                        con.Open();
+                        string resetTecnico = $"UPDATE ticket SET Tecnico=@tecnico WHERE ID=@id";
+                        using (MySqlCommand cmd = new MySqlCommand(resetTecnico, con))
+                        {
+                            cmd.Parameters.Add("@tecnico", MySqlDbType.Int32).Value = null;
+                            cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
                 Response.Write("<script>alert('Livello is updated')</script>");
@@ -511,7 +592,7 @@ namespace Ticketing
                     using (MySqlCommand cmd = new MySqlCommand(updateLivelloPriorita, con))
                     {
                         cmd.Parameters.Add("@priorita", MySqlDbType.Int32).Value = priorita;
-                        cmd.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = currentTicket.ID;
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -527,7 +608,7 @@ namespace Ticketing
                     {
                         cmd.Parameters.Add("@livello", MySqlDbType.Int32).Value = livello;
                         cmd.Parameters.Add("@priorita", MySqlDbType.Int32).Value = priorita;
-                        cmd.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = currentTicket.ID;
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
                         cmd.ExecuteNonQuery();
                     }
                 }
