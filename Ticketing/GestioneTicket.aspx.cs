@@ -48,6 +48,26 @@ namespace Ticketing
 
             if (!IsPostBack)
             {
+                // --- START NOTIFICATION UPDATE ---
+                // If we are viewing a ticket, mark notifications for this ticket/user as read
+                if (hasTicketId && user != null)
+                {
+                    string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+                    using (MySqlConnection con = new MySqlConnection(cs))
+                    {
+                        con.Open();
+                        // Update notifications for THIS ticket and THIS user email
+                        string sql = "UPDATE storico SET letturaNotifica = 1 WHERE Ticket = @tickId AND nomeDestinatario = @userEmail";
+                        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                        {
+                            cmd.Parameters.AddWithValue("@tickId", ticketId);
+                            cmd.Parameters.AddWithValue("@userEmail", user.Email);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+                // --- END NOTIFICATION UPDATE ---
+
                 string[] tik = new string[9];
 
                 if (Session["ticket"] == null)

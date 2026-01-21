@@ -1,5 +1,5 @@
 ﻿
-    .grid {
+    /*.grid {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -56,9 +56,9 @@
         margin-bottom: 10px;
         width: 80%;
         height: 30px;
-    }
+    }*/
     /* BOTTONI */
-    [id*="B"] {
+    /*[id*="B"] {
         width: 120px;
         height: 30px;
         background-color: black;
@@ -70,9 +70,9 @@
         [id*="B"]:hover {
             background-color: white;
             color: black;
-        }
+        }*/
     /* RESPONSIVE */
-    @media (max-width: 800px) {
+    /*@media (max-width: 800px) {
         .col-50 {
             width: 100%;
         }
@@ -88,5 +88,5 @@
         input[type="text"] {
             width: 100%;
         }
-    }
+    }*/
 

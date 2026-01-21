@@ -1,12 +1,12 @@
-﻿<%@ Page Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestioneTicket.aspx.cs" Inherits="Ticketing.GestioneTicket" %>
+<%@ Page Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GestioneTicket.aspx.cs" Inherits="Ticketing.GestioneTicket" %>
 
 <%@ Register Src="~/Controls/NotifichePopup.ascx" TagPrefix="uc" TagName="NotifichePopup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
-    <div>
-        <div class="grid">
-            <div class="col-50">
+    
+        <div class="grid_system">
+            <div class="col-33">
 
                 <asp:Label ID="LId"
                     Text="Id"
@@ -54,7 +54,8 @@
                     Text="Assegna il Ticket"
                     Visible="false"
                     OnClick="ClickAssegna"
-                    runat="server" />
+                    runat="server"
+                    class="btn-viola"/>
 
                 <asp:Label ID="LLivello"
                     Text="Livello"
@@ -115,7 +116,7 @@
                     DataTextField="Categoria"
                     DataValueField="ID">
                 </asp:DropDownList>
-
+               
 
 
                 <div>
@@ -141,10 +142,13 @@
                     Text="Salva"
                     Visible="false"
                     OnClick="ClickSalva"
-                    runat="server" />
+                    runat="server" 
+                    class="btn-viola"/>
 
             </div>
-            <div class="col-50">
+
+
+            <div class="col-33">
                 <asp:Label ID="LOggetto"
                     Text="Oggetto"
                     Visible="false"
@@ -168,71 +172,80 @@
 
             </div>
 
-            <div class="col-50">
 
-                <asp:GridView ID="Storico"
-                    runat="server"
-                    DataKeyNames="ID"
-                    GridLines="None"
-                    HorizontalAlign="Center"
-                    AllowPaging="True"
-                    PageSize="20"
-                    CssClass="gridvieww"
-                    AutoGenerateColumns="True">
-                </asp:GridView>
+
+            <div class="col-33">
+                <div class="box-gridview">
+                    <asp:GridView ID="Storico"
+                        runat="server"
+                        DataKeyNames="ID"
+                        GridLines="None"
+                        HorizontalAlign="Center"
+                        AllowPaging="True"
+                        PageSize="20"
+                        CssClass="gridview"
+                        AutoGenerateColumns="True">
+                    </asp:GridView>
+                </div>
+                
 
             </div>
 
-            <div class="grid-button">
+            <div class="box-tasto-crea">
                 <asp:Button ID="BCrea"
                     Text="Crea"
                     Visible="false"
                     OnClick="clickCrea"
-                    runat="server" />
+                    runat="server"
+                    class="btn-viola" />
 
                 <asp:Button ID="BChiudi"
                     Text="Chiudi"
                     Visible="false"
                     OnClick="Annulla"
-                    runat="server" />
-            </div>
-
-
-
-            <div class="col-100">
-
-                <asp:Label ID="LComunicazione"
-                    Text="Comunicazione"
-                    Visible="false"
-                    runat="server" />
-                <asp:TextBox ID="TComunicazione"
                     runat="server"
-                    Visible="false"
-                    placeholder="Comunicazione"
-                    ClientIDMode="Static"
-                    TextMode="MultiLine">
-                </asp:TextBox>
+                    class="btn-modifica" />
             </div>
 
-            <div class="btn-comunicazione">
-                <%--                <asp:Button ID="BStorico"
-                    Text="Storico"
-                    Visible="false"
-                    runat="server"
-                    OnClick="Storico" />--%>
-                <asp:Button ID="BRisposta"
-                    Text="Invia Risposta"
-                    Visible="false"
-                    OnClick="MandaComunicazione"
-                    runat="server" />
-                <asp:Button ID="BAnnulla"
-                    Text="Annulla"
-                    Visible="false"
-                    OnClick="Annulla"
-                    runat="server" />
 
+            <div class="box_comunicazione mt-2">
+                <div class="box-comunicazione-100">
+                    <asp:Label ID="LComunicazione"
+                        Text="Comunicazione"
+                        Visible="false"
+                        runat="server" />
+                    <asp:TextBox ID="TComunicazione"
+                        runat="server"
+                        Visible="false"
+                        placeholder="Comunicazione"
+                        ClientIDMode="Static"
+                        TextMode="MultiLine">
+                    </asp:TextBox>
+                </div>
+
+                <div class="box-100 mt-2">
+                    <%--                <asp:Button ID="BStorico"
+         Text="Storico"
+         Visible="false"
+         runat="server"
+         OnClick="Storico" />--%>
+                    <asp:Button ID="BRisposta"
+                        Text="Invia Risposta"
+                        Visible="false"
+                        OnClick="MandaComunicazione"
+                        runat="server" 
+                        class="btn-viola"/>
+                    <asp:Button ID="BAnnulla"
+                        Text="Annulla"
+                        Visible="false"
+                        OnClick="Annulla"
+                        runat="server" 
+                        class="btn-annulla"/>
+
+                </div>
             </div>
+           
         </div>
-    </div>
+    
     <uc:NotifichePopup ID="NotifichePopup" runat="server" />
 </asp:Content>

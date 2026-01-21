@@ -15,12 +15,60 @@ namespace Ticketing
             phUserArea.Visible = login;
             LogoNotifica.Visible = login;
             LogoUtente.Visible = login;
-            lblWelcome.Visible = login;
-
+            Navigation.Visible = login;
 
             if (login)
             {
                 utente user = Session["CR"] as utente;
+
+                
+                string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
+                using (MySqlConnection con = new MySqlConnection(cs))
+                {
+                    con.Open();
+                    
+                    string sql = "SELECT COUNT(*) FROM Notificas WHERE idDestinatario = @userID AND letturaNotifica = 0";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@userID", user.ID);
+                        int unreadCount = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (unreadCount > 0)
+                        {
+                            
+                            LogoNotifica.ImageUrl = "~/Asset/Logo3.png";
+                        }
+                        else
+                        {
+                            
+                            LogoNotifica.ImageUrl = "~/Asset/Logo1.png";
+                        }
+                    }
+                }
+                
+                switch (user.Ruolo)
+                {
+                    case 1:
+                        Utenti.Visible = false;
+                        Societa.Visible = false;
+                        break;
+
+                    case 2:
+                        Societa.Visible = false;
+                        break;
+
+                    case 3:
+
+                        Societa.Visible = true;
+                        break;
+
+                    case 4:
+                        Societa.Visible = false;
+                        break;
+
+
+                }
+                lblWelcome.Text = "Welcome, " + user.Nome + " " + user.Cognome;
             }
         }
         protected void BtnLogout_Click(object sender, EventArgs e)
