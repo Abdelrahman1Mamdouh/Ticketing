@@ -64,7 +64,7 @@
     <div class="col-100">
         <div class="grid">
             <div style="width: 100%; height: 80%; overflow-x: scroll;">
-                <asp:GridView ID="Tickets"
+                <%--<asp:GridView ID="Ticketss"
                     runat="server"
                     DataKeyNames="ID"
                     GridLines="None"
@@ -99,12 +99,12 @@
                                     </asp:LinkButton>
 
                                     <%--<asp:Button ID="BtnElimina" runat="server" CssClass="iconb elimina" ToolTip="Elimina" Text="&#xf1f8;" />--%>
-                                </div>
+                             <%--   </div>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                </asp:GridView>
-            
+                </asp:GridView>--%>
+           
         </div>
     
 

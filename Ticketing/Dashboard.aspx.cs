@@ -90,9 +90,9 @@ namespace Ticketing
                     }
                 }
                 Usocieta = cuser[1];
-                Uruolo = cuser[1];
+                Uruolo = cuser[0];
                 Ulivello = cuser[2];
-                Udipartimento = cuser[1];
+                Udipartimento = cuser[3];
             }
             else
             {
