@@ -2,75 +2,68 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="col-100"><
+    <div class="col-100">
+        
     
-<div class="grid-button">
-    <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" />
-    <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" />
+        <div class="grid-button">
+            <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" />
+            <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" />
 
 
-    <asp:DropDownList ID="DTecnico"
-        Visible="false"
-        runat="server"
-        DataTextField="Tecnico"
-        
-        DataValueField="Tecnico">
-    </asp:DropDownList>
+            <asp:DropDownList ID="DTecnico"
+                Visible="false"
+                runat="server"
+                DataTextField="Tecnico"
+                DataValueField="Tecnico">
+            </asp:DropDownList>
 
 
-    <asp:DropDownList ID="DLivello"
-        Visible="false"
-        runat="server"
-        DataTextField="Livello"
-        
-        DataValueField="Livello">
-    </asp:DropDownList>
+            <asp:DropDownList ID="DLivello"
+                Visible="false"
+                runat="server"
+                DataTextField="Livello"
+                DataValueField="Livello">
+            </asp:DropDownList>
 
 
-    <asp:DropDownList ID="DStato"
-        Visible="false"
-        runat="server"
-        DataTextField="Stato"
-        
-        DataValueField="Stato">
-    </asp:DropDownList>
-
-  
-    <asp:DropDownList ID="DPriorita"
-        Visible="false"
-        runat="server"
-        DataTextField="Priorita"
-        
-        DataValueField="Priorita">
-    </asp:DropDownList>
+            <asp:DropDownList ID="DStato"
+                Visible="false"
+                runat="server"
+                DataTextField="Stato"
+                DataValueField="Stato">
+            </asp:DropDownList>
 
 
-    <asp:DropDownList ID="DSocieta"
-        Visible="false"
-        runat="server"
-        DataTextField="Societa"
-        
-        DataValueField="Societa">
-    </asp:DropDownList>
-
-   
-    <asp:DropDownList ID="DProdotto"
-        Visible="false"
-        runat="server"        
-        DataTextField="Prodotto"
-        DataValueField="Prodotto">
-    </asp:DropDownList>
-    <asp:Button ID="BVedi" Text="Filtri" OnClick="MixTicket" Visible="false" runat="server" />
+            <asp:DropDownList ID="DPriorita"
+                Visible="false"
+                runat="server"
+                DataTextField="Priorita"
+                DataValueField="Priorita">
+            </asp:DropDownList>
 
 
+            <asp:DropDownList ID="DSocieta"
+                Visible="false"
+                runat="server"
+                DataTextField="Societa"
+                DataValueField="Societa">
+            </asp:DropDownList>
 
-</div>
 
-<div class="grid-button ">
-    <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" />
+            <asp:DropDownList ID="DProdotto"
+                Visible="false"
+                runat="server"
+                DataTextField="Prodotto"
+                DataValueField="Prodotto">
+            </asp:DropDownList>
+            <asp:Button ID="BVedi" Text="Filtri" OnClick="MixTicket" Visible="false" runat="server" />
 
-</div>
         </div>
+
+        <div class="grid-button ">
+            <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" />
+        </div>
+    </div>
 
 
     <div class="col-100">
@@ -82,7 +75,7 @@
                     GridLines="None"
                     HorizontalAlign="Center"
                     AllowPaging="True"
-                    PageSize="20"
+                    PageSize="100"
                     CssClass="gridvieww"
                     AutoGenerateColumns="True">
 
@@ -96,7 +89,6 @@
                                         CssClass="iconb"
                                         ToolTip="Apri"
                                         OnClick="ClickSelectTicket"
-
                                         Text="&#xf06e;">
                                         <i class="fa fa-pencil-alt"></i>
                                     </asp:LinkButton>
@@ -116,7 +108,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-            
+                </div>
+            </div>
         </div>
-    </div>
 </asp:Content>

@@ -87,7 +87,11 @@
                 </asp:DropDownList>
 
 
-
+                <asp:Button ID="BCambiaStato"
+                    Text="Cambia Stato"
+                    Visible="false"
+                    OnClick="CambiaStato"
+                    runat="server" />
 
                 <asp:Label ID="LProdotto"
                     Visible="false"
