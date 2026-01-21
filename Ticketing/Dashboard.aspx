@@ -70,7 +70,7 @@
                     GridLines="None"
                     HorizontalAlign="Center"
                     AllowPaging="True"
-                    PageSize="20"
+                    PageSize="100"
                     CssClass="gridvieww"
                     AutoGenerateColumns="True">
 
