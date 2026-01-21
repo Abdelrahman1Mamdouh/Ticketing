@@ -30,13 +30,31 @@ namespace Ticketing
                 if (user != null)
                 {
                     string welcomeMessage = $"Benvenuto,{user.Nome} {user.Cognome}!";
+                   
                 }
             }
             else
             {
                 Response.Redirect("Login.aspx");
             }
+            if (!IsPostBack) 
+            { 
+                CaricaDati(user); 
+            }
+
         }
+
+        private void CaricaDati(utente user)
+        {
+            TNome.Text = user.Nome;
+            TCognome.Text = user.Cognome;
+            TTelefono.Text = user.Telefono;
+            TEmail.Text = user.Email;  
+        }
+
+     
+
+
         public void clickSalvaModifiche(object sender, EventArgs e)
         {
             String cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -45,20 +63,27 @@ namespace Ticketing
             cognome = TCognome.Text;
             telefono = TTelefono.Text;
             email = TEmail.Text;
-            password = TPassword.Text;
 
             using (MySqlConnection con = new MySqlConnection(cs)) 
             { 
                 con.Open(); 
-                string Modifica = $"UPDATE utenti SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Password= @password, Email= @email WHERE (Email=> @email)";
+
+                string Modifica = $"UPDATE utente SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Email= @email WHERE ID= @id";
                 MySqlCommand cmd = new MySqlCommand(Modifica, con);
 
+                utente user = Session["CR"] as utente;
+
+                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = user.ID;
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
                 cmd.Parameters.Add("@cognome", MySqlDbType.VarChar).Value = cognome;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value= telefono;
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value= email;
-                cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value= password;
+               
                 cmd.ExecuteNonQuery();
+
+
+
+             
 
             }
 

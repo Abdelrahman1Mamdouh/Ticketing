@@ -79,16 +79,16 @@
 
 
         <div class="grid-view">
-            <div class="box-gridview">
+            <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
                 <asp:GridView ID="rubricaUtenti"
                     runat="server"
                     CellPadding="3"
                     GridLines="None"
                     HorizontalAlign="Center"
                     DataKeyNames="ID"
-                    AllowPaging="True"
+                    
                     CssClass="gridview"
-                    PageSize="20">
+                    >
 
                     <Columns>
                         <asp:TemplateField HeaderText="Opzioni">
