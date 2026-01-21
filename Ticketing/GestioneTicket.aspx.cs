@@ -94,7 +94,6 @@ namespace Ticketing
                         LoadStorico(ticketId);
                     }
 
-
                     Session["ticket"] = null;
 
                 }
@@ -168,7 +167,7 @@ namespace Ticketing
                 Response.Write("MySQL Error " + ex.Number + ": " + ex.Message);
             }
 
-            Response.Write("<script>alert('Fatto')</script>");
+            Response.Write("<script>alert('Il Ticket e' creata')</script>");
         }
         // Send a communication message
         protected void MandaComunicazione(object sender, EventArgs e)
@@ -302,7 +301,7 @@ namespace Ticketing
         }
         protected void Annulla(object sender, EventArgs e)
         {
-            Response.Redirect("Dashboard.aspx");
+            TComunicazione.Text = "";
         }
         //mostra campi cliente
         private void CampiCliente(string[] tik)
@@ -358,8 +357,6 @@ namespace Ticketing
                 BChiudi.Visible = true;
                 BRisposta.Visible = true;
                 BAnnulla.Visible = true;
-
-
 
             }
         }
@@ -615,6 +612,7 @@ namespace Ticketing
                 Response.Write("<script>alert('priorita&livello are updated')</script>");
             }
         }
+        //Cambia stato ticket
         protected void CambiaStato(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -632,6 +630,7 @@ namespace Ticketing
             string statoTesto = DStato.SelectedItem.Text;
             Response.Write($"<script>alert('Stato ticket aggiornato a: {statoTesto}')</script>");
         }
+        // Set UI to read-only for closed tickets
         private void SetTicketReadOnlyUI()
         {
             BCambiaStato.Visible = false;
@@ -652,6 +651,7 @@ namespace Ticketing
             TComunicazione.Visible = false;
             LComunicazione.Visible = false;
         }
+        // Load stati into dropdown from database
         private void LoadStatiFromDb()
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -689,6 +689,7 @@ namespace Ticketing
                 }
             }
         }
+        // Check if a ticket is closed
         private bool IsTicketClosed(int ticketId)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;

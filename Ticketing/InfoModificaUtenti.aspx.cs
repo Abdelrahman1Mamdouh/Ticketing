@@ -1,13 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Bcpg;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Ticketing.Models;
 
 namespace Ticketing
@@ -19,10 +12,10 @@ namespace Ticketing
         private String telefono;
         private String email;
         private String password;
-
+        utente user ;
         protected void Page_Load(object sender, EventArgs e)
         {
-            utente user = null;
+            user = null;
             //user's data fetch from session
             if (Session["CR"] != null)
             {
@@ -50,9 +43,10 @@ namespace Ticketing
             using (MySqlConnection con = new MySqlConnection(cs)) 
             { 
                 con.Open(); 
-                string Modifica = $"UPDATE utenti SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Password= @password, Email= @email WHERE (Email=> @email)";
+                string Modifica = $"UPDATE utente SET Nome= @nome, Cognome= @cognome, Telefono= @telefono, Pass= @password, Email= @email WHERE ID =@id";
                 MySqlCommand cmd = new MySqlCommand(Modifica, con);
 
+                cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = user.ID ;
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
                 cmd.Parameters.Add("@cognome", MySqlDbType.VarChar).Value = cognome;
                 cmd.Parameters.Add("@telefono", MySqlDbType.VarChar).Value= telefono;
