@@ -81,10 +81,6 @@ namespace Ticketing
                
                 cmd.ExecuteNonQuery();
 
-
-
-             
-
             }
 
         }
