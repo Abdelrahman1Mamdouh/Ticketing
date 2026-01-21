@@ -1,4 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
+using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
@@ -404,13 +404,17 @@ namespace Ticketing
             LComunicazione.Visible = true;
             TComunicazione.Visible = true;
 
-            DTecnici.Visible = true;
+            if (user.Ruolo == 3)
+            {
+                DTecnici.Visible = true;
+            }
+
             BbAssegna.Visible = true;
             BbSalva.Visible = true;
             DLivello.Enabled = true;
             DPriorita.Enabled = true;
             DStato.Visible = true;
-        
+
             BRisposta.Visible = true;
             BAnnulla.Visible = true;
             BChiudi.Visible = true;
