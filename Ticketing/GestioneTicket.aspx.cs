@@ -36,10 +36,8 @@ namespace Ticketing
 
             user = Session["CR"] as utente;
 
-            // ✅ ticketId is OPTIONAL: only exists in details mode
             bool hasTicketId = int.TryParse(Request.QueryString["id"], out int ticketId);
-
-            // If we have an id -> we are opening an existing ticket
+            
             if (hasTicketId)
             {
                 Tid.Text = ticketId.ToString();
@@ -60,8 +58,8 @@ namespace Ticketing
                         string sql = "UPDATE storico SET letturaNotifica = 1 WHERE Ticket = @tickId AND nomeDestinatario = @userEmail";
                         using (MySqlCommand cmd = new MySqlCommand(sql, con))
                         {
-                            cmd.Parameters.AddWithValue("@tickId", ticketId);
-                            cmd.Parameters.AddWithValue("@userEmail", user.Email);
+                            cmd.Parameters.Add("@tickId",MySqlDbType.Int32).Value= ticketId;
+                            cmd.Parameters.Add("@userEmail",MySqlDbType.VarChar).Value = user.Email;
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -77,13 +75,13 @@ namespace Ticketing
                 }
                 else
                 {
-                    // DETAILS MODE (opened from dashboard)
+                    //opened from dashboard
                     tik = Session["ticket"] as string[];
 
                     if (user?.Societa != 0) CampiCliente(tik);
                     else CampiTecnico(tik);
 
-                    // Load storico ONLY if we have a valid ticketId
+                    
                     if (hasTicketId && IsTicketClosed(ticketId))
                     {
                         LoadStorico(ticketId);
@@ -93,7 +91,6 @@ namespace Ticketing
                     {
                         LoadStorico(ticketId);
                     }
-
 
                     Session["ticket"] = null;
 
@@ -129,7 +126,7 @@ namespace Ticketing
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-                // Get values from form
+                
                 prodotto = DProdotto.SelectedValue;
                 categoria = DCategoria.SelectedValue;
                 oggetto = TOggetto.Text;
@@ -139,13 +136,13 @@ namespace Ticketing
                 {
                     con.Open();
 
-                    // Insert new ticket
+                    
                     string nuovaTicket = @"
                         INSERT INTO ticket (Cliente, Prodotto, Categoria, Stato, Titolo, Descrizione) 
                         VALUES (@cliente, @prodotto, @categoria, @stato, @oggetto, @messaggio);";
 
                     MySqlCommand cmd = new MySqlCommand(nuovaTicket, con);
-                    // ✅ Use parameters to prevent SQL injection
+                    
                     cmd.Parameters.Add("@cliente", MySqlDbType.Int32).Value = user.ID;
                     cmd.Parameters.Add("@prodotto", MySqlDbType.Int32).Value = prodotto;
                     cmd.Parameters.Add("@categoria", MySqlDbType.Int32).Value = categoria;
@@ -168,21 +165,19 @@ namespace Ticketing
                 Response.Write("MySQL Error " + ex.Number + ": " + ex.Message);
             }
 
-            Response.Write("<script>alert('Fatto')</script>");
+            Response.Write("<script>alert('Il Ticket e' creata')</script>");
         }
         // Send a communication message
         protected void MandaComunicazione(object sender, EventArgs e)
         {
             string testo = TComunicazione.Text;
 
-            // ✅ (Fix #3) safer parse
             if (!int.TryParse(Tid.Text, out int ticketId))
             {
                 Response.Write("<script>alert('TicketID non valido')</script>");
                 return;
             }
 
-            // ✅ (Fix #4) If tecnico not assigned OR user not in ticket -> null
             string destinatario = GetAltroEmail(ticketId, user.ID);
 
             if (string.IsNullOrEmpty(destinatario))
@@ -205,8 +200,7 @@ namespace Ticketing
             {
                 con.Open();
 
-                // ✅ (Fix #1) WHERE TicketID (not Ticket)
-                // Keep Oggetto if your storico has it; if not, remove it from SELECT.
+                
                 var cmd = new MySqlCommand(@"
                     SELECT ID, nomeMittente, nomeDestinatario, Oggetto, Messaggio
                     FROM storico
@@ -241,8 +235,6 @@ namespace Ticketing
                 cmd.Parameters.Add("@Mittente", MySqlDbType.VarChar).Value = mittente;
                 cmd.Parameters.Add("@Destinatario", MySqlDbType.VarChar).Value = destinatario;
                 cmd.Parameters.Add("@letturaNotifica", MySqlDbType.Int32).Value = 0;
-
-                // ✅ (Fix #5) use TEXT (messages can be long)
                 cmd.Parameters.Add("@Messaggio", MySqlDbType.Text).Value = messaggio ?? "";
 
                 cmd.ExecuteNonQuery();
@@ -302,7 +294,7 @@ namespace Ticketing
         }
         protected void Annulla(object sender, EventArgs e)
         {
-            Response.Redirect("Dashboard.aspx");
+            TComunicazione.Text = "";
         }
         //mostra campi cliente
         private void CampiCliente(string[] tik)
@@ -358,8 +350,6 @@ namespace Ticketing
                 BChiudi.Visible = true;
                 BRisposta.Visible = true;
                 BAnnulla.Visible = true;
-
-
 
             }
         }
@@ -615,6 +605,7 @@ namespace Ticketing
                 Response.Write("<script>alert('priorita&livello are updated')</script>");
             }
         }
+        //Cambia stato ticket
         protected void CambiaStato(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -632,6 +623,7 @@ namespace Ticketing
             string statoTesto = DStato.SelectedItem.Text;
             Response.Write($"<script>alert('Stato ticket aggiornato a: {statoTesto}')</script>");
         }
+        // Set UI to read-only for closed tickets
         private void SetTicketReadOnlyUI()
         {
             BCambiaStato.Visible = false;
@@ -652,6 +644,7 @@ namespace Ticketing
             TComunicazione.Visible = false;
             LComunicazione.Visible = false;
         }
+        // Load stati into dropdown from database
         private void LoadStatiFromDb()
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -689,6 +682,7 @@ namespace Ticketing
                 }
             }
         }
+        // Check if a ticket is closed
         private bool IsTicketClosed(int ticketId)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;

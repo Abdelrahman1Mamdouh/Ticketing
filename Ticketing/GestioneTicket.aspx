@@ -175,14 +175,14 @@
 
 
             <div class="col-33">
-                <div class="box-gridview">
+                <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
                     <asp:GridView ID="Storico"
                         runat="server"
                         DataKeyNames="ID"
                         GridLines="None"
                         HorizontalAlign="Center"
-                        AllowPaging="True"
-                        PageSize="20"
+                        
+                        
                         CssClass="gridview"
                         AutoGenerateColumns="True">
                     </asp:GridView>

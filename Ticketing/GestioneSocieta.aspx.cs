@@ -39,6 +39,7 @@ namespace Ticketing
             {
                 Response.Redirect("Login.aspx");
             }
+
             BindRubricaSocieta();
             
         }
@@ -175,7 +176,10 @@ namespace Ticketing
 
                 cmd.ExecuteNonQuery();
 
-                
+                SvuotaCampi();
+                BindRubricaSocieta();
+
+
             }
 
         }

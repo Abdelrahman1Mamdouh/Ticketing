@@ -109,14 +109,13 @@
     
 
 
-    <div class="box-gridview">
+    <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
         <asp:GridView ID="Tickets"
             runat="server"
             DataKeyNames="ID"
             GridLines="None"
             HorizontalAlign="Center"
-            AllowPaging="True"
-            PageSize="100"
+            
             CssClass="gridview"
             AutoGenerateColumns="True">
 

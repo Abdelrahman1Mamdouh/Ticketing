@@ -46,6 +46,7 @@
         <asp:Button ID="BSalvaModifiche"
             Text="Salva Modifica"
             runat="server" 
+            OnClick="clickSalvaModifiche"
             class="btn-viola"/>
     </div>
 </asp:Content>
