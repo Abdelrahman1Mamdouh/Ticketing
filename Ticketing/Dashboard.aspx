@@ -9,29 +9,6 @@
             <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" class="btn-filter"/>
 
 
-            <asp:DropDownList ID="DTecnico"
-                Visible="false"
-                runat="server"
-                DataTextField="Tecnico"
-                DataValueField="Tecnico">
-            </asp:DropDownList>
-
-
-            <asp:DropDownList ID="DLivello"
-                Visible="false"
-                runat="server"
-                DataTextField="Livello"
-                DataValueField="Livello">
-            </asp:DropDownList>
-
-
-            <asp:DropDownList ID="DStato"
-                Visible="false"
-                runat="server"
-                DataTextField="Stato"
-                DataValueField="Stato">
-            </asp:DropDownList>
-
         <asp:DropDownList ID="DTecnico"
             Visible="false"
             runat="server"
