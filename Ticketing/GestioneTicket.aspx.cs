@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Data;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ticketing.Models;
 
@@ -26,6 +27,8 @@ namespace Ticketing
 
         utente user;
         ticket currentTicket = new ticket();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["CR"] == null)
@@ -37,12 +40,13 @@ namespace Ticketing
             user = Session["CR"] as utente;
 
             bool hasTicketId = int.TryParse(Request.QueryString["id"], out int ticketId);
-            
+
             if (hasTicketId)
             {
                 Tid.Text = ticketId.ToString();
                 currentTicket.ID = ticketId;
             }
+
 
             if (!IsPostBack)
             {
@@ -58,8 +62,8 @@ namespace Ticketing
                         string sql = "UPDATE storico SET letturaNotifica = 1 WHERE Ticket = @tickId AND nomeDestinatario = @userEmail";
                         using (MySqlCommand cmd = new MySqlCommand(sql, con))
                         {
-                            cmd.Parameters.Add("@tickId",MySqlDbType.Int32).Value= ticketId;
-                            cmd.Parameters.Add("@userEmail",MySqlDbType.VarChar).Value = user.Email;
+                            cmd.Parameters.Add("@tickId", MySqlDbType.Int32).Value = ticketId;
+                            cmd.Parameters.Add("@userEmail", MySqlDbType.VarChar).Value = user.Email;
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -81,7 +85,7 @@ namespace Ticketing
                     if (user?.Societa != 0) CampiCliente(tik);
                     else CampiTecnico(tik);
 
-                    
+
                     if (hasTicketId && IsTicketClosed(ticketId))
                     {
                         LoadStorico(ticketId);
@@ -97,7 +101,22 @@ namespace Ticketing
                 }
                 LoadStatiFromDb();
             }
+            //NotifichePopup.TicketSelected += NotifichePopup_TicketSelected;
+
         }
+
+        //private void NotifichePopup_TicketSelected(object sender, int ticketId)
+        //{
+        //    string url = ResolveUrl("~/GestioneTicket.aspx?id=" + ticketId);
+
+        //    ScriptManager.RegisterStartupScript(
+        //        this, this.GetType(),
+        //        "goTicket",
+        //        $"window.location='{url}';",
+        //        true
+        //    );
+        //}
+
         // Load dropdown list from database
         public static void LoadDropDownList(string query, DropDownList DDL, string label)
         {
@@ -121,12 +140,12 @@ namespace Ticketing
             }
         }
         // Create a new ticket
-        public async void clickCrea(object sender, EventArgs e)
+        protected void clickCrea(object sender, EventArgs e)
         {
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-                
+
                 prodotto = DProdotto.SelectedValue;
                 categoria = DCategoria.SelectedValue;
                 oggetto = TOggetto.Text;
@@ -136,13 +155,12 @@ namespace Ticketing
                 {
                     con.Open();
 
-                    
                     string nuovaTicket = @"
                         INSERT INTO ticket (Cliente, Prodotto, Categoria, Stato, Titolo, Descrizione) 
                         VALUES (@cliente, @prodotto, @categoria, @stato, @oggetto, @messaggio);";
 
                     MySqlCommand cmd = new MySqlCommand(nuovaTicket, con);
-                    
+
                     cmd.Parameters.Add("@cliente", MySqlDbType.Int32).Value = user.ID;
                     cmd.Parameters.Add("@prodotto", MySqlDbType.Int32).Value = prodotto;
                     cmd.Parameters.Add("@categoria", MySqlDbType.Int32).Value = categoria;
@@ -152,20 +170,29 @@ namespace Ticketing
 
                     cmd.ExecuteNonQuery();
 
-
                     string idLastTicket = $"SELECT max(ID) as ID from ticket where cliente = {user.ID}";
                     MySqlCommand ver = new MySqlCommand(idLastTicket, con);
                     MySqlDataReader reader = ver.ExecuteReader();
                     reader.Read();
                     id = reader.GetInt32("ID");
+                    reader.Close();
+                }
+                using (MySqlConnection con = new MySqlConnection(cs))
+                {
+                    con.Open();
+                    string idLastTicket = $"SELECT max(ID) as ID from ticket where cliente = {user.ID}";
+                    MySqlCommand ver = new MySqlCommand(idLastTicket, con);
+                    MySqlDataReader reader = ver.ExecuteReader();
+                    reader.Read();
+                    id = reader.GetInt32("ID");
+                    reader.Close();
                 }
             }
             catch (MySqlException ex)
             {
                 Response.Write("MySQL Error " + ex.Number + ": " + ex.Message);
             }
-
-            Response.Write("<script>alert('Il Ticket e' creata')</script>");
+            NotificaCrea();
         }
         // Send a communication message
         protected void MandaComunicazione(object sender, EventArgs e)
@@ -200,12 +227,12 @@ namespace Ticketing
             {
                 con.Open();
 
-                
+
                 var cmd = new MySqlCommand(@"
-                    SELECT ID, nomeMittente, nomeDestinatario, Oggetto, Messaggio
+                    SELECT nomeMittente, nomeDestinatario, Messaggio,Creata_a
                     FROM storico
                     WHERE Ticket = @TicketID
-                    ORDER BY ID ASC;", con);
+                    ORDER BY Creata_a ASC;", con);
 
                 cmd.Parameters.Add("@TicketID", MySqlDbType.Int32).Value = idTicket;
 
@@ -296,6 +323,10 @@ namespace Ticketing
         {
             TComunicazione.Text = "";
         }
+        protected void Chiudi(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
         //mostra campi cliente
         private void CampiCliente(string[] tik)
         {
@@ -324,8 +355,11 @@ namespace Ticketing
 
                 LStato.Visible = true;
                 LStato.Text += " : " + tik[3];
-                DStato.Visible = true;
-                BCambiaStato.Visible = true;
+
+
+                string currentFullName = (user.Nome + " " + user.Cognome).Trim();
+                string ticketClienteName = (tik[0] ?? "").Trim();
+
 
 
                 LProdotto.Visible = true;
@@ -344,12 +378,29 @@ namespace Ticketing
                 TMessaggio.Text = tik[6];
                 TMessaggio.ReadOnly = true;
 
-                LComunicazione.Visible = true;
-                TComunicazione.Visible = true;
-
                 BChiudi.Visible = true;
-                BRisposta.Visible = true;
-                BAnnulla.Visible = true;
+
+                if (user.Ruolo == 1 || user.Ruolo == 4)
+                {
+                    if (ticketClienteName.ToLower() == currentFullName.ToLower())
+                    {
+                        DStato.Visible = true;
+                        BCambiaStato.Visible = true;
+                        LComunicazione.Visible = true;
+                        TComunicazione.Visible = true;
+                        BRisposta.Visible = true;
+                        BAnnulla.Visible = true;
+                    }
+                    else
+                    {
+                        DStato.Visible = false;
+                        BCambiaStato.Visible = false;
+                        LComunicazione.Visible = false;
+                        TComunicazione.Visible = false;
+                        BRisposta.Visible = false;
+                        BAnnulla.Visible = false;
+                    }
+                }
 
             }
         }
@@ -453,6 +504,7 @@ namespace Ticketing
             }//TECNICO NON ASSEGNATO
             else if (ticketTecnicoName == "")
             {
+                BbAssegna.Text = "Prendi in carico";
                 BbAssegna.Visible = true;
                 BbSalva.Visible = false;
                 BCambiaStato.Visible = false;
@@ -497,6 +549,7 @@ namespace Ticketing
         //Assegna tecnico
         protected void ClickAssegna(object sender, EventArgs e)
         {
+            string Tecnico;
             if (user.Ruolo == 3)
             {
                 string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -508,15 +561,13 @@ namespace Ticketing
 
                     using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
                     {
-                        cmd.Parameters.Add("@Tecnico", MySqlDbType.VarChar).Value = DTecnici.SelectedValue;
+                        cmd.Parameters.Add("@tecnico", MySqlDbType.VarChar).Value = DTecnici.SelectedValue;
                         cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
                         cmd.Parameters.Add("@stato", MySqlDbType.Int32).Value = 4;
                         cmd.ExecuteNonQuery();
                     }
-
                 }
-                string Tecnico = DTecnici.SelectedItem.Text;
-                Response.Write($"<script>alert('il Ticket e' assegnato a {Tecnico}')</script>");
+                Tecnico = DTecnici.SelectedItem.Text;
             }
             else
             {
@@ -528,15 +579,15 @@ namespace Ticketing
                     string nuovaTicket = $"UPDATE ticket SET Tecnico=@tecnico,Stato=@stato WHERE ID=@id";
                     using (MySqlCommand cmd = new MySqlCommand(nuovaTicket, con))
                     {
-                        cmd.Parameters.Add("@Tecnico", MySqlDbType.VarChar).Value = user.ID;
+                        cmd.Parameters.Add("@tecnico", MySqlDbType.VarChar).Value = user.ID;
                         cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = currentTicket.ID;
                         cmd.Parameters.Add("@stato", MySqlDbType.Int32).Value = 4;
                         cmd.ExecuteNonQuery();
                     }
                 }
-                string Tecnico = DTecnici.SelectedItem.Text;
-                Response.Write($"<script>alert('il Ticket e' assegnato a {Tecnico}')</script>");
+                Tecnico = user.Nome + " " + user.Cognome;
             }
+            ShowAlert($"il Ticket e' assegnato a {Tecnico}");
         }
         //Salva livello e priorita
         protected void ClickSalva(object sender, EventArgs e)
@@ -557,7 +608,7 @@ namespace Ticketing
                         cmd.ExecuteNonQuery();
                     }
                 }
-                if(user.Ruolo == 2)
+                if (user.Ruolo == 2)
                 {
                     using (MySqlConnection con = new MySqlConnection(cs))
                     {
@@ -700,6 +751,14 @@ namespace Ticketing
                     return statoId == 2;
                 }
             }
+        }
+        private void ShowAlert(string msg)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "created", $"alert({System.Web.HttpUtility.JavaScriptStringEncode(msg, true)});", true);
+        }
+        private void NotificaCrea()
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "created", "alert(\"Il Ticket e' creato\"); window.location='Dashboard.aspx';", true);
         }
     }
 }

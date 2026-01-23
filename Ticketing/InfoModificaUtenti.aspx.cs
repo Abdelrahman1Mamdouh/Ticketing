@@ -1,13 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Bcpg;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Ticketing.Models;
 
 namespace Ticketing
@@ -19,10 +12,10 @@ namespace Ticketing
         private String telefono;
         private String email;
         private String password;
-
+        utente user ;
         protected void Page_Load(object sender, EventArgs e)
         {
-            utente user = null;
+            user = null;
             //user's data fetch from session
             if (Session["CR"] != null)
             {
@@ -80,10 +73,6 @@ namespace Ticketing
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value= email;
                
                 cmd.ExecuteNonQuery();
-
-
-
-             
 
             }
 

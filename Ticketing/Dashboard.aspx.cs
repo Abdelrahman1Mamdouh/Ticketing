@@ -141,7 +141,6 @@ namespace Ticketing
 
             string[] tik = new string[9];
 
-
             using (MySqlConnection con = new MySqlConnection(cs))
             {
                 con.Open();
