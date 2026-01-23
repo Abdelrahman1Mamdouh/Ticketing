@@ -2,35 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-  <%-- <asp:HiddenField  runat="server" ID="userid" Value="<%=user.ID %>" />--%>
+    <%-- <asp:HiddenField  runat="server" ID="userid" Value="<%=user.ID %>" />--%>
 
-        <div class="filtri">
-            <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" class="btn-filter"/>
-            <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" class="btn-filter"/>
+    <div class="filtri">
+        <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" class="btn-filter" />
+        <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" class="btn-filter" />
 
-
-            <asp:DropDownList ID="DTecnico"
-                Visible="false"
-                runat="server"
-                DataTextField="Tecnico"
-                DataValueField="Tecnico">
-            </asp:DropDownList>
-
-
-            <asp:DropDownList ID="DLivello"
-                Visible="false"
-                runat="server"
-                DataTextField="Livello"
-                DataValueField="Livello">
-            </asp:DropDownList>
-
-
-            <asp:DropDownList ID="DStato"
-                Visible="false"
-                runat="server"
-                DataTextField="Stato"
-                DataValueField="Stato">
-            </asp:DropDownList>
 
         <asp:DropDownList ID="DTecnico"
             Visible="false"
@@ -167,13 +144,13 @@
             </Columns>
         </asp:GridView>
 
-       <%-- <asp:GridView runat="server" ID="prova" DataSourceID="dsTest" DataKeyNames="ID" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="true" PageSize="5"></asp:GridView>
+        <%-- <asp:GridView runat="server" ID="prova" DataSourceID="dsTest" DataKeyNames="ID" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="true" PageSize="5"></asp:GridView>
         <asp:SqlDataSource runat="server" ID="dsTest" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd="  ProviderName="MySql.Data.MySqlClient"
             SelectCommand="SELECT ID,Ruolo, Societa, Livello, Dipartimento FROM utenti"
             >
             <SelectParameters>
                 <%--<asp:ControlParameter ControlID="userid" Name="id" PropertyName="Value" DefaultValue="-1" DbType="Int32" />--%>
-<%--            </SelectParameters>
+        <%--            </SelectParameters>
         </asp:SqlDataSource>--%>
     </div>
 </asp:Content>

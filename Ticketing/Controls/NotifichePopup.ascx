@@ -8,7 +8,7 @@
 
         <div class="grid">
             <asp:GridView ID="gvNotifichePopup" runat="server" AutoGenerateColumns="False"
-                CellPadding="3" GridLines="None" HorizontalAlign="Center"
+                CellPadding="3" GridLines="None" HorizontalAlign="Center" DataKeyNames="TicketID"
                 AllowPaging="True" PageSize="100" CssClass="gridview">
                 <Columns>
                     <asp:TemplateField HeaderText="Ticket #">
@@ -19,8 +19,7 @@
                                 Text='<%# Eval("TicketID") %>'
                                 CommandName="SelectTicket"
                                 CommandArgument='<%# Eval("TicketID") %>'
-                                OnClick="ClickSelectTicket"
-                                CssClass="btn-viola" />
+                                OnClick="ClickSelectTicket" />
                         </ItemTemplate>
                     </asp:TemplateField>
 

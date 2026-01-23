@@ -119,7 +119,7 @@ namespace Ticketing
             Tickets.DataBind();
         }
 
-        protected void ClickSelectTicket(object sender, EventArgs e)
+        public void ClickSelectTicket(object sender, EventArgs e)
         {
             Control btn = (Control)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
