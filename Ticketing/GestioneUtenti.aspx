@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
-    <%-- Form Section: Using grid_system for the two-column layout --%>
+    
     <div class="grid_system">
 
         <div class="col-utenti-50">
@@ -89,49 +89,48 @@
             <asp:Button ID="BCancel" Text="Annulla" runat="server" OnClick="clickAnnulla" Visible="false" CausesValidation="false" class="btn-annulla"/>
         </div>
 
+    </div> 
 
-        <div class="grid-view">
-            <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
-                <asp:GridView ID="rubricaUtenti"
-                    runat="server"
-                    CellPadding="3"
-                    GridLines="None"
-                    HorizontalAlign="Center"
-                    DataKeyNames="ID"
-                    
-                    CssClass="gridview"
-                    >
+    <hr class="mt-2 mb-2" />
 
-                    <Columns>
-                        <asp:TemplateField HeaderText="Opzioni">
-                            <ItemTemplate>
-                                <div style="display: flex; justify-content: center; width: auto;">
-                                    <asp:LinkButton
-                                        ID="BtnApri"
-                                        runat="server"
-                                        CssClass="iconb"
-                                        ToolTip="Apri"
-                                        OnClick="clickModifica"
-                                        Text="&#xf06e;">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </asp:LinkButton>
+   
+    <div class="grid-view">
+        <div class="box-gridview">
+            <asp:GridView ID="rubricaUtenti" runat="server"
+                AutoGenerateColumns="False" 
+                DataKeyNames="ID"
+                CssClass="gridview"
+                GridLines="None"
+                AllowPaging="True"
+                PageSize="20"
+                
+                >
 
-                                    <asp:LinkButton
-                                        ID="BtnElimina"
-                                        runat="server"
-                                        CssClass="iconb elimina"
-                                        OnClick="clickElimina"
-                                        ToolTip="Elimina" Text="&#xf1f8;">
+                <Columns>
+    <asp:TemplateField HeaderText="Opzioni">
+        <ItemTemplate>
+            <div class="icon-container">
+                <asp:LinkButton ID="BtnApri" runat="server" CssClass="iconb" OnClick="clickModifica" ToolTip="Modifica">
+                    <i class="fa fa-pencil-alt"></i>
+                </asp:LinkButton>
+                <asp:LinkButton ID="BtnElimina" runat="server" CssClass="iconb elimina" OnClick="clickElimina" 
+                    OnClientClick="return confirm('Sei sicuro?');" ToolTip="Elimina">
                     <i class="fa-solid fa-trash"></i>
-                                    </asp:LinkButton>
-
-                                    <%--<asp:Button ID="BtnElimina" runat="server" CssClass="iconb elimina" ToolTip="Elimina" Text="&#xf1f8;" />--%>
-                                </div>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
+                </asp:LinkButton>
             </div>
+        </ItemTemplate>
+    </asp:TemplateField>
+
+    <asp:BoundField DataField="ID" HeaderText="ID" />
+    <asp:BoundField DataField="utente" HeaderText="Utente" />
+    <asp:BoundField DataField="Ruolo" HeaderText="Ruolo" />
+    <asp:BoundField DataField="Societa" HeaderText="Soc." />
+    <asp:BoundField DataField="Livello" HeaderText="Liv." />
+    <asp:BoundField DataField="Dipartimento" HeaderText="Dip." />
+    <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
+    <asp:BoundField DataField="Email" HeaderText="Email" />
+</Columns>
+            </asp:GridView>
         </div>
     </div>
 
