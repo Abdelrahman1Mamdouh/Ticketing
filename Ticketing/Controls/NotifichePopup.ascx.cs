@@ -14,7 +14,7 @@ namespace Ticketing.Controls
 
         //protected void btnTicket_Click(object sender, EventArgs e)
         //{
-           
+
 
         //    var btn = (LinkButton)sender;
         //    int ticketId = Convert.ToInt32(btn.CommandArgument);
@@ -65,19 +65,8 @@ namespace Ticketing.Controls
         {
             Control btn = (Control)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
-            //GridViewRow row = Tickets.SelectedRow;
 
             int ticketId = Convert.ToInt32(gvNotifichePopup.DataKeys[row.RowIndex].Value);
-
-            //string cliente = row.Cells[2].Text;
-            //string tecnico = row.Cells[3].Text;
-            //string livello = row.Cells[4].Text;
-            //string societa = row.Cells[5].Text;
-            //string stato = row.Cells[6].Text;
-            //string prodotto = row.Cells[7].Text;
-            //string descrizione = row.Cells[8].Text;
-            //string priorita = row.Cells[9].Text;
-
 
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 

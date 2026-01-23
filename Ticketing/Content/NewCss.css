@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:20px;
+    padding: 20px;
 }
 
 
@@ -21,16 +21,17 @@
     display: block;
     padding: 15px;
 }
-    .navigation a:hover{
-        text-decoration:underline solid white 2px;
+
+    .navigation a:hover {
+        text-decoration: underline solid white 2px;
     }
 
 
-    .navigation__logo {
-        height: 100px;
-        width: 150px;
-        filter: brightness(0) invert(1);
-    }
+.navigation__logo {
+    height: 100px;
+    width: 150px;
+    filter: brightness(0) invert(1);
+}
 
 .navigation__notifica {
     width: 25px;
@@ -55,15 +56,15 @@
 
 #btnLogout {
     filter: brightness(0) invert(1);
-    width:25px;
-    height:25px;
+    width: 25px;
+    height: 25px;
 }
 
-.icone-navbar{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    align-items:center;
+.icone-navbar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .foot {
@@ -89,33 +90,33 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
+
 .gridview {
     width: 100%;
     border-radius: 20px;
-    
 }
+
     .gridview th,
     .gridview td {
         padding: 8px 12px;
         white-space: nowrap;
-    
     }
 
-        .gridview td{
-            border:1px solid violet;
-        }
+    .gridview td {
+        border: 1px solid violet;
+    }
 
 
-        .gridview th {
-            background: linear-gradient(135deg, #590094, #7a1bbd);
-            color: white;
-            border: 1px solid #ddd;
-        }
+    .gridview th {
+        background: linear-gradient(135deg, #590094, #7a1bbd);
+        color: white;
+        border: 1px solid #ddd;
+    }
 
 
 .iconb {
     border: 1px solid darkviolet;
-    padding:10px 10px !important;
+    padding: 10px 10px !important;
     background-color: white;
     cursor: pointer;
     margin-right: 8px;
@@ -130,7 +131,7 @@
 .elimina {
     background-color: red;
     color: white;
-    border:none;
+    border: none;
 }
 
     .elimina:hover {
@@ -156,30 +157,32 @@
 
 .col-33 {
     width: 33.3%;
-    display:flex;
-    flex-direction:column;
-    padding:20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
     .col-33 * {
-        margin-top:15px;
+        margin-top: 15px;
     }
 
-.col-100{
-    width:100%;
+.col-100 {
+    width: 100%;
 }
 
 
 /* LOGIN */
-.icon-resize{
-    width:50px;
-    height:50px;
+.icon-resize {
+    width: 50px;
+    height: 50px;
 }
+
 .box-icona {
     border: 2px solid violet;
-    border-radius:100%;
-    padding:15px 20px;
+    border-radius: 100%;
+    padding: 15px 20px;
 }
+
 .login-page {
     display: flex;
     justify-content: center;
@@ -193,34 +196,30 @@
     padding: 40px 36px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-    margin-top:30px;
-    margin-bottom:30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 
-.box-login{
-  
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    
-    height:60vh;
-    
+.box-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
 }
 
-.box-login *{
-    margin-top:10px;
-}
+    .box-login * {
+        margin-top: 10px;
+    }
 
-.box-pulsanti-login{
-    display:flex;
-    flex-direction:column;
-    padding:15px;
-    margin-top:5px;
-    display:flex;
-    gap:5px;
-    
+.box-pulsanti-login {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
 }
 /* CLASSE RIQUADRO FILTRI situata nella dashboard*/
 .filtri {
@@ -243,13 +242,13 @@
     cursor: pointer;
     transition: all 0.25s ease;
 }
-    
+
     .btn-filter:hover {
         background: rgba(89, 0, 148, 0.15);
         border-color: #590094;
     }
 
-    
+
     .btn-filter.active {
         background: linear-gradient(135deg, #590094, #7a1bbd);
         color: #ffffff;
@@ -327,74 +326,74 @@
         transform: translateY(0);
         background: rgba(63, 81, 181, 0.2);
     }
+
 .btn-recupera {
     background-color: transparent;
     border: none;
     text-decoration: underline solid #590094 2px;
     color: #590094;
-    font-weight:400;
+    font-weight: 400;
 }
-    /* TICKETS*/
+/* TICKETS*/
 .box_comunicazione {
     width: 100%;
     /*        background-color:aqua;*/
     padding: 30px;
     border: 1px solid #590094;
-    margin-left:10px;
-    margin-right:10px;
-}
-.box-comunicazione-100{
-    width: 100%;
-   
-    display:flex;
-    flex-direction:column;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-    .box-comunicazione-100 *{
-        margin-top:5px;
+.box-comunicazione-100 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .box-comunicazione-100 * {
+        margin-top: 5px;
     }
-    .box-100 {
-        width: 100%;
-        
-    }
+
+.box-100 {
+    width: 100%;
+}
 
 .box-tasto-crea {
     width: 100%;
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 /* PAGINA UTENTI*/
 
-.col-utenti-50{
-    width:50%;
-/*    border: 2px solid green;*/
-    display:flex;
-    flex-direction:column;
-    padding:20px;
+.col-utenti-50 {
+    width: 50%;
+    /*    border: 2px solid green;*/
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.col-utenti-50 *{
-    margin-top:10px;
+    .col-utenti-50 * {
+        margin-top: 10px;
+    }
+
+.box-pulsanti-utenti {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
-.box-pulsanti-utenti{
-    width:100%;
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    
-}
-
-.grid-view{
-    width:100%;
+.grid-view {
+    width: 100%;
 }
 
 /* SELECT pagina Utenti*/
 
-.select{
-    width:50%;
+.select {
+    width: 50%;
 }
 
 /* PAGINA SOCIETA'*/
@@ -406,9 +405,9 @@
     padding: 20px;
 }
 
-.col-50 * {
-    margin-top: 15px;
-}
+    .col-50 * {
+        margin-top: 15px;
+    }
 
 
 /* helpers margini */

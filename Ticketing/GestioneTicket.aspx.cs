@@ -12,16 +12,16 @@ namespace Ticketing
     public partial class GestioneTicket : System.Web.UI.Page
     {
         private int id;
-        private string cliente;
-        private string tecnico;
+        //private string cliente;
+        //private string tecnico;
         private string livello;
-        private string stato;
+        //private string stato;
         private string prodotto;
         private string categoria;
         private string priorita;
         private string oggetto;
         private string messaggio;
-        private string note;
+        //private string note;
 
         private int DefaultStato = 1;
 
@@ -46,7 +46,6 @@ namespace Ticketing
                 Tid.Text = ticketId.ToString();
                 currentTicket.ID = ticketId;
             }
-
 
             if (!IsPostBack)
             {
@@ -101,21 +100,7 @@ namespace Ticketing
                 }
                 LoadStatiFromDb();
             }
-            //NotifichePopup.TicketSelected += NotifichePopup_TicketSelected;
-
         }
-
-        //private void NotifichePopup_TicketSelected(object sender, int ticketId)
-        //{
-        //    string url = ResolveUrl("~/GestioneTicket.aspx?id=" + ticketId);
-
-        //    ScriptManager.RegisterStartupScript(
-        //        this, this.GetType(),
-        //        "goTicket",
-        //        $"window.location='{url}';",
-        //        true
-        //    );
-        //}
 
         // Load dropdown list from database
         public static void LoadDropDownList(string query, DropDownList DDL, string label)
