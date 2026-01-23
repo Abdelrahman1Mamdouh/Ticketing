@@ -335,6 +335,9 @@ namespace Ticketing
             DSocieta.Enabled = isClient && (user.Ruolo != Client_Admin);
             DLivello.Enabled = !isClient;
             DDipartimento.Enabled = !isClient;
+            RfVLivello.Enabled = !isClient;
+            RfVDipartimento.Enabled= !isClient;
+            RfVSocieta.Enabled = isClient;
 
             if (!isClient) DSocieta.SelectedIndex = 0;
             else { DLivello.SelectedIndex = 0; DDipartimento.SelectedIndex = 0; }

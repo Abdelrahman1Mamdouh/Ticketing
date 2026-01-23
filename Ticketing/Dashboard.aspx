@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-   
+  <%-- <asp:HiddenField  runat="server" ID="userid" Value="<%=user.ID %>" />--%>
 
         <div class="filtri">
             <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" class="btn-filter"/>
@@ -32,39 +32,57 @@
                 DataValueField="Stato">
             </asp:DropDownList>
 
+        <asp:DropDownList ID="DTecnico"
+            Visible="false"
+            runat="server"
+            DataTextField="Tecnico"
+            DataValueField="Tecnico">
+        </asp:DropDownList>
 
-            <asp:DropDownList ID="DPriorita"
-                Visible="false"
-                runat="server"
-                DataTextField="Priorita"
-                DataValueField="Priorita">
-            </asp:DropDownList>
+        <asp:DropDownList ID="DLivello"
+            Visible="false"
+            runat="server"
+            DataTextField="Livello"
+            DataValueField="Livello">
+        </asp:DropDownList>
 
+        <asp:DropDownList ID="DStato"
+            Visible="false"
+            runat="server"
+            DataTextField="Stato"
+            DataValueField="Stato">
+        </asp:DropDownList>
 
-            <asp:DropDownList ID="DSocieta"
-                Visible="false"
-                runat="server"
-                DataTextField="Societa"
-                DataValueField="Societa">
-            </asp:DropDownList>
+        <asp:DropDownList ID="DPriorita"
+            Visible="false"
+            runat="server"
+            DataTextField="Priorita"
+            DataValueField="Priorita">
+        </asp:DropDownList>
 
+        <asp:DropDownList ID="DSocieta"
+            Visible="false"
+            runat="server"
+            DataTextField="Societa"
+            DataValueField="Societa">
+        </asp:DropDownList>
 
-            <asp:DropDownList ID="DProdotto"
-                Visible="false"
-                runat="server"
-                DataTextField="Prodotto"
-                DataValueField="Prodotto">
-            </asp:DropDownList>
-            <asp:Button ID="BVedi" Text="Filtra" OnClick="MixTicket" Visible="false" runat="server" class="btn-filter" />
+        <asp:DropDownList ID="DProdotto"
+            Visible="false"
+            runat="server"
+            DataTextField="Prodotto"
+            DataValueField="Prodotto">
+        </asp:DropDownList>
+        <asp:Button ID="BVedi" Text="Filtra" OnClick="MixTicket" Visible="false" runat="server" class="btn-filter" />
 
-        </div>
+    </div>
 
-        <div class="mt-1 mb-1">
-            <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" class="btn-viola" />
-    <div class="col-100">
-        <div class="grid">
-            <div style="width: 100%; height: 80%; overflow-x: scroll;">
-                <%--<asp:GridView ID="Ticketss"
+    <div class="mt-1 mb-1">
+        <asp:Button ID="BCrea" Text="New Ticket" OnClick="CreateTicket" Visible="false" runat="server" class="btn-viola" />
+        <div class="col-100">
+            <div class="grid">
+                <div style="width: 100%; height: 80%; overflow-x: scroll;">
+                    <%--<asp:GridView ID="Ticketss"
                     runat="server"
                     DataKeyNames="ID"
                     GridLines="None"
@@ -99,14 +117,15 @@
                                     </asp:LinkButton>
 
                                     <%--<asp:Button ID="BtnElimina" runat="server" CssClass="iconb elimina" ToolTip="Elimina" Text="&#xf1f8;" />--%>
-                             <%--   </div>
+                    <%--   </div>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>--%>
-           
+                </div>
+            </div>
         </div>
-    
+    </div>
 
 
     <div class="box-gridview" style="max-height: 500px; overflow-y: auto;">
@@ -115,7 +134,6 @@
             DataKeyNames="ID"
             GridLines="None"
             HorizontalAlign="Center"
-            
             CssClass="gridview"
             AutoGenerateColumns="True">
 
@@ -148,5 +166,14 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+
+       <%-- <asp:GridView runat="server" ID="prova" DataSourceID="dsTest" DataKeyNames="ID" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="true" PageSize="5"></asp:GridView>
+        <asp:SqlDataSource runat="server" ID="dsTest" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd="  ProviderName="MySql.Data.MySqlClient"
+            SelectCommand="SELECT ID,Ruolo, Societa, Livello, Dipartimento FROM utenti"
+            >
+            <SelectParameters>
+                <%--<asp:ControlParameter ControlID="userid" Name="id" PropertyName="Value" DefaultValue="-1" DbType="Int32" />--%>
+<%--            </SelectParameters>
+        </asp:SqlDataSource>--%>
     </div>
 </asp:Content>

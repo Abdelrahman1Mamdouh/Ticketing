@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
-    <%-- Form Section: Using grid_system for the two-column layout --%>
+    
     <div class="grid_system">
 
         <div class="col-utenti-50">
@@ -102,32 +102,34 @@
                 CssClass="gridview"
                 GridLines="None"
                 AllowPaging="True"
-                PageSize="20">
+                PageSize="20"
+                
+                >
 
                 <Columns>
-                    <asp:TemplateField HeaderText="Opzioni">
-                        <ItemTemplate>
-                            <div class="icon-container">
-                                <asp:LinkButton ID="BtnApri" runat="server" CssClass="iconb" OnClick="clickModifica" ToolTip="Modifica">
-                                    <i class="fa fa-pencil-alt"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="BtnElimina" runat="server" CssClass="iconb elimina" OnClick="clickElimina" 
-                                    OnClientClick="return confirm('Sei sicuro di voler eliminare questo utente?');" ToolTip="Elimina">
-                                    <i class="fa-solid fa-trash"></i>
-                                </asp:LinkButton>
-                            </div>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Opzioni">
+        <ItemTemplate>
+            <div class="icon-container">
+                <asp:LinkButton ID="BtnApri" runat="server" CssClass="iconb" OnClick="clickModifica" ToolTip="Modifica">
+                    <i class="fa fa-pencil-alt"></i>
+                </asp:LinkButton>
+                <asp:LinkButton ID="BtnElimina" runat="server" CssClass="iconb elimina" OnClick="clickElimina" 
+                    OnClientClick="return confirm('Sei sicuro?');" ToolTip="Elimina">
+                    <i class="fa-solid fa-trash"></i>
+                </asp:LinkButton>
+            </div>
+        </ItemTemplate>
+    </asp:TemplateField>
 
-                    <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-Width="40px" />
-                    <asp:BoundField DataField="utente" HeaderText="Utente" />
-                    <asp:BoundField DataField="Ruolo" HeaderText="Ruolo" ItemStyle-Width="60px" />
-                    <asp:BoundField DataField="Societa" HeaderText="Soc." ItemStyle-Width="60px" />
-                    <asp:BoundField DataField="Livello" HeaderText="Liv." ItemStyle-Width="40px" />
-                    <asp:BoundField DataField="Dipartimento" HeaderText="Dip." ItemStyle-Width="40px" />
-                    <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" />
-                </Columns>
+    <asp:BoundField DataField="ID" HeaderText="ID" />
+    <asp:BoundField DataField="utente" HeaderText="Utente" />
+    <asp:BoundField DataField="Ruolo" HeaderText="Ruolo" />
+    <asp:BoundField DataField="Societa" HeaderText="Soc." />
+    <asp:BoundField DataField="Livello" HeaderText="Liv." />
+    <asp:BoundField DataField="Dipartimento" HeaderText="Dip." />
+    <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
+    <asp:BoundField DataField="Email" HeaderText="Email" />
+</Columns>
             </asp:GridView>
         </div>
     </div>

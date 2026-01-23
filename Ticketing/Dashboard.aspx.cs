@@ -12,7 +12,7 @@ namespace Ticketing
     public partial class Dashboard : System.Web.UI.Page
     {
         private int currentUser;
-        utente user;
+        protected utente user;
         string[] cuser;
 
         string QTecnico = $"select ID, concat(Nome, \" \", Cognome) as Tecnico from utente where Ruolo=2;";
@@ -140,7 +140,6 @@ namespace Ticketing
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
 
             string[] tik = new string[9];
-
 
             using (MySqlConnection con = new MySqlConnection(cs))
             {
