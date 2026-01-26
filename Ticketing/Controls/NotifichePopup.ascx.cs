@@ -10,18 +10,7 @@ namespace Ticketing.Controls
 {
     public partial class NotifichePopup : System.Web.UI.UserControl
     {
-        //public event EventHandler<int> TicketSelected;
-
-        //protected void btnTicket_Click(object sender, EventArgs e)
-        //{
-
-
-        //    var btn = (LinkButton)sender;
-        //    int ticketId = Convert.ToInt32(btn.CommandArgument);
-
-        //    TicketSelected?.Invoke(this, ticketId);
-        //}
-
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {

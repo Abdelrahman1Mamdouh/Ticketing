@@ -5,6 +5,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
 
+    <%--<asp:SqlDataSource runat="server" ID="LIV" ConnectionString="Server=localhost;Database=dgs2;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Livello FROM livello">
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="RUO" ConnectionString="Server=localhost;Database=dgs2;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Ruolo FROM ruolo">
+    </asp:SqlDataSource>--%>
+
     <div class="grid_system">
         <div class="col-33">
 
@@ -96,6 +104,14 @@
                 DataTextField="Livello"
                 DataValueField="ID">
             </asp:DropDownList>
+
+            <%--<asp:DropDownList ID="DLivelllo"
+                Visible="false"
+                runat="server"
+                DataSourceID="LIV"
+                DataTextField="Livello"
+                DataValueField="ID">
+            </asp:DropDownList>--%>
 
             <asp:Label ID="LPriorita"
                 Visible="false"
