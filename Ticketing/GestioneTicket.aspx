@@ -5,13 +5,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent"
     runat="Server">
 
-    <%--<asp:SqlDataSource runat="server" ID="LIV" ConnectionString="Server=localhost;Database=dgs2;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
-        SelectCommand="SELECT ID,Livello FROM livello">
-    </asp:SqlDataSource>
+    <asp:SqlDataSource runat="server" ID="LIV" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Livello FROM livello"></asp:SqlDataSource>
 
-    <asp:SqlDataSource runat="server" ID="RUO" ConnectionString="Server=localhost;Database=dgs2;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
-        SelectCommand="SELECT ID,Ruolo FROM ruolo">
-    </asp:SqlDataSource>--%>
+    <asp:SqlDataSource runat="server" ID="PRO" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Prodotto FROM prodotto"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="CAT" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Categoria FROM categoria ORDER BY Categoria"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="PRI" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Priorita FROM priorita"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="TEC" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID, Nome FROM tecnici"></asp:SqlDataSource>
 
     <div class="grid_system">
         <div class="col-33">
@@ -55,7 +62,9 @@
                 runat="server"
                 AutoPostBack="false"
                 DataTextField="Nome"
-                DataValueField="ID">
+                DataValueField="ID"
+                DataSourceID="TEC"
+                AppendDataBoundItems="true">
             </asp:DropDownList>
 
             <asp:Button ID="BbAssegna"
@@ -69,12 +78,14 @@
                 Visible="false"
                 Text="Categoria"
                 runat="server" />
+
             <asp:DropDownList ID="DCategoria"
                 Visible="false"
                 runat="server"
-                AutoPostBack="false"
+                DataSourceID="CAT"
                 DataTextField="Categoria"
-                DataValueField="ID">
+                DataValueField="ID"
+                AppendDataBoundItems="true">
             </asp:DropDownList>
 
             <asp:Label ID="LProdotto"
@@ -84,9 +95,10 @@
             <asp:DropDownList ID="DProdotto"
                 Visible="false"
                 runat="server"
-                AutoPostBack="false"
                 DataTextField="Prodotto"
-                DataValueField="ID">
+                DataSourceID="PRO"
+                DataValueField="ID"
+                AppendDataBoundItems="true">
             </asp:DropDownList>
 
             <asp:Label ID="LLivello"
@@ -98,30 +110,30 @@
                 Visible="false"
                 placeholder="Livello">
             </asp:TextBox>
-            <asp:DropDownList ID="DLivello"
-                Visible="false"
-                runat="server"
-                DataTextField="Livello"
-                DataValueField="ID">
-            </asp:DropDownList>
 
-            <%--<asp:DropDownList ID="DLivelllo"
+            <asp:DropDownList
+                ID="DLivelllo"
                 Visible="false"
                 runat="server"
                 DataSourceID="LIV"
                 DataTextField="Livello"
-                DataValueField="ID">
-            </asp:DropDownList>--%>
+                DataValueField="ID"
+                AppendDataBoundItems="true">
+            </asp:DropDownList>
 
             <asp:Label ID="LPriorita"
                 Visible="false"
                 Text="Priorita"
                 runat="server" />
-            <asp:DropDownList ID="DPriorita"
+
+            <asp:DropDownList
+                ID="DPriorita"
                 Visible="false"
                 runat="server"
+                DataSourceID="PRI"
                 DataTextField="Priorita"
-                DataValueField="ID">
+                DataValueField="ID"
+                AppendDataBoundItems="true">
             </asp:DropDownList>
 
 
@@ -146,7 +158,6 @@
                 DataTextField="Stato"
                 DataValueField="ID">
             </asp:DropDownList>
-
 
             <asp:Button ID="BCambiaStato"
                 Text="Cambia Stato"
@@ -208,7 +219,7 @@
             <asp:Button ID="BCrea"
                 Text="Crea"
                 Visible="false"
-                OnClick="clickCrea"
+                OnClick="ClickCrea"
                 runat="server"
                 class="btn-viola" />
 
