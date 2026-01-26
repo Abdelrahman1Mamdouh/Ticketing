@@ -9,6 +9,7 @@ namespace Ticketing
 {
     public partial class SiteMaster : MasterPage
     {
+        public string SERIAL = "SITE.MASTER";
         protected void Page_Load(object sender, EventArgs e)
         {
             bool login = Session["CR"] != null;

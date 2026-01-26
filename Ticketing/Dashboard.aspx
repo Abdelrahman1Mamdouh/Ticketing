@@ -144,13 +144,6 @@
             </Columns>
         </asp:GridView>
 
-       <%-- <asp:GridView runat="server" ID="prova" DataSourceID="dsTest" DataKeyNames="ID" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="true" PageSize="5"></asp:GridView>
-        <asp:SqlDataSource runat="server" ID="dsTest" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd="  ProviderName="MySql.Data.MySqlClient"
-            SelectCommand="SELECT ID,Ruolo, Societa, Livello, Dipartimento FROM utenti"
-            >
-            <SelectParameters>
-                <%--<asp:ControlParameter ControlID="userid" Name="id" PropertyName="Value" DefaultValue="-1" DbType="Int32" />--%>
-<%--            </SelectParameters>
-        </asp:SqlDataSource>--%>
+      
     </div>
 </asp:Content>
