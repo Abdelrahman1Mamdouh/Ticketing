@@ -211,8 +211,6 @@
                     AutoGenerateColumns="True">
                 </asp:GridView>
             </div>
-
-
         </div>
 
         <div class="box-tasto-crea">
