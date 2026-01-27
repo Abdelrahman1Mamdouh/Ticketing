@@ -2,53 +2,83 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-  <%-- <asp:HiddenField  runat="server" ID="userid" Value="<%=user.ID %>" />--%>
+    <%--<asp:HiddenField runat="server" ID="userid" Value="<%=user.ID %>" />--%>
 
-        <div class="filtri">
-            <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" class="btn-filter"/>
-            <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" class="btn-filter"/>
 
+    <asp:SqlDataSource runat="server" ID="SOC" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID, Nome as Societa FROM societa"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="LIV" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Livello FROM livello"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="STA" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Stato FROM stato"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="PRO" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Prodotto FROM prodotto"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="PRI" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID,Priorita FROM priorita"></asp:SqlDataSource>
+
+    <asp:SqlDataSource runat="server" ID="TEC" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+        SelectCommand="SELECT ID, concat(Nome, ' ', Cognome) as Tecnico from utente WHERE Ruolo=2"></asp:SqlDataSource>
+
+    <div class="filtri">
+        <asp:Button ID="Alltick" Text="Tutti" OnClick="AllTicket" Visible="false" runat="server" class="btn-filter" />
+        <asp:Button ID="Mytick" Text="In Lavorazione..." OnClick="MyTicket" Visible="false" runat="server" class="btn-filter" />
 
         <asp:DropDownList ID="DTecnico"
             Visible="false"
             runat="server"
             DataTextField="Tecnico"
-            DataValueField="Tecnico">
+            DataValueField="Tecnico"
+            DataSourceID="TEC"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
 
         <asp:DropDownList ID="DLivello"
             Visible="false"
             runat="server"
             DataTextField="Livello"
-            DataValueField="Livello">
+            DataValueField="Livello"
+            DataSourceID="LIV"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
 
         <asp:DropDownList ID="DStato"
             Visible="false"
             runat="server"
             DataTextField="Stato"
-            DataValueField="Stato">
+            DataValueField="Stato"
+            DataSourceID="STA"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
 
         <asp:DropDownList ID="DPriorita"
             Visible="false"
             runat="server"
             DataTextField="Priorita"
-            DataValueField="Priorita">
+            DataValueField="Priorita"
+            DataSourceID="PRI"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
 
         <asp:DropDownList ID="DSocieta"
             Visible="false"
             runat="server"
             DataTextField="Societa"
-            DataValueField="Societa">
+            DataValueField="Societa"
+            DataSourceID="SOC"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
 
         <asp:DropDownList ID="DProdotto"
             Visible="false"
             runat="server"
             DataTextField="Prodotto"
-            DataValueField="Prodotto">
+            DataValueField="Prodotto"
+            DataSourceID="PRO"
+            AppendDataBoundItems="true">
         </asp:DropDownList>
         <asp:Button ID="BVedi" Text="Filtra" OnClick="MixTicket" Visible="false" runat="server" class="btn-filter" />
 
@@ -144,6 +174,13 @@
             </Columns>
         </asp:GridView>
 
-      
+        <%--<asp:GridView runat="server" ID="prova" DataSourceID="dsTest" DataKeyNames="ID" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="true" PageSize="5">
+        </asp:GridView>
+        <asp:SqlDataSource runat="server" ID="dsTest" ConnectionString="Server=localhost;Database=dgs;Uid=root;Pwd=" ProviderName="MySql.Data.MySqlClient"
+            SelectCommand="SELECT ID,Ruolo, Societa, Livello, Dipartimento FROM utenti">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="userid" Name="id" PropertyName="Value" DefaultValue="-1" DbType="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>--%>
     </div>
 </asp:Content>
