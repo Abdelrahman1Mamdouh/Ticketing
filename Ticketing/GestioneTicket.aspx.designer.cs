@@ -15,6 +15,51 @@ namespace Ticketing
     {
 
         /// <summary>
+        /// LIV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource LIV;
+
+        /// <summary>
+        /// PRO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PRO;
+
+        /// <summary>
+        /// CAT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CAT;
+
+        /// <summary>
+        /// PRI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PRI;
+
+        /// <summary>
+        /// TEC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TEC;
+
+        /// <summary>
         /// LId control.
         /// </summary>
         /// <remarks>
@@ -141,13 +186,13 @@ namespace Ticketing
         protected global::System.Web.UI.WebControls.TextBox TLivello;
 
         /// <summary>
-        /// DLivello control.
+        /// DLivelllo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DLivello;
+        protected global::System.Web.UI.WebControls.DropDownList DLivelllo;
 
         /// <summary>
         /// LPriorita control.

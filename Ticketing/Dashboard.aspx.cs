@@ -15,13 +15,6 @@ namespace Ticketing
         protected utente user;
         string[] cuser;
 
-        string QTecnico = $"select ID, concat(Nome, \" \", Cognome) as Tecnico from utente where Ruolo=2;";
-        string QSocieta = "SELECT ID, Nome as Societa FROM societa;";
-        string QStato = "SELECT ID,Stato FROM stato;";
-        string QProdotto = "SELECT ID,Prodotto FROM prodotto;";
-        string QPriorita = "SELECT ID,Priorita FROM priorita;";
-        string QLivello = "SELECT ID,Livello FROM livello;";
-
         string Usocieta;
         string Ulivello;
         string Uruolo;
@@ -105,12 +98,12 @@ namespace Ticketing
             {
                 BindDefaultTicketsByRole();
 
-                GestioneTicket.LoadDropDownList(QTecnico, DTecnico, "Scegli un tecnico:");
-                GestioneTicket.LoadDropDownList(QSocieta, DSocieta, "Scegli una societa:");
-                GestioneTicket.LoadDropDownList(QStato, DStato, "Scegli un stato:");
-                GestioneTicket.LoadDropDownList(QPriorita, DPriorita, "Scegli una priorità:");
-                GestioneTicket.LoadDropDownList(QProdotto, DProdotto, "Scegli un prodotto:");
-                GestioneTicket.LoadDropDownList(QLivello, DLivello, "Scegli una livello:");
+                GestioneTicket.LoadDropDownList(DTecnico, "Scegli un tecnico:");
+                GestioneTicket.LoadDropDownList(DSocieta, "Scegli una societa:");
+                GestioneTicket.LoadDropDownList(DStato, "Scegli un stato:");
+                GestioneTicket.LoadDropDownList(DPriorita, "Scegli una priorità:");
+                GestioneTicket.LoadDropDownList(DProdotto, "Scegli un prodotto:");
+                GestioneTicket.LoadDropDownList(DLivello, "Scegli una livello:");
             }
         }
         private void BindTickets(DataTable table)
@@ -119,7 +112,7 @@ namespace Ticketing
             Tickets.DataBind();
         }
 
-        public void ClickSelectTicket(object sender, EventArgs e)
+        protected void ClickSelectTicket(object sender, EventArgs e)
         {
             Control btn = (Control)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;

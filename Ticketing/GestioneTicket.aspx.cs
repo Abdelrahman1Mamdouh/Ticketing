@@ -12,16 +12,12 @@ namespace Ticketing
     public partial class GestioneTicket : System.Web.UI.Page
     {
         private int id;
-        //private string cliente;
-        //private string tecnico;
         private string livello;
-        //private string stato;
         private string prodotto;
         private string categoria;
         private string priorita;
         private string oggetto;
         private string messaggio;
-        //private string note;
 
         private int DefaultStato = 1;
 
@@ -101,9 +97,7 @@ namespace Ticketing
                 LoadStatiFromDb();
             }
         }
-
-        // Load dropdown list from database
-        public static void LoadDropDownList(string query, DropDownList DDL, string label)
+        public static void LoadDropDownList2(string query, DropDownList DDL, string label)
         {
             // Clear existing items
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
@@ -124,8 +118,15 @@ namespace Ticketing
                 DDL.Items[0].Attributes["selected"] = "selected";
             }
         }
+        public static void LoadDropDownList(DropDownList DDL, string label)
+        {
+            // Add default item at the top
+            DDL.Items.Insert(0, new ListItem(label, ""));
+            DDL.Items[0].Attributes["disabled"] = "disabled";
+            DDL.Items[0].Attributes["selected"] = "selected";
+        }
         // Create a new ticket
-        protected void clickCrea(object sender, EventArgs e)
+        protected void ClickCrea(object sender, EventArgs e)
         {
             try
             {
@@ -327,8 +328,8 @@ namespace Ticketing
                 TMessaggio.Visible = true;
                 BCrea.Visible = true;
 
-                LoadDropDownList("SELECT ID,Prodotto FROM prodotto;", DProdotto, "Scegli un prodotto:");
-                LoadDropDownList("SELECT ID,Categoria FROM categoria ORDER BY Categoria;", DCategoria, "Scegli una categoria:");
+                LoadDropDownList(DProdotto, "Scegli un prodotto:");
+                LoadDropDownList(DCategoria, "Scegli una categoria:");
             }
             else
             {
@@ -400,7 +401,7 @@ namespace Ticketing
 
             LLivello.Visible = true;
             LLivello.Text += " : " + tik[2];
-            DLivello.Visible = true;
+            DLivelllo.Visible = true;
 
             LStato.Visible = true;
             LStato.Text += " : " + tik[3];
@@ -432,7 +433,7 @@ namespace Ticketing
 
             BbAssegna.Visible = true;
             BbSalva.Visible = true;
-            DLivello.Enabled = true;
+            DLivelllo.Enabled = true;
             DPriorita.Enabled = true;
             DStato.Visible = true;
 
@@ -452,7 +453,7 @@ namespace Ticketing
                 DTecnici.Visible = true;
                 BbSalva.Visible = true;
                 BCambiaStato.Visible = true;
-                DLivello.Enabled = true;
+                DLivelllo.Enabled = true;
                 DPriorita.Enabled = true;
                 DStato.Enabled = true;
 
@@ -478,7 +479,7 @@ namespace Ticketing
                 BbAssegna.Visible = false;
                 BbSalva.Visible = true;
                 BCambiaStato.Visible = true;
-                DLivello.Enabled = true;
+                DLivelllo.Enabled = true;
                 DPriorita.Enabled = true;
                 DStato.Enabled = true;
 
@@ -493,7 +494,7 @@ namespace Ticketing
                 BbAssegna.Visible = true;
                 BbSalva.Visible = false;
                 BCambiaStato.Visible = false;
-                DLivello.Enabled = false;
+                DLivelllo.Enabled = false;
                 DPriorita.Enabled = false;
                 DStato.Enabled = false;
 
@@ -511,7 +512,7 @@ namespace Ticketing
 
                 BbSalva.Visible = false;
                 BCambiaStato.Visible = false;
-                DLivello.Enabled = false;
+                DLivelllo.Enabled = false;
                 DPriorita.Enabled = false;
                 DStato.Enabled = false;
 
@@ -525,10 +526,10 @@ namespace Ticketing
 
             if (!IsPostBack)
             {
-                LoadDropDownList("SELECT ID,livello FROM Livello;", DLivello, "Scegli il livello:");
-                LoadDropDownList("SELECT ID,priorita FROM Priorita;", DPriorita, "Scegli la priorita:");
-                LoadDropDownList("SELECT ID,Nome FROM tecnici;", DTecnici, "Scegli il Tecnico:");
-                LoadDropDownList("SELECT ID,Stato from stato;", DStato, "Scegli lo stato");
+                LoadDropDownList(DLivelllo, "Scegli il livello:");
+                LoadDropDownList(DPriorita, "Scegli la priorita:");
+                LoadDropDownList(DTecnici, "Scegli il Tecnico:");
+                LoadDropDownList(DStato, "Scegli lo stato");
             }
         }
         //Assegna tecnico
@@ -578,7 +579,7 @@ namespace Ticketing
         protected void ClickSalva(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["TicketingDb"].ConnectionString;
-            livello = DLivello.SelectedValue;
+            livello = DLivelllo.SelectedValue;
             priorita = DPriorita.SelectedValue;
             if (livello != null && priorita.Equals(""))
             {
@@ -670,7 +671,7 @@ namespace Ticketing
             BAnnulla.Visible = false;
             DStato.Visible = false;
 
-            DLivello.Enabled = false;
+            DLivelllo.Enabled = false;
             DPriorita.Enabled = false;
             DTecnici.Enabled = false;
 

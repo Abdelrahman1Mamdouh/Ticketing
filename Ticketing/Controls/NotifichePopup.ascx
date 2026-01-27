@@ -28,7 +28,7 @@
                     <asp:BoundField DataField="Messaggio" HeaderText="Messaggio" />
                     <asp:TemplateField HeaderText="Stato">
                         <ItemTemplate>
-                            <%# Eval("letturaNotifica").ToString() == "1" ? "✅ Letta" : "✉️ Nuova" %>
+                            <%# Eval("letturaNotifica").ToString() == "1" ? "✔️ Letta" : "✉️ Nuova" %>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
